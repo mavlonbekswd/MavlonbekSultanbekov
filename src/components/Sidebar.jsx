@@ -146,7 +146,7 @@ const Sidebar = () => {
           <ContactItem
             icon={<FaMapMarkerAlt />}
             label="LOCATION"
-            value="Cambridge UK"
+            value="Cambridge U"
             className="text-xs md:text-[13px] lg:text-sm"
             isDark={isDark}
           />
