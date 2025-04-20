@@ -69,6 +69,7 @@ const Resume = () => {
           <TimelineItem 
             title="Najot Ta'lim academy"
             date="2023 — 2024"
+            duration="1yr 2-mos"
             description="Completed an intensive program in modern web development and IT fundamentals in Uzbekistan Tashkent.  Gained hands-on experience by building multiple projects from scratch, collaborating in team-based coding environments, and applying industry-standard practices. The academy provided a strong foundation for future academic and freelance work."
             isDark={isDark}
           />
@@ -76,18 +77,32 @@ const Resume = () => {
       </motion.section>
 
       {/* Experience Section */}
+      
+
       <motion.section variants={staggerContainer} initial="initial" animate="animate">
         <motion.h3 variants={fadeInUp} className={`text-xl lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-6 flex items-center gap-3`}>
-          <FaBriefcase className={isDark ? 'text-[#e2e2e2]' : 'text-gray-800'} />
-          Experience
+        <FaBriefcase className={isDark ? 'text-[#e2e2e2]' : 'text-gray-800'} />
+        Experience
         </motion.h3>
         <div className="space-y-6">
           <TimelineItem 
+            title="SpeedFixPlumbing LTD Company"
+            date="2024 — 2025 " 
+            duration="5mos"
+            description="At SpeedFix Plumbing, we don’t just solve problems — we redefine what it means to feel safe at home. I created this website as a reflection of our core values: speed, precision, and trust. With an elegant, user-friendly layout and locally targeted features, it brings our 24/7 emergency plumbing services closer to Cambridge residents than ever before.
+
+           Every detail — from the vibrant design to the carefully chosen words — was built to build confidence. The site highlights not just what we do, but why we care: clean water, warm homes, and fast response when it matters most."
+            isDark={isDark}
+          />
+
+      <TimelineItem 
             title="Freelance Developer"
-            date="2023 — Present"
+            date="2023 — 2024"
+            duration="1yr"
             description="Collaborated with clients globally to deliver modern, high-performance websites tailored to their unique needs. Specialized in building responsive and accessible user interfaces using React and Tailwind CSS, while optimizing SEO and performance."
             isDark={isDark}
           />
+          
         </div>
       </motion.section>
 
@@ -195,7 +210,7 @@ const Resume = () => {
   );
 };
 
-const TimelineItem = ({ title, date, description, isDark }) => (
+const TimelineItem = ({ title, date, duration, description, isDark }) => (
   <motion.div
     variants={fadeInUp}
     className={`relative pl-6 pb-6 border-l-2 ${isDark ? 'border-[#2a2a2a]' : 'border-gray-200'} last:border-0 last:pb-0`}
@@ -208,7 +223,14 @@ const TimelineItem = ({ title, date, description, isDark }) => (
     ></motion.div>
     <div>
       <h4 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-black'} mb-1`}>{title}</h4>
-      <span className={`${isDark ? 'text-[#e2e2e2]' : 'text-gray-600'} text-sm mb-2 block`}>{date}</span>
+      
+      
+      <span className={`${isDark ? 'text-[#e2e2e2]' : 'text-gray-600'} text-sm mb-2 block`}>
+  {date}
+  <span className="text-xs ml-2 text-gray-400" >{duration}</span>
+</span>
+
+  
       <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm lg:text-base`}>{description}</p>
     </div>
   </motion.div>

@@ -18,13 +18,13 @@ const projectsData = [
   },
   {
     id: 2,
-    title: "Task Management App",
+    title: "SpeedFixPlumbing Website",
     category: "JavaScript",
-    image: "/project2.jpg",
-    description: "A drag-and-drop task management application with real-time updates and team collaboration features.",
-    technologies: ["JavaScript", "Firebase", "Tailwind CSS"],
-    githubLink: "https://github.com/yourusername/project2",
-    liveLink: "https://project2.com"
+    image: "/public/SpeedFixLogo.png",
+    description: "At SpeedFix Plumbing, we don’t just solve problems — we redefine what it means to feel safe at home.",
+    technologies: ["JavaScript", "React", "Scss"],
+    githubLink: "https://github.com/mavlonbekswd/SpeedFixPlumbingComp.git",
+    liveLink: "https://speedfixplumbing.co.uk/"
   },
   {
     id: 3,

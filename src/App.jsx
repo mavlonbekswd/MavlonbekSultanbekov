@@ -49,7 +49,7 @@ const AppContent = () => {
         />
       )}
       
-      <div className="flex flex-col lg:flex-row gap-12 w-full px-4 lg:px-0 lg:mx-auto relative" style={{ maxWidth: '1400px' }}>
+      <div className="flex  flex-col lg:flex-row gap-12 w-full px-4 lg:px-0 lg:mx-auto relative" style={{ maxWidth: '1400px' }}>
         {/* Mobile Toggle Button */}
         <button 
           onClick={() => setShowSidebar(!showSidebar)}
@@ -59,7 +59,7 @@ const AppContent = () => {
         </button>
 
         {/* Sidebar */}
-        <div className={`fixed lg:relative lg:w-[370px] lg:flex-shrink-0 w-[85%] h-screen lg:h-auto top-0 left-0 z-40 transition-transform duration-300 transform ${showSidebar ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 overflow-y-auto lg:overflow-visible`}>
+        <div className={`fixed lg:fixed lg:w-[370px] lg:flex-shrink-0 w-[85%] h-lg lg:h-lg top-12 left-13 z-40 transition-transform duration-300 sm:top-[20] transform ${showSidebar ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 overflow-y-auto lg:overflow-visible`}>
           <div className="h-full py-8 px-4">
             <Sidebar />
           </div>
@@ -67,9 +67,9 @@ const AppContent = () => {
         
         
         {/* Main Content */}
-        <div className="w-full lg:w-[800px] pb-24 lg:pb-0">
+    <div className="w-full lg:w-[800px] pb-24 lg:pb-0 lg:ml-[420px]">
           {/* Desktop Navbar */}
-          <div className="hidden lg:block sticky top-8 z-40 mb-8">
+          <div className="hidden lg:block sticky top-10 z-40 mb-[100px]">
             <Navbar />
           </div>
           
@@ -91,7 +91,7 @@ const AppContent = () => {
         </div>
 
         {/* Mobile Bottom Navbar */}
-        <div className="fixed bottom-0 left-0  right-0 lg:hidden z-30 px-4 pb-4">
+        <div className="fixed bottom-14 left-0   right-0  lg:hidden z-30 px-7  pb-4">
           <Navbar />
         </div>
       </div>

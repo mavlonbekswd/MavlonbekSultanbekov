@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTelegram, FaTwitter, FaWhatsapp } from 'react-icons/fa';
 import { pageVariants, fadeInUp } from '../utils/animations';
 import { useTheme } from '../context/ThemeContext';
 
@@ -42,6 +42,9 @@ const Contact = () => {
               <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                 <span className="font-medium">Location:</span> Cambridge, UK
               </p>
+              <a className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                <a href='tel:+4407881196552' className="font-medium">Phone:</a> +4407881196552
+              </a>
             </div>
           </div>
 
@@ -49,7 +52,7 @@ const Contact = () => {
             <h3 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-black'}`}>Social Media</h3>
             <div className="flex space-x-4">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/mavlonbekswd"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${isDark ? 'text-white hover:text-gray-300' : 'text-gray-800 hover:text-gray-600'} text-2xl transition-colors`}
@@ -57,7 +60,7 @@ const Contact = () => {
                 <FaGithub />
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/mavlonbek-sultanbekov-219098283/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${isDark ? 'text-white hover:text-gray-300' : 'text-gray-800 hover:text-gray-600'} text-2xl transition-colors`}
@@ -65,12 +68,23 @@ const Contact = () => {
                 <FaLinkedin />
               </a>
               <a
-                href="https://twitter.com/yourusername"
+                href="https://wa.me/447881196552?text=Hello%20Mavlonbek%2C%20I%20found%20your%20portfolio%20and%20wanted%20to%20connect!
+"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${isDark ? 'text-white hover:text-gray-300' : 'text-gray-800 hover:text-gray-600'} text-2xl transition-colors`}
               >
-                <FaTwitter />
+                <FaWhatsapp />
+              </a>
+              <a
+                href="tg://resolve?domain=mavlono_sulton&text=Hello%20Mavlonbek%2C%20I%20found%20your%20portfolio%20and%20wanted%20to%20connect!
+
+"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${isDark ? 'text-white hover:text-gray-300' : 'text-gray-800 hover:text-gray-600'} text-2xl transition-colors`}
+              >
+                <FaTelegram />
               </a>
             </div>
           </div>

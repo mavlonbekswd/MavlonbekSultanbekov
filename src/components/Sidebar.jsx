@@ -13,6 +13,7 @@ import {
   FaFileDownload
 } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
+import { FaWhatsapp } from 'react-icons/fa6';
 
 const Sidebar = () => {
   const { isDark } = useTheme();
@@ -31,10 +32,10 @@ const Sidebar = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.5)]`}
+      className={`h-full ${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.5)] overflow-y-auto`}
     >
       <div className="flex flex-col items-center w-full">
         {/* Avatar Section */}
@@ -155,9 +156,12 @@ const Sidebar = () => {
         {/* Socials */}
         <div className="flex gap-3 md:gap-3.5 lg:gap-4 mt-4 md:mt-5 lg:mt-6">
           <SocialIcon href="https://www.linkedin.com/in/mavlonbek-sultanbekov-219098283/" icon={<FaLinkedin />} isDark={isDark} />
-          <SocialIcon href="https://t.me/sultonbekoof" icon={<FaTelegram />} isDark={isDark} />
+          <SocialIcon  href="tg://resolve?domain=mavlono_sulton&text=Hello%20Mavlonbek%2C%20I%20found%20your%20portfolio%20and%20wanted%20to%20connect!
+
+" icon={<FaTelegram />} isDark={isDark} />
           <SocialIcon href="https://github.com/mavlonbekswd" icon={<FaGithub />} isDark={isDark} />
-          <SocialIcon href="https://dribbble.com" icon={<FaDribbble />} isDark={isDark} />
+          <SocialIcon   href="https://wa.me/447881196552?text=Hello%20Mavlonbek%2C%20I%20found%20your%20portfolio%20and%20wanted%20to%20connect!
+" icon={<FaWhatsapp />} isDark={isDark} />
         </div>
       </div>
     </motion.div>
@@ -165,16 +169,20 @@ const Sidebar = () => {
 };
 
 // Contact Info Block
-const ContactItem = ({ icon, label, value, isDark, className }) => {
+const ContactItem = ({ icon, label, value,  isDark, className }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    if (label === "EMAIL" || label === "PHONE") {
+    if (label === "EMAIL") {
       navigator.clipboard.writeText(value);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
+    } else if (label === "PHONE") {
+      window.location.href = `tel:${value.replace( '+4407881196552')}`; // remove spaces
     }
   };
+  
+  
 
   const isClickable = label === "EMAIL" || label === "PHONE";
 
