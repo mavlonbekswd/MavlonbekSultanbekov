@@ -41,7 +41,7 @@ const Sidebar = () => {
         <div className="relative">
           <div className={`relative p-1 rounded-2xl ${isDark ? 'bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700' : 'bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200'}`}>
             <img
-              src="/public/mee.jpg"
+              src="/mee.jpg"
               alt="avatar"
               className={`w-24 md:w-26 lg:w-28 h-24 md:h-26 lg:h-28 object-cover rounded-xl ${
                 isDark ? 'bg-[#2a2a2a]' : 'bg-gray-100'
