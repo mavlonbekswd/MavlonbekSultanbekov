@@ -57,7 +57,7 @@ const Sidebar = () => {
               className="absolute -bottom-2 -right-2 transform"
             >
               <div className={`relative group cursor-pointer`}>
-                <div className={`w-16 md:w-18 lg:w-20 h-6 md:h-6.5 lg:h-7 rounded-full flex items-center justify-center ${
+                <div className={`w-16 md:w-20 lg:w-20 h-6 md:h-6.5 lg:h-7 rounded-full flex items-center justify-center ${
                   isDark 
                     ? 'bg-[#0A6] bg-opacity-90' 
                     : 'bg-[#0A6] bg-opacity-90'

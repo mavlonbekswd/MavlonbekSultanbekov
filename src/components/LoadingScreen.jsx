@@ -25,7 +25,7 @@ const LoadingScreen = () => {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1.5 }}
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center ${
+      className={`fixed inset-0 text-lg z-50 flex flex-col items-center justify-center ${
         isDark ? 'bg-[#1f1f1f]' : 'bg-white'
       }`}
     >
@@ -38,7 +38,7 @@ const LoadingScreen = () => {
             variants={letterVariants}
             initial="hidden"
             animate="visible"
-            className={`text-4xl font-bold ${
+            className={`text-3xl lg:text-4xl font-bold ${
               isDark ? 'text-white' : 'text-black'
             }`}
             

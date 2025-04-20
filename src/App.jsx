@@ -59,7 +59,7 @@ const AppContent = () => {
         </button>
 
         {/* Sidebar */}
-        <div className={`fixed lg:fixed lg:w-[370px] lg:flex-shrink-0 w-[85%] h-lg lg:h-lg top-12 left-13 z-40 transition-transform duration-300 sm:top-[20] transform ${showSidebar ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 overflow-y-auto lg:overflow-visible`}>
+        <div className={`fixed lg:fixed lg:w-[370px] lg:flex-shrink-0 w-[85%] h-lg lg:h-lg top-12 left-13 z-40 transition-transform duration-300 sm:top-[20] md:w-[40%] transform ${showSidebar ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 overflow-y-auto lg:overflow-visible`}>
           <div className="h-full py-8 px-4">
             <Sidebar />
           </div>
