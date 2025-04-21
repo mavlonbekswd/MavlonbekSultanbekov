@@ -13,7 +13,7 @@ const Resume = () => {
  
 
   return (
-    <motion.div
+    <div
       variants={pageVariants}
       initial="initial"
       animate="animate"
@@ -22,17 +22,17 @@ const Resume = () => {
       className={` space-y-8 lg:space-y-12 ${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.5)]`}
     >
       {/* Header with Download Button */}
-      <motion.div variants={fadeInUp} className="flex justify-between items-center">
+      <div variants={fadeInUp} className="flex justify-between items-center">
         <h2 className={`text-2xl lg:text-3xl font-bold ${isDark ? 'text-white' : 'text-black'} flex items-center`}>
           Resume
-          <motion.span
+          <span
             initial={{ width: 0 }}
             animate={{ width: "2rem" }}
             transition={{ duration: 0.3, delay: 0.3 }}
             className={`block h-1 ${isDark ? 'bg-[#e2e2e2]' : 'bg-gray-800'} ml-4`}
-          ></motion.span>
+          ></span>
         </h2>
-        <motion.a
+        <a
           variants={scaleIn}
           href="/CS-resume MavlonbekSultonbekov.pdf"
           download
@@ -42,8 +42,8 @@ const Resume = () => {
         >
           <FaDownload />
           <span className="hidden sm:inline">Download CV</span>
-        </motion.a>
-      </motion.div>
+        </a>
+      </div>
 
       {/* Education Section */}
       <motion.section variants={staggerContainer} initial="initial" animate="animate">
@@ -71,11 +71,11 @@ const Resume = () => {
       {/* Experience Section */}
       
 
-      <motion.section variants={staggerContainer} initial="initial" animate="animate">
-        <motion.h3 variants={fadeInUp} className={`text-xl lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-6 flex items-center gap-3`}>
+      <section variants={staggerContainer} initial="initial" animate="animate">
+        <h3 variants={fadeInUp} className={`text-xl lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-6 flex items-center gap-3`}>
         <FaBriefcase className={isDark ? 'text-[#e2e2e2]' : 'text-gray-800'} />
         Experience
-        </motion.h3>
+        </h3>
         <div className="space-y-6">
           <TimelineItem 
             title="SpeedFixPlumbing LTD Company"
@@ -96,10 +96,10 @@ const Resume = () => {
           />
           
         </div>
-      </motion.section>
+      </section>
 
       {/* Rewards Section */}
-      <motion.section variants={staggerContainer} initial="initial" animate="animate">
+      <section variants={staggerContainer} initial="initial" animate="animate">
         <motion.h3 variants={fadeInUp} className={`text-xl lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-6 flex items-center gap-3`}>
           <FaTrophy className={`${isDark ? 'text-[#e2e2e2]' : 'text-gray-800'} text-2xl`} />
           Rewards & Achievements
@@ -157,16 +157,16 @@ const Resume = () => {
             </motion.div>
           ))}
         </motion.div>
-      </motion.section>
+      </section>
 
       {/* Skills Section */}
-      <motion.section variants={staggerContainer} initial="initial" animate="animate">
-        <motion.h3 variants={fadeInUp} className={`text-xl lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-6 flex items-center gap-3`}>
+      <section variants={staggerContainer} initial="initial" animate="animate">
+        <h3 variants={fadeInUp} className={`text-xl lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-6 flex items-center gap-3`}>
           <BsBook className={isDark ? 'text-[#e2e2e2]' : 'text-gray-800'} />
           My Skills
-        </motion.h3>
+        </h3>
         <p className={isDark ? 'text-[#e2e2e2] mb-4' : 'text-gray-800 mb-4' }>Here are some of the technologies I work with daily, and the ones I'm continuously mastering :</p>
-        <motion.div 
+        <div 
           variants={staggerContainer} 
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
         >
@@ -182,7 +182,7 @@ const Resume = () => {
           ].map((skill) => {
             const Icon = skill.icon;
             return (
-              <motion.div
+              <div
                 key={skill.name}
                 variants={fadeInUp}
                 className={`px-4 py-3 rounded-lg flex items-center justify-center gap-2 ${
@@ -193,12 +193,12 @@ const Resume = () => {
               >
                 <Icon className="text-xl" style={{ color: skill.color }} />
                 <span>{skill.name}</span>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
-      </motion.section>
-    </motion.div>
+        </div>
+      </section>
+    </div>
   );
 };
 
@@ -219,16 +219,16 @@ const TimelineItem = ({ title, date, duration, description, isDark }) => (
   <link rel="canonical" href="https://www.mavlonbek.com/resume/" />
 </Helmet>
 
-  <motion.div
+  <div
     variants={fadeInUp}
     className={`relative pl-6 pb-6 border-l-2 ${isDark ? 'border-[#2a2a2a]' : 'border-gray-200'} last:border-0 last:pb-0`}
   >
-    <motion.div
+    <div
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ delay: 0.2 }}
       className={`absolute -left-[9px] top-0 w-4 h-4 ${isDark ? 'bg-[#1f1f1f] border-[#e2e2e2]' : 'bg-white border-gray-800'} border-2 rounded-full`}
-    ></motion.div>
+    ></div>
     <div>
       <h4 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-black'} mb-1`}>{title}</h4>
       
@@ -241,7 +241,7 @@ const TimelineItem = ({ title, date, duration, description, isDark }) => (
   
       <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm lg:text-base`}>{description}</p>
     </div>
-  </motion.div>
+  </div>
   </>
 );
 

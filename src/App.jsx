@@ -12,8 +12,7 @@ import { FaChevronRight } from "react-icons/fa";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import LoadingScreen from './components/LoadingScreen';
 import { initGA, logPageView } from "./utils/analytics";
-
-
+import { LanguageProvider } from './context/LanguageContext';
 
 const AppContent = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -41,8 +40,6 @@ const AppContent = () => {
 
     return () => clearTimeout(timer);
   }, []);
-
-  
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col lg:items-center py-8 lg:py-20 font-sans relative">
@@ -104,19 +101,18 @@ const AppContent = () => {
   );
 };
 
-function App() 
-  {
-    useEffect(() => {
-      initGA();         // GA ni ishga tushuradi
-      logPageView();    // Sahifaga kirishni qayd qiladi
-    }, []);
+function App() {
+  useEffect(() => {
+    initGA();         // GA ni ishga tushuradi
+    logPageView();    // Sahifaga kirishni qayd qiladi
+  }, []);
   return (
     <ThemeProvider>
-      <AppContent />
+      <LanguageProvider>
+        <AppContent />
+      </LanguageProvider>
     </ThemeProvider>
   );
 }
-
-
 
 export default App;
