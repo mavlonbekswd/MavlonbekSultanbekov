@@ -20,7 +20,7 @@ const projectsData = [
     id: 2,
     title: "SpeedFixPlumbing Website",
     category: "JavaScript",
-    image: "/public/SpeedFixLogo.png",
+    image: "/SpeedFixLogo.png",
     description: "At SpeedFix Plumbing, we don’t just solve problems — we redefine what it means to feel safe at home.",
     technologies: ["JavaScript", "React", "Scss"],
     githubLink: "https://github.com/mavlonbekswd/SpeedFixPlumbingComp.git",
