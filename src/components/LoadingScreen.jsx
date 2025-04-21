@@ -29,6 +29,7 @@ const LoadingScreen = () => {
         isDark ? 'bg-[#1f1f1f]' : 'bg-white'
       }`}
     >
+      
       {/* Animated text */}
       <div className="flex mb-8">
         {name.split("").map((letter, i) => (
@@ -38,12 +39,12 @@ const LoadingScreen = () => {
             variants={letterVariants}
             initial="hidden"
             animate="visible"
-            className={`text-3xl lg:text-4xl font-bold ${
+            className={`text-3xl lg:text-4xl tracking-wide font-bold ${
               isDark ? 'text-white' : 'text-black'
             }`}
             
           >
-            {letter}
+            {letter === " " ? "\u00A0" : letter}
           </motion.span>
         ))}
       </div>

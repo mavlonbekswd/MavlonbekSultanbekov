@@ -6,18 +6,9 @@ import { useTheme } from '../context/ThemeContext';
 
 // Sample projects data - replace with your actual projects
 const projectsData = [
+  
   {
     id: 1,
-    title: "E-commerce Platform",
-    category: "React",
-    image: "/project1.jpg",
-    description: "A full-featured e-commerce platform with cart functionality, user authentication, and payment integration.",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-    githubLink: "https://github.com/yourusername/project1",
-    liveLink: "https://project1.com"
-  },
-  {
-    id: 2,
     title: "SpeedFixPlumbing Website",
     category: "JavaScript",
     image: "/SpeedFixLogo.png",
@@ -26,11 +17,21 @@ const projectsData = [
     githubLink: "https://github.com/mavlonbekswd/SpeedFixPlumbingComp.git",
     liveLink: "https://speedfixplumbing.co.uk/"
   },
+{
+    id: 2,
+    title: "Coming soon",
+    category: "React",
+    image: "/ComingSoon.png",
+    description: "A full-featured e-commerce platform with cart functionality, user authentication, and payment integration.",
+    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+    githubLink: "https://github.com/yourusername/project1",
+    liveLink: "https://project1.com"
+  },
   {
     id: 3,
-    title: "Portfolio Website",
+    title: "Coming Soon",
     category: "React",
-    image: "/project3.jpg",
+    image: "/ComingSoon.png",
     description: "A responsive portfolio website with smooth animations and modern design.",
     technologies: ["React", "Framer Motion", "Tailwind CSS"],
     githubLink: "https://github.com/yourusername/project3",
