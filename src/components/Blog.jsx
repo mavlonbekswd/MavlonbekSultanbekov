@@ -1,11 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
+import { Helmet } from 'react-helmet';
+
 
 const Blog = () => {
   const { isDark } = useTheme();
 
   return (
+    <>
+    <Helmet>
+  <title>Blog | Mavlonbek Sultanbekov</title>
+  <meta
+    name="description"
+    content="Read blog posts and thoughts by Mavlonbek Sultanbekov on programming, technology, and personal development."
+  />
+  <meta
+    name="keywords"
+    content="Mavlonbek Blog, Programming Articles, Developer Insights, Coding Tips"
+  />
+  <meta name="author" content="Mavlonbek Sultanbekov" />
+  <link rel="canonical" href="https://www.mavlonbek.com/blog/" />
+</Helmet>
+
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -37,6 +54,7 @@ const Blog = () => {
         </p>
       </div>
     </motion.div>
+    </>
   );
 };
 

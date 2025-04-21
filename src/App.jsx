@@ -12,6 +12,8 @@ import { FaChevronRight } from "react-icons/fa";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import LoadingScreen from './components/LoadingScreen';
 
+
+
 const AppContent = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const location = useLocation();
@@ -106,5 +108,7 @@ function App() {
     </ThemeProvider>
   );
 }
+
+
 
 export default App;

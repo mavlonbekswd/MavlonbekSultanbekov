@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
@@ -21,7 +22,7 @@ const projectsData = [
     id: 2,
     title: "Coming soon",
     category: "React",
-    image: "/ComingSoon.png",
+    image: "/Cooming-Soon.avif",
     description: "A full-featured e-commerce platform with cart functionality, user authentication, and payment integration.",
     technologies: ["React", "Node.js", "MongoDB", "Stripe"],
     githubLink: "https://github.com/yourusername/project1",
@@ -31,7 +32,7 @@ const projectsData = [
     id: 3,
     title: "Coming Soon",
     category: "React",
-    image: "/ComingSoon.png",
+    image: "/Cooming-Soon.avif",
     description: "A responsive portfolio website with smooth animations and modern design.",
     technologies: ["React", "Framer Motion", "Tailwind CSS"],
     githubLink: "https://github.com/yourusername/project3",
@@ -43,6 +44,8 @@ const projectsData = [
 const categories = ["All", "React", "JavaScript", "Node.js"];
 
 const Projects = () => {
+
+
   const [activeCategory, setActiveCategory] = useState("All");
   const [hoveredProject, setHoveredProject] = useState(null);
   const { isDark } = useTheme();
@@ -52,6 +55,21 @@ const Projects = () => {
     : projectsData.filter(project => project.category === activeCategory);
 
   return (
+    <>
+        <Helmet>
+      <title>Projects | Mavlonbek Sultanbekov</title>
+      <meta
+        name="description"
+        content="Explore the web development and software engineering projects built by Mavlonbek Sultanbekov using modern technologies."
+      />
+      <meta
+        name="keywords"
+        content="Mavlonbek Projects, Portfolio, Web Development, JavaScript, React, Tailwind CSS"
+      />
+      <meta name="author" content="Mavlonbek Sultanbekov" />
+      <link rel="canonical" href="https://www.mavlonbek.com/project/" />
+    </Helmet>
+
     <motion.div
       variants={pageVariants}
       initial="initial"
@@ -157,6 +175,7 @@ const Projects = () => {
         </AnimatePresence>
       </motion.div>
     </motion.div>
+    </>
   );
 };
 

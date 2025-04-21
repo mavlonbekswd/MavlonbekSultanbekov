@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,6 +12,7 @@ const Notification = ({ status, message, onClose }) => {
   const { isDark } = useTheme();
   
   return (
+    
     <motion.div
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
@@ -71,6 +73,8 @@ const Contact = () => {
   const form = useRef();
   const [notification, setNotification] = useState(null);
 
+  
+
   const sendEmail = (e) => {
     e.preventDefault();
     
@@ -104,6 +108,21 @@ const Contact = () => {
 
   return (
     <>
+    <Helmet>
+  <title>Contact | Mavlonbek Sultanbekov</title>
+  <meta
+    name="description"
+    content="Get in touch with Mavlonbek Sultanbekov for collaborations, project inquiries, or just to say hello."
+    
+  />
+  <meta
+    name="keywords"
+    content="Contact Mavlonbek, Email, Software Developer, Cambridge, Contact Form"
+  />
+  <meta name="author" content="Mavlonbek Sultanbekov" />
+  <link rel="canonical" href="https://www.mavlonbek.com/contact/" />
+  </Helmet>
+
       <AnimatePresence>
         {notification && (
           <Notification

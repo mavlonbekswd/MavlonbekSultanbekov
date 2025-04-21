@@ -1,0 +1,15 @@
+# https://www.mavlonbek.com/robots.txt
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.mavlonbek.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10
+
+# Disallow potentially private or unnecessary paths
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$

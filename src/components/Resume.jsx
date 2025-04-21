@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaDownload, FaGraduationCap, FaBriefcase, FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt, FaTrophy, FaMedal, FaStar, FaAward } from 'react-icons/fa';
@@ -9,16 +10,7 @@ import { useTheme } from '../context/ThemeContext';
 const Resume = () => {
   const { isDark } = useTheme();
 
-  const skills = [
-    { name: 'HTML', level: 90 },
-    { name: 'CSS', level: 85 },
-    { name: 'JavaScript', level: 80 },
-    { name: 'React', level: 85 },
-    { name: 'Node.js', level: 75 },
-    { name: 'MongoDB', level: 70 },
-    { name: 'Git', level: 80 },
-    { name: 'Tailwind', level: 85 }
-  ];
+ 
 
   return (
     <motion.div
@@ -211,6 +203,22 @@ const Resume = () => {
 };
 
 const TimelineItem = ({ title, date, duration, description, isDark }) => (
+  <>
+
+<Helmet>
+  <title>Resume | Mavlonbek Sultanbekov</title>
+  <meta
+    name="description"
+    content="View the resume of Mavlonbek Sultanbekov, a software engineer from Cambridge, UK. Download CV and explore experience, skills, and education."
+  />
+  <meta
+    name="keywords"
+    content="Resume, Mavlonbek Sultanbekov, CV, Software Engineer, Developer Experience, Skills, Download CV"
+  />
+  <meta name="author" content="Mavlonbek Sultanbekov" />
+  <link rel="canonical" href="https://www.mavlonbek.com/resume/" />
+</Helmet>
+
   <motion.div
     variants={fadeInUp}
     className={`relative pl-6 pb-6 border-l-2 ${isDark ? 'border-[#2a2a2a]' : 'border-gray-200'} last:border-0 last:pb-0`}
@@ -234,6 +242,7 @@ const TimelineItem = ({ title, date, duration, description, isDark }) => (
       <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm lg:text-base`}>{description}</p>
     </div>
   </motion.div>
+  </>
 );
 
 export default Resume;

@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCode } from 'react-icons/fa';
@@ -10,6 +11,22 @@ const About = () => {
   const { isDark } = useTheme();
 
   return (
+    <>
+    <Helmet>
+  <title>About Me | Mavlonbek Sultanbekov</title>
+  <meta
+    name="description"
+    content="Learn more about Mavlonbek Sultanbekov – a passionate software engineer based in Cambridge, UK, building modern and user-friendly digital experiences."
+    
+  />
+  <meta
+    name="keywords"
+    content="Mavlonbek Sultanbekov, About Mavlonbek, Software Engineer, Web Developer, Cambridge, Portfolio"
+  />
+  <meta name="author" content="Mavlonbek Sultanbekov" />
+  <link rel="canonical" href="https://www.mavlonbek.com/about" />
+   </Helmet>
+
     <motion.div
       variants={pageVariants}
       initial="initial"
@@ -118,6 +135,7 @@ const About = () => {
         </motion.div>
       </motion.section>
     </motion.div>
+    </>
   );
 };
 
