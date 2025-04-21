@@ -21,7 +21,7 @@ const projectsData = [
     title: "SpeedFixPlumbing Website",
     category: "JavaScript",
     image: "/SpeedFixLogo.png",
-    description: "At SpeedFix Plumbing, we don’t just solve problems — we redefine what it means to feel safe at home.",
+    description: "At SpeedFix Plumbing, we don't just solve problems — we redefine what it means to feel safe at home.",
     technologies: ["JavaScript", "React", "Scss"],
     githubLink: "https://github.com/mavlonbekswd/SpeedFixPlumbingComp.git",
     liveLink: "https://speedfixplumbing.co.uk/"
@@ -107,7 +107,8 @@ const Projects = () => {
               animate="animate"
               exit="initial"
               whileHover={{ y: -5 }}
-              className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-100'} rounded-2xl overflow-hidden`}
+              className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-100'} rounded-2xl overflow-hidden cursor-pointer`}
+              onClick={() => window.open(project.liveLink, '_blank')}
               onHoverStart={() => setHoveredProject(project.id)}
               onHoverEnd={() => setHoveredProject(null)}
             >
@@ -121,24 +122,15 @@ const Projects = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: hoveredProject === project.id ? 1 : 0 }}
-                  className="absolute inset-0 bg-black/60 flex items-center justify-center gap-4"
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 bg-black/70 flex flex-col items-center justify-center gap-4 p-4"
                 >
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-2 ${isDark ? 'bg-[#e2e2e2] text-black hover:bg-white' : 'bg-white text-black hover:bg-gray-100'} rounded-full transition-colors`}
-                  >
-                    <FaGithub size={20} />
-                  </a>
-                  <a
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-2 ${isDark ? 'bg-[#e2e2e2] text-black hover:bg-white' : 'bg-white text-black hover:bg-gray-100'} rounded-full transition-colors`}
-                  >
-                    <FaExternalLinkAlt size={20} />
-                  </a>
+                  <h3 className="text-white text-xl font-semibold text-center">{project.title}</h3>
+                  <p className="text-gray-300 text-sm text-center">{project.description}</p>
+                  <div className="flex items-center gap-2">
+                    <FaExternalLinkAlt size={20} className="text-white" />
+                    <span className="text-white text-sm">Visit Website</span>
+                  </div>
                 </motion.div>
               </div>
 
