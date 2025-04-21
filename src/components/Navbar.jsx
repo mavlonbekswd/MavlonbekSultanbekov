@@ -84,6 +84,7 @@ const Navbar = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={toggleTheme}
+         aria-label="dark/light button"
         className={`p-1.5 sm:p-2 md:p-4 lg:p-3 rounded-xl ${isDark ? 'bg-[#2a2a2a] text-white hover:bg-[#444]' : 'bg-gray-100 text-black hover:bg-gray-200'} transition-all`}
       >
         {isDark ? <FaSun className="w-3 h-3 sm:w-4 sm:h-4 md:w-7 md:h-7" /> : <FaMoon className="w-3 h-3 sm:w-4 sm:h-4 md:w-7 md:h-7" />}

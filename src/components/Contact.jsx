@@ -260,8 +260,9 @@ const Contact = () => {
                 } border focus:outline-none focus:ring-2 focus:ring-opacity-50`}
               ></textarea>
             </div>
-            <button
+            <button 
               type="submit"
+               aria-label="Send message"
               className={`px-6 py-3 rounded-lg font-medium transition-colors ${
                 isDark
                   ? 'bg-white text-black hover:bg-gray-200 disabled:bg-gray-400'

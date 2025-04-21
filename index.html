@@ -5,10 +5,38 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
+    
+    
+    <script>
+      // Framer Motion Performance Config
+      window.__FRAMER_MOTION_FEATURES__ = {
+        measureLayout: false,
+        dragAndDrag: false,
+        projection: false
+      };
+      
+      // Disable dev mode warnings
+      window.__FRAMER_MOTION_DISABLE_WARNINGS__ = true;
+    </script>
+    
+    <!-- Resource Hints -->
+    <link rel="prefetch" href="/MavlonoIcons.png" as="image" />
+    <link rel="modulepreload" href="/src/main.jsx" />
+    
+    <!-- Performance Meta Tags -->
+    <meta http-equiv="Cache-Control" content="max-age=31536000" />
+    <meta name="renderMode" content="defer" />
+    <meta name="turbo-cache-control" content="no-cache" />
+    
     <!-- Primary Meta Tags -->
     <title>Mavlonbek Sultonbekov - Full Stack Developer Portfolio</title>
     <meta name="title" content="Mavlonbek Sultonbekov - Full Stack Developer Portfolio" />
-<meta name="description" content="Experienced Full Stack Developer specializing in React,JavaScript, Tailwindcss, Scss,HTML, Css, Node.js, and modern web technologies. View my projects and professional experience.Whether it's developing full-stack web apps, designing portfolios, or helping businesses grow online — I approach every project with attention to detail and a strong focus on user experience." />
+    <meta name="description" content="Experienced Full Stack Developer specializing in React,JavaScript, Tailwindcss, Scss,HTML, Css, Node.js, and modern web technologies. View my projects and professional experience.Whether it's developing full-stack web apps, designing portfolios, or helping businesses grow online — I approach every project with attention to detail and a strong focus on user experience." />
     <meta name="keywords" content="Mavlonbek Sultonbekov, Full Stack Developer, Web Developer, React Developer, JavaScript, Node.js, Portfolio" />
     <meta name="author" content="Mavlonbek Sultonbekov" />
     <meta name="robots" content="index, follow" />

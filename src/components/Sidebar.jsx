@@ -42,8 +42,9 @@ const Sidebar = () => {
         <div className="relative">
           <div className={`relative p-1 rounded-2xl ${isDark ? 'bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700' : 'bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200'}`}>
             <img
-              src="/mee.jpg"
+              src="/src/assets/img/mee.webp"
               alt="avatar"
+              loading="lazy"
               className={`w-24 md:w-26 lg:w-28 h-24 md:h-26 lg:h-28 object-cover rounded-xl ${
                 isDark ? 'bg-[#2a2a2a]' : 'bg-gray-100'
               } p-2`}
@@ -156,6 +157,7 @@ const Sidebar = () => {
         {/* Socials */}
         <div className="flex gap-3 md:gap-3.5 lg:gap-4 mt-4 md:mt-5 lg:mt-6">
           <SocialIcon href="https://www.linkedin.com/in/mavlonbek-sultanbekov-219098283/" icon={<FaLinkedin />} isDark={isDark} />
+          
           <SocialIcon  href="tg://resolve?domain=mavlono_sulton&text=Hello%20Mavlonbek%2C%20I%20found%20your%20portfolio%20and%20wanted%20to%20connect!
 
 " icon={<FaTelegram />} isDark={isDark} />
@@ -202,7 +204,7 @@ const ContactItem = ({ icon, label, value,  isDark, className }) => {
         {icon}
       </div>
       <div className="flex-grow">
-        <p className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>{label}</p>
+        <p className={`text-xs ${isDark ? 'text-white' : 'text-gray'}`}>{label}</p>
         <p className={`${className || 'text-sm'} ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>{value}</p>
       </div>
       {isClickable && (
@@ -224,6 +226,7 @@ const SocialIcon = ({ href, icon, isDark }) => (
     href={href}
     target="_blank"
     rel="noreferrer"
+    aria-label="links"
     whileHover={{ y: -3 }}
     whileTap={{ scale: 0.95 }}
     className={`${
