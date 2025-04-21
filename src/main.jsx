@@ -1,11 +1,11 @@
 import { StrictMode } from 'react';
-import { injectSpeedInsights } from '@vercel/speed-insights';
+import { SpeedInsights } from '@vercel/speed-insights';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App.jsx';
 
-injectSpeedInsights();
+SpeedInsights();
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
