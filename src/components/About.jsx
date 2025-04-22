@@ -6,9 +6,14 @@ import { BiMessageSquareDetail } from 'react-icons/bi';
 import { pageVariants, staggerContainer, fadeInUp, scaleIn } from '../utils/animations';
 import { useTheme } from '../context/ThemeContext';
 import { FaSearch } from "react-icons/fa";
+import LanguageSwitcher from './LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
+import { Trans } from 'react-i18next';
 
 const About = () => {
   const { isDark } = useTheme();
+  const { t } = useTranslation();
+  <LanguageSwitcher />
 
   return (
     <>
@@ -37,8 +42,9 @@ const About = () => {
     >
       {/* About Me Section */}
       <motion.section variants={staggerContainer}>
+        
         <motion.h2 variants={fadeInUp} className={`text-2xl lg:text-3xl font-bold ${isDark ? 'text-white' : 'text-black'} mb-4 flex items-center`}>
-          About Me
+          {t("about_me")}
           <motion.span
             initial={{ width: 0 }}
             animate={{ width: "2rem" }}
@@ -48,17 +54,16 @@ const About = () => {
         </motion.h2>
         <motion.div variants={staggerContainer} className={`${isDark ? 'text-gray-400' : 'text-gray-600'} space-y-4`}>
           <motion.p variants={fadeInUp} className="text-base lg:text-lg leading-relaxed">
-          I'm a passionate software engineer originally from Uzbekistan, currently based in Cambridge, UK. I specialize in crafting modern, responsive, and user-friendly web applications using the latest technologies like React.js, Tailwind CSS, and JavaScript.
-
-        From the moment I discovered programming, I knew it was more than just code — it was a way to solve real-world problems creatively and efficiently. I’m constantly learning and exploring new tools and techniques to build digital experiences that are both functional and beautifully designed.
-
-        Whether it's developing full-stack web apps, designing portfolios, or helping businesses grow online — I approach every project with attention to detail and a strong focus on user experience.
+            {t("about-me-p1")}
+         
 
 
 
           </motion.p>
-          <motion.p variants={fadeInUp} className="text-base lg:text-lg leading-relaxed">
-          In addition to coding, I'm interested in marketing, entrepreneurship, and building tools that make life easier. My mission is simple: <span className='text-green-600'>turn creative ideas into impactful digital products.</span>
+          <motion.p variants={fadeInUp} className="text-base lg:text-lg leading-relaxed"> <Trans i18nKey="about-me-p2">
+    In addition to coding, I'm interested in marketing, entrepreneurship, and building tools that make life easier.
+    My mission is simple: <span className='text-green-600'>turn creative ideas into impactful digital products.</span>
+  </Trans>
           </motion.p>
         </motion.div>
       </motion.section>
@@ -66,7 +71,7 @@ const About = () => {
       {/* What I'm Doing Section */}
       <motion.section variants={staggerContainer}>
         <motion.h2 variants={fadeInUp} className={`text-2xl lg:text-3xl font-bold ${isDark ? 'text-white' : 'text-black'} mb-4 flex items-center lg:mb-6 mt-6`}>
-          What I'm Doing
+          {t("what-i-do")}
           <motion.span
             initial={{ width: 0 }}
             animate={{ width: "2rem" }}
@@ -86,9 +91,9 @@ const About = () => {
                 <FaCode />
               </div>
               <div>
-                <h3 className={`text-lg lg:text-xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>Web Development</h3>
+                <h3 className={`text-lg lg:text-xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>{t("web-development")}</h3>
                 <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-base lg:text-lg leading-relaxed`}>
-                  I create high-quality websites using modern technologies, focusing on frontend development.
+                 {t("web-dev-p")}
                 </p>
               </div>
             </div>
@@ -105,9 +110,9 @@ const About = () => {
                 <FaSearch />
               </div>
               <div>
-                <h3 className={`text-lg lg:text-xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>SEO Optimization</h3>
+                <h3 className={`text-lg lg:text-xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>{t("seo-opt")}</h3>
                 <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-base lg:text-lg leading-relaxed`}>
-                I optimize websites for better search engine visibility by improving structure, content, speed, and accessibility to help them rank higher on Google.
+                {t("seo-description")}
 
                 </p>
               </div>
@@ -125,9 +130,9 @@ const About = () => {
                 <BiMessageSquareDetail />
               </div>
               <div>
-                <h3 className={`text-lg lg:text-xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>Blog Management</h3>
+                <h3 className={`text-lg lg:text-xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>{t("blog-title")}</h3>
                 <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-base lg:text-lg leading-relaxed`}>
-                  I write useful and engaging blog posts on various topics, maintaining interactive communication with my audience.
+                {t("blog-description")}
                 </p>
               </div>
             </div>

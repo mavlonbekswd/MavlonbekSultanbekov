@@ -4,39 +4,41 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { pageVariants, staggerContainer, fadeInUp, scaleIn } from '../utils/animations';
 import { useTheme } from '../context/ThemeContext';
+import { useTranslation } from 'react-i18next';
+
 
 // Sample projects data - replace with your actual projects
-const projectsData = [
+let projectsData = [
   
   {
     id: 1,
-    title: "SpeedFixPlumbing Website",
+    titleKey: "project1-title",
+    descriptionKey: "project1-description",
     category: "JavaScript",
     loading:"lazy",
     image: "/SpeedFixLogo.webp",
-    description: "At SpeedFix Plumbing, we don't just solve problems — we redefine what it means to feel safe at home.",
     technologies: ["JavaScript", "React", "Scss"],
     githubLink: "https://github.com/mavlonbekswd/SpeedFixPlumbingComp.git",
     liveLink: "https://speedfixplumbing.co.uk/"
   },
-{
+  {
     id: 2,
-    title: "Coming soon",
+    titleKey: "project2-title",
+    descriptionKey: "project2-description",
     category: "React",
     loading:"lazy",
     image: "/Cooming-Soon.webp",
-    description: "A full-featured e-commerce platform with cart functionality, user authentication, and payment integration.",
     technologies: ["React", "Node.js", "MongoDB", "Stripe"],
     githubLink: "https://github.com/yourusername/project1",
     liveLink: "https://project1.com"
   },
   {
     id: 3,
-    title: "Coming Soon",
+    titleKey: "project3-title",
+    descriptionKey: "project3-description",
     category: "React",
     loading:"lazy",
     image: "/Cooming-Soon.webp",
-    description: "A responsive portfolio website with smooth animations and modern design.",
     technologies: ["React", "Framer Motion", "Tailwind CSS"],
     githubLink: "https://github.com/yourusername/project3",
     liveLink: "https://project3.com"
@@ -44,14 +46,22 @@ const projectsData = [
   // Add more projects as needed
 ];
 
-const categories = ["All", "React", "JavaScript", "Node.js"];
+
+
 
 const Projects = () => {
 
-
+  const { t } = useTranslation();
   const [activeCategory, setActiveCategory] = useState("All");
   const [hoveredProject, setHoveredProject] = useState(null);
   const { isDark } = useTheme();
+
+  const categories = [
+    t("category-all"),
+    t("category-react"),
+    t("category-js"),
+    t("category-node")
+  ];
 
   const filteredProjects = activeCategory === "All"
     ? projectsData
@@ -84,7 +94,7 @@ const Projects = () => {
       {/* Header */}
       <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h2 className={`text-2xl lg:text-3xl font-bold ${isDark ? 'text-white' : 'text-black'} flex items-center`}>
-          Projects
+        {t("projects-sec")}
           <motion.span
             initial={{ width: 0 }}
             animate={{ width: "2rem" }}
@@ -147,8 +157,8 @@ const Projects = () => {
                   transition={{ duration: 0.3 }}
                   className="absolute inset-0 bg-black/70 flex flex-col items-center justify-center gap-4 p-4"
                 >
-                  <h3 className="text-white text-xl font-semibold text-center">{project.title}</h3>
-                  <p className="text-gray-300 text-sm text-center">{project.description}</p>
+                  <h3 className="text-white text-xl font-semibold text-center">{t(project.titleKey)}</h3>
+                  <p className="text-gray-300 text-sm text-center"> {t(project.descriptionKey)}</p>
                   <div className="flex items-center gap-2">
                     <FaExternalLinkAlt size={20} className="text-white" />
                     <span className="text-white text-sm">Visit Website</span>
@@ -158,8 +168,8 @@ const Projects = () => {
 
               {/* Project Info */}
               <div className="p-6">
-                <h3 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>{project.title}</h3>
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm mb-4`}>{project.description}</p>
+                <h3 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>{t(project.titleKey)}</h3>
+                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm mb-4`}>{t(project.descriptionKey)}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
                     <span

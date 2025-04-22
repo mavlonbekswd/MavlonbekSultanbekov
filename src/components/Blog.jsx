@@ -2,10 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 import { Helmet } from 'react-helmet';
+import { useTranslation } from 'react-i18next';
 
 
 const Blog = () => {
   const { isDark } = useTheme();
+    const { t } = useTranslation();
 
   return (
     <>
@@ -44,13 +46,13 @@ const Blog = () => {
             isDark ? 'text-white' : 'text-gray-900'
           }`}
         >
-          Coming Soon
+          {t("coming-soon-title")}
         </motion.h2>
         
         <p className={`text-sm ${
           isDark ? 'text-gray-400' : 'text-gray-600'
         }`}>
-          Exciting content is on the way!
+          {t("coming-soon-description")}
         </p>
       </div>
     </motion.div>

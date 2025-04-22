@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import {
   FaEnvelope,
   FaPhone,
@@ -9,8 +10,7 @@ import {
   FaGithub,
   FaCopy,
   FaCheck,
-  FaDribbble,
-  FaFileDownload
+  FaDownload
 } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
 import { FaWhatsapp } from 'react-icons/fa6';
@@ -18,6 +18,8 @@ import { FaWhatsapp } from 'react-icons/fa6';
 const Sidebar = () => {
   const { isDark } = useTheme();
   const [downloadError, setDownloadError] = useState(false);
+  const { t } = useTranslation();
+  
 
   const handleDownloadCV = () => {
     try {
@@ -63,7 +65,7 @@ const Sidebar = () => {
                     ? 'bg-[#0A6] bg-opacity-90' 
                     : 'bg-[#0A6] bg-opacity-90'
                 } border-2 border-[#0A66]`}>
-                  <span className="text-[9px] md:text-[9.5px] lg:text-[10px] font-medium text-white">Open to work</span>
+                  <span className="text-[9px] md:text-[9.5px] lg:text-[10px] font-medium text-white">{t('open_to_work')}</span>
                 </div>
                 
  {/* Hover tooltip */}
@@ -72,7 +74,7 @@ const Sidebar = () => {
                     ? 'bg-[#2a2a2a] text-white' 
                     : 'bg-white text-gray-800'} 
                   shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-center`}>
-                  <p className="font-medium">Looking for new opportunities</p>
+                  <p className="font-medium">{t('looking-for-new-opportunities')}</p>
                   <div className={`absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 
                     ${isDark ? 'bg-[#2a2a2a]' : 'bg-white'}`}></div>
                 </div>
@@ -97,33 +99,21 @@ const Sidebar = () => {
         </motion.p>
 
         {/* Download CV Button */}
-        <motion.button
-          onClick={handleDownloadCV}
+        <motion.a
+          href="/CS-resume MavlonbekSultonbekov.pdf"
+          download
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className={`mt-3 md:mt-3.5 lg:mt-4 flex items-center gap-2 px-3 md:px-3.5 lg:px-4 py-1.5 md:py-1.75 lg:py-2 rounded-xl ${
-            isDark
-              ? 'bg-gray-800 text-gray-200 hover:bg-gray-700'
-              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-          } transition-colors duration-200 relative text-sm md:text-[13px] lg:text-base`}
+          className={`mt-6 p-2.5 rounded-lg shadow-lg flex items-center justify-center gap-2
+            ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
+            backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
+            hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
         >
-          <FaFileDownload className="text-base md:text-[1.1rem] lg:text-lg" />
-          <span>Download CV</span>
-          
-          {/* Error Message */}
-          {downloadError && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className={`absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-sm ${
-                isDark ? 'text-red-400' : 'text-red-500'
-              }`}
-            >
-              Failed to download CV
-            </motion.div>
-          )}
-        </motion.button>
+          <FaDownload className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
+          <span className={`text-sm font-medium ${isDark ? 'text-white' : 'text-black'}`}>
+            {t("download-cv")}
+          </span>
+        </motion.a>
 
         <div className={`w-full h-[1px] my-4 md:my-5 lg:my-6 ${isDark ? 'bg-gradient-to-r from-transparent via-gray-700 to-transparent' : 'bg-gradient-to-r from-transparent via-gray-200 to-transparent'}`} />
 
@@ -132,7 +122,7 @@ const Sidebar = () => {
           
           <ContactItem  
             icon={<FaEnvelope />}
-            label="EMAIL"
+            label={t("contact-email")}
             value="mavlonbeksultanbekov3@gmail.com" 
             className={`text-[11px] md:text-[12px] lg:text-[13px] tracking-tight`}
             isDark={isDark}
@@ -140,14 +130,14 @@ const Sidebar = () => {
           
           <ContactItem
             icon={<FaPhone />}
-            label="PHONE"
+            label={t("contact-phone")}
             value="+44 07881196552"
             className="text-xs md:text-[13px] lg:text-sm"
             isDark={isDark}
           />
           <ContactItem
             icon={<FaMapMarkerAlt />}
-            label="LOCATION"
+            label={t("contact-location")}
             value="Cambridge, UK"
             className="text-xs md:text-[13px] lg:text-sm"
             isDark={isDark}
@@ -155,15 +145,59 @@ const Sidebar = () => {
         </div>
           
         {/* Socials */}
-        <div className="flex gap-3 md:gap-3.5 lg:gap-4 mt-4 md:mt-5 lg:mt-6">
-          <SocialIcon href="https://www.linkedin.com/in/mavlonbek-sultanbekov-219098283/" icon={<FaLinkedin />} isDark={isDark} />
-          
-          <SocialIcon  href="tg://resolve?domain=mavlono_sulton&text=Hello%20Mavlonbek%2C%20I%20found%20your%20portfolio%20and%20wanted%20to%20connect!
-
-" icon={<FaTelegram />} isDark={isDark} />
-          <SocialIcon href="https://github.com/mavlonbekswd" icon={<FaGithub />} isDark={isDark} />
-          <SocialIcon   href="https://wa.me/447881196552?text=Hello%20Mavlonbek%2C%20I%20found%20your%20portfolio%20and%20wanted%20to%20connect!
-" icon={<FaWhatsapp />} isDark={isDark} />
+        <div className="flex items-center gap-2 mt-4">
+          <motion.a
+            href="https://github.com/mavlonbekswd"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
+              ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
+              backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
+              hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+          >
+            <FaGithub className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
+          </motion.a>
+          <motion.a
+            href="https://www.linkedin.com/in/mavlonbek-sultanbekov-a5a295292/"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
+              ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
+              backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
+              hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+          >
+            <FaLinkedin className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
+          </motion.a>
+          <motion.a
+            href="https://t.me/mavlonbekswd"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
+              ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
+              backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
+              hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+          >
+            <FaTelegram className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
+          </motion.a>
+          <motion.a
+            href="https://wa.me/+4407881196552"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
+              ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
+              backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
+              hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+          >
+            <FaWhatsapp className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
+          </motion.a>
         </div>
       </div>
     </motion.div>
@@ -171,8 +205,9 @@ const Sidebar = () => {
 };
 
 // Contact Info Block
-const ContactItem = ({ icon, label, value,  isDark, className }) => {
+const ContactItem = ({ icon, label, value, isDark, className }) => {
   const [copied, setCopied] = useState(false);
+  const { t } = useTranslation();
 
   const handleCopy = () => {
     if (label === "EMAIL") {
@@ -180,11 +215,9 @@ const ContactItem = ({ icon, label, value,  isDark, className }) => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } else if (label === "PHONE") {
-      window.location.href = `tel:${value.replace( '+4407881196552')}`; // remove spaces
+      window.location.href = `tel:${value}`;
     }
   };
-  
-  
 
   const isClickable = label === "EMAIL" || label === "PHONE";
 
@@ -192,29 +225,32 @@ const ContactItem = ({ icon, label, value,  isDark, className }) => {
     <motion.div
       whileHover={isClickable ? { x: 5 } : {}}
       className={`flex items-center gap-4 group ${isClickable ? 'cursor-pointer' : ''}`}
-      onClick={handleCopy}
+      onClick={isClickable ? handleCopy : undefined}
     >
-      <div className={`${
-        isDark 
-          ? 'bg-[#2a2a2a] text-gray-300' 
-          : 'bg-gray-100 text-gray-600'
-      } p-3 rounded-xl transition-all duration-300 ${
-        isClickable ? 'group-hover:shadow-lg' : ''
-      }`}>
-        {icon}
+      <div className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
+        ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
+        backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
+        hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+      >
+        <span className={`w-5 h-5 flex items-center justify-center ${isDark ? 'text-white' : 'text-black'}`}>
+          {icon}
+        </span>
       </div>
       <div className="flex-grow">
-        <p className={`text-xs ${isDark ? 'text-white' : 'text-gray'}`}>{label}</p>
-        <p className={`${className || 'text-sm'} ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>{value}</p>
+        <p className={`text-xs ${isDark ? 'text-white/60' : 'text-black/60'}`}>{label}</p>
+        <p className={`${className || 'text-sm'} ${isDark ? 'text-white' : 'text-black'}`}>{value}</p>
       </div>
       {isClickable && (
-        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <motion.div 
+          className={`opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-2 rounded-lg
+            ${isDark ? 'text-white' : 'text-black'}`}
+        >
           {copied ? (
-            <FaCheck className={isDark ? 'text-gray-300' : 'text-gray-600'} />
+            <FaCheck className="w-4 h-4" />
           ) : (
-            <FaCopy className={isDark ? 'text-gray-500' : 'text-gray-400'} />
+            <FaCopy className="w-4 h-4" />
           )}
-        </div>
+        </motion.div>
       )}
     </motion.div>
   );

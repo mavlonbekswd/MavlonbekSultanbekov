@@ -1,0 +1,98 @@
+
+  {
+    "about": "Profil",
+    "resume": "Resume",
+    "projects": "Loyihalar",
+    "blog" : "Blog",
+    "contact": "Aloqa",
+    "open_to_work" : "Ishga tayyor",
+    "looking-for-new-opportunities":"Yangi imkoniyatlarni izlayapman",
+    "about_me":"Men haqimda",
+    "about-me-p1":"Men dasturlashga ishtiyoqmand bo‘lgan dasturiy ta'minot muhandisiman. Asl vatani O‘zbekiston, hozirda esa Angliyaning Cambridge shahrida yashayman. Men zamonaviy, moslashuvchan va foydalanuvchilar uchun qulay veb-ilovalarni yaratishga ixtisoslashganman — asosan React.js, Tailwind CSS va JavaScript texnologiyalaridan foydalanaman.Dasturlashni kashf qilgan kunimdan boshlab bu nafaqat kod yozish, balki real muammolarga ijodiy va samarali yechim topish usuli ekanini anglaganman. Men doimo yangi vositalar va texnikalarni o‘rganishga intilaman, chunki ular orqali funksional va estetik jihatdan mukammal raqamli tajribalar yaratish mumkin.To‘liq funktsional veb-ilovalar yaratishmi, portfoliolar dizayni yoki bizneslarga onlayn o‘sishga yordam berishmi — har bir loyihaga men detallar va foydalanuvchi tajribasiga katta e’tibor bilan yondashaman.",
+    "about-me-p2": "Dasturlashdan tashqari, men marketing, tadbirkorlik va hayotni yengillashtiradigan vositalarni yaratishga qiziqaman. Mening maqsadim oddiy: <1>ijodiy gʻoyalarni samarali raqamli mahsulotlarga aylantirish.</1>",
+    "what-i-do":"Nimalar qilayapman",
+      "web-development":"Veb Daturlash",
+      "web-dev-p":"Zamonaviy texnologiyalar yordamida jozibali va sifatli saytlar yarataman. Asosiy e’tiborim — foydalanuvchi interfeysi.",
+      "seo-opt":"SEO Optimallashtirish",
+      "seo-description": "Men veb-saytlarni Google’da yuqori o‘rinlarga chiqishi uchun tuzilmasi, kontenti, tezligi va qulayligini yaxshilab optimallashtiraman.",
+      "blog-title": "Blog Boshqaruvi",
+"blog-description": "Men turli mavzularda foydali va qiziqarli sahifa uchun postlar yarataman, obunachilarim bilan faol va manfaatli muloqotni ta'minlayman.",
+"i-here": "Men shu yerda 🙈",
+"resume-sec": "Rezyume",
+"download-cv": "CV yuklash",
+"education": "Ta'lim",
+"timeline": {
+  "title": "Anglia Ruskin Universiteti",
+  "date": "2024 – davom etmoqda",
+  "description": "Cambridge shahridagi Anglia Ruskin Universitetida Kompyuter fanlari bo‘yicha bakalavr darajasida o‘qimoqdaman. Kurs dasturiy muhandislik (software engineer), ma’lumot tuzilmalari (data structures), algoritmlar, ma’lumotlar bazasi (databases) , tarmoqlar (networks) va kiberxavfsizlikni (cybersecurity) o‘z ichiga oladi. Asosiy e’tibor amaliy muammolarni hal qilish, kodni real hayotda qo‘llash va guruh loyihalariga qaratilgan. Hozirda JavaScript, Python va tizim dizayni bo‘yicha ko‘nikmalarni rivojlantirmoqdaman va zamonaviy veb texnologiyalardagi tendensiyalarni kuzatib boryapman."
+},
+"najot-title": "Najot Ta'lim Akademiyasi",
+"najot-date": "2023 – 2024",
+"najot-duration": "1 yil 2 oy",
+"najot-description": "Toshkent shahrida zamonaviy veb-dasturlash va IT asoslari bo‘yicha intensiv kursni tamomladim. Noldan bir nechta loyihalarni yaratish, jamoaviy kod yozish muhiti va sanoat standartlariga asoslangan amaliy tajriba orttirdim. Ushbu akademiya kelajakdagi akademik va freelancer sifatidagi faoliyatimga mustahkam poydevor yaratdi.",
+"speedfix-title": "SpeedFix Plumbing MChJ Kompaniyasi",
+"speedfix-date": "2024 – 2025",
+"speedfix-duration": "5 oy",
+"speedfix-description1": "SpeedFix Plumbing’da biz faqat muammolarni hal qilmaymiz — biz o‘zimizni uyda xavfsiz his qilish nima degani ekanini qayta talqin qilamiz. Men bu saytni kompaniyamizning asosiy qadriyatlari — tezlik, aniqlik va ishonch — aks ettiradigan tarzda yaratdim. Zamonaviy, foydalanuvchi uchun qulay dizayn va mahalliy ehtiyojlarga moslangan imkoniyatlar yordamida 24/7 avariya xizmatlarimizni Cambridge aholisi uchun yanada yaqinlashtirdik.",
+"speedfix-description2": "Har bir detal — yorqin dizayndan tortib so‘z tanlovigacha — ishonch uyg‘otish uchun yaratilgan. Sayt biz nima qilayotganimizni emas, balki nima uchun bu biz uchun muhimligini ko‘rsatadi: toza suv, iliq uy va eng muhim pallada tezkor javob.",
+
+"experience": "Tajriba",
+"rewards-title": "Mukofotlar va Yutuqlar",
+"rewards": {
+  "hackathon": {
+    "title": "Xakaton G‘olibi",
+    "description": "Hududiy web-dasturlash xakatonida 3-o‘rin"
+  },
+  "top_performer": {
+    "title": "Eng yaxshi talaba",
+    "description": "Anglia Ruskin Universitetidagi eng yaxshi talaba deb e’tirof etilgan"
+  },
+  "project_excellence": {
+    "title": "Loyihaning mukammalligi",
+    "description": "Innovatsion web yechim uchun eng yaxshi loyiha mukofoti"
+  }
+},
+"skills": {
+  "description": "Quyida men har kuni ishlatadigan va doimiy ravishda mukammallashtirayotgan texnologiyalarim keltirilgan:",
+  "title":"Bilim va Ko'nikmalarim"
+  
+  
+},
+
+  "project1-title": "SpeedFix Plumbing Vebsayti",
+  "project1-description": "SpeedFix Plumbing'da biz muammolarni shunchaki hal qilmaymiz — biz xavfsizlik tushunchasini qayta talqin qilamiz.",
+  
+  "project2-title": "TEZ KUNDA",
+  "project2-description": "To‘liq funksiyalarga ega onlayn do‘kon: savatcha, foydalanuvchi avtorizatsiyasi va to‘lov tizimi bilan integratsiya.",
+
+  "project3-title": "TEZ KUNDA",
+  "project3-description": "Zamonaviy dizayn va silliq animatsiyalarga ega moslashuvchan portfolio sayti.",
+  "projects-sec": "Loyihalar",
+  "category-all": "Barchasi",
+  "category-react": "React",
+  "category-js": "Javascript",
+  "category-node": "Node.js",
+  "coming-soon-title": "Tez Kunda",
+"coming-soon-description": "Yangi qiziqarli kontent tez orada joylanadi!",
+"contact-title": "Bog‘lanish",
+"contact-description": "Quyidagi kontakt malumotlarim orqali bemalol murojaat qilishingiz mumkin. Har doim yangi imkoniyatlar va hamkorliklarga tayyorman.",
+"contact-info": "Bog‘lanish ma'lumotlari",
+"contact-email": "Email",
+"contact-location": "Joylashuv",
+"contact-phone": "Telefon",
+"form-name": "Ism",
+"form-email": "Email",
+"form-message": "Xabar",
+"form-submit": "Yuborish",
+"notification-sending": "Xabar yuborilmoqda...",
+"notification-success": "Xabar muvaffaqiyatli yuborildi!",
+"notification-error": "Xabar yuborilmadi. Qayta urinib ko‘ring.",
+"social-media": "Ijtimoiy tarmoqlar",
+"freelance-description": "Dunyo bo'ylab mijozlar bilan hamkorlik qilib, ularning ehtiyojlariga mos zamonaviy va yuqori samarali veb-saytlar yaratdim. React va Tailwind CSS yordamida moslashuvchan va qulay interfeyslar yaratishga ixtisoslashganman, SEO va tezlikni optimallashtirishga e'tibor qaratgan holda.",
+"freelance-title": "Freelance Dasturchi",
+"freelance-duration": "1 yil"
+
+
+
+    }
+  

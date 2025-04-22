@@ -3,10 +3,11 @@ import { motion } from "framer-motion";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
 import LanguageSwitcher from './LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
   const { isDark, toggleTheme } = useTheme();
-
+  const { t, i18n } = useTranslation();
   return (
     <>
       {/* Mobile/Tablet Language Switcher */}
@@ -19,7 +20,7 @@ const Navbar = () => {
         animate={{ y: 0, opacity: 1 }}
         className={`${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} fixed backdrop-blur-sm h-[55px] sm:h-[60px] md:h-[85px] lg:h-[70px] w-[92%] lg:left-[560px] md:left-[130px] sm:w-[450px] md:w-[600px] lg:top-[75px] lg:w-[800px] px-3 sm:px-4  left-[15px] md:px-6 md:bottom-[30px] lg:px-6 rounded-[32px] shadow-[0_0_20px_rgba(255,255,255,0.5)] flex items-center justify-between`}
       >
-        <ul className="flex items-center text-white gap-3 sm:gap-6 md:gap-10 lg:gap-10">
+        <ul className="flex items-center text-white gap-3.5  sm:gap-6 md:gap-10 lg:gap-10">
           <li>
             <NavLink
               to="/"
@@ -27,10 +28,13 @@ const Navbar = () => {
                 `${isActive 
                   ? (isDark ? 'text-white' : 'text-black')
                   : (isDark ? 'text-gray-400' : 'text-gray-600')
-                } hover:${isDark ? 'text-white' : 'text-black'} transition-colors text-ms sm:text-sm md:text-xl lg:text-base font-medium`
+                } hover:${isDark ? 'text-white' : 'text-black'}  
+                ${i18n.language === 'ru' 
+                  ? 'text-[13px] sm:text-sm md:text-sm lg:text-base' 
+                    : 'text-[16px] sm:text-base md:text-lg  lg:text-xl'}`
               }
             >
-              About
+              {t('about')}
             </NavLink>
           </li>
           <li>
@@ -40,10 +44,13 @@ const Navbar = () => {
                 `${isActive 
                   ? (isDark ? 'text-white' : 'text-black')
                   : (isDark ? 'text-gray-400' : 'text-gray-600')
-                } hover:${isDark ? 'text-white' : 'text-black'} transition-colors text-ms sm:text-sm md:text-xl lg:text-base font-medium`
+                } hover:${isDark ? 'text-white' : 'text-black'} transition-colors
+                 ${i18n.language === 'ru' 
+                 ? 'text-[13px] sm:text-sm md:text-sm lg:text-base' 
+                    : 'text-[16px] sm:text-base md:text-lg lg:text-xl'}`
               }
             >
-              Resume
+             {t('resume')}
             </NavLink>
           </li>
           <li>
@@ -53,10 +60,13 @@ const Navbar = () => {
                 `${isActive 
                   ? (isDark ? 'text-white' : 'text-black')
                   : (isDark ? 'text-gray-400' : 'text-gray-600')
-                } hover:${isDark ? 'text-white' : 'text-black'} transition-colors text-ms sm:text-sm md:text-xl lg:text-base font-medium`
+                } hover:${isDark ? 'text-white' : 'text-black'} transition-colors 
+                 ${i18n.language === 'ru' 
+                 ? 'text-[13px] sm:text-sm md:text-sm lg:text-base' 
+                    : 'text-[16px] sm:text-base md:text-lg lg:text-xl'}`
               }
             >
-              Projects
+              {t('projects')}
             </NavLink>
           </li>
           <li>
@@ -66,10 +76,13 @@ const Navbar = () => {
                 `${isActive 
                   ? (isDark ? 'text-white' : 'text-black')
                   : (isDark ? 'text-gray-400' : 'text-gray-600')
-                } hover:${isDark ? 'text-white' : 'text-black'} transition-colors text-ms sm:text-sm md:text-xl lg:text-base font-medium`
+                } hover:${isDark ? 'text-white' : 'text-black'} transition-colors 
+                ${i18n.language === 'ru' 
+                  ? 'text-[13px] sm:text-sm md:text-sm lg:text-base' 
+                    : 'text-[16px] sm:text-base md:text-lg lg:text-xl'}`
               }
             >
-              Blog
+              {t('blog')}
             </NavLink>
           </li>
           <li>
@@ -79,10 +92,13 @@ const Navbar = () => {
                 `${isActive 
                   ? (isDark ? 'text-white' : 'text-black')
                   : (isDark ? 'text-gray-400' : 'text-gray-600')
-                } hover:${isDark ? 'text-white' : 'text-black'} transition-colors text-ms sm:text-sm md:text-xl lg:text-base font-medium`
+                } hover:${isDark ? 'text-white' : 'text-black'} transition-colors 
+                 ${i18n.language === 'ru' 
+                    ? 'text-[13px] sm:text-sm md:text-sm lg:text-base' 
+                    : 'text-[16px] sm:text-base md:text-lg lg:text-xl'} `
               }
             >
-              Contact
+              {t('contact')}
             </NavLink>
           </li>
         </ul>
@@ -92,14 +108,38 @@ const Navbar = () => {
           <div className="hidden lg:block">
             <LanguageSwitcher />
           </div>
+          {/* Mobile Theme Toggle */}
           <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={toggleTheme}
             aria-label="dark/light button"
-            className={`p-1.5 sm:p-2 md:p-4 lg:p-3 rounded-xl ${isDark ? 'bg-[#2a2a2a] text-white hover:bg-[#444]' : 'bg-gray-100 text-black hover:bg-gray-200'} transition-all`}
+            className={`lg:hidden p-1 rounded-lg shadow-lg flex items-center justify-center
+              ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
+              backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
+              hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
           >
-            {isDark ? <FaSun className="w-3 h-3 sm:w-4 sm:h-4 md:w-7 md:h-7" /> : <FaMoon className="w-3 h-3 sm:w-4 sm:h-4 md:w-7 md:h-7" />}
+            {isDark ? 
+              <FaSun className={`w-4 h-4 ${isDark ? 'text-white' : 'text-black'}`} /> : 
+              <FaMoon className={`w-4 h-4 ${isDark ? 'text-white' : 'text-black'}`} />
+            }
+          </motion.button>
+
+          {/* Desktop Theme Toggle */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={toggleTheme}
+            aria-label="dark/light button"
+            className={`hidden lg:flex p-2.5 rounded-lg shadow-lg items-center justify-center
+              ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
+              backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
+              hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+          >
+            {isDark ? 
+              <FaSun className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} /> : 
+              <FaMoon className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
+            }
           </motion.button>
         </div>
       </motion.nav>

@@ -6,10 +6,11 @@ import { BsBook } from 'react-icons/bs';
 import { SiMongodb, SiTailwindcss } from 'react-icons/si';
 import { pageVariants, staggerContainer, fadeInUp, scaleIn } from '../utils/animations';
 import { useTheme } from '../context/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 const Resume = () => {
   const { isDark } = useTheme();
-
+  const { t } = useTranslation();
  
 
   return (
@@ -24,7 +25,7 @@ const Resume = () => {
       {/* Header with Download Button */}
       <div variants={fadeInUp} className="flex justify-between items-center">
         <h2 className={`text-2xl lg:text-3xl font-bold ${isDark ? 'text-white' : 'text-black'} flex items-center`}>
-          Resume
+          {t("resume-sec")}
           <span
             initial={{ width: 0 }}
             animate={{ width: "2rem" }}
@@ -36,12 +37,14 @@ const Resume = () => {
           variants={scaleIn}
           href="/CS-resume MavlonbekSultonbekov.pdf"
           download
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className={`flex items-center gap-2 ${isDark ? 'bg-[#2a2a2a] text-[#e2e2e2] hover:bg-[#333]' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'} px-4 py-2 rounded-xl transition-colors`}
+          
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg shadow-lg
+            ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
+            backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
+            hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
         >
-          <FaDownload />
-          <span className="hidden sm:inline">Download CV</span>
+          <FaDownload className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
+          <span className={`hidden  ${isDark ? 'text-white' : 'text-black'} sm:inline`}>{t("download-cv")}</span>
         </a>
       </div>
 
@@ -49,20 +52,20 @@ const Resume = () => {
       <motion.section variants={staggerContainer} initial="initial" animate="animate">
         <motion.h3 variants={fadeInUp} className={`text-xl lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-6 flex items-center gap-3`}>
           <FaGraduationCap className={isDark ? 'text-[#e2e2e2]' : 'text-gray-800'} />
-          Education
+          {t("education")}
         </motion.h3>
         <div className="space-y-6">
           <TimelineItem 
-            title="Anglia Ruskin University"
-            date="2024 — Present"
-            description="Pursuing a Bachelor's degree in Computer Science at Anglia Ruskin University, Cambridge. The course covers software engineering, data structures, algorithms, databases, networks, and cybersecurity. Emphasis is placed on practical problem solving, real-world application of code, and collaborative projects. Currently developing skills in JavaScript, Python, and system design while staying up-to-date with the latest trends in modern web technologies."
+            title={t("timeline.title")}
+            date={t("timeline.date")}
+            description={t("timeline.description")}
             isDark={isDark}
           />
           <TimelineItem 
-            title="Najot Ta'lim academy"
-            date="2023 — 2024"
-            duration="1yr 2-mos"
-            description="Completed an intensive program in modern web development and IT fundamentals in Uzbekistan Tashkent.  Gained hands-on experience by building multiple projects from scratch, collaborating in team-based coding environments, and applying industry-standard practices. The academy provided a strong foundation for future academic and freelance work."
+            title={t("najot-title")}
+            date={t("najot-date")}
+            duration={t("najot-duration")}
+            description={t("najot-description")}
             isDark={isDark}
           />
         </div>
@@ -74,24 +77,29 @@ const Resume = () => {
       <section variants={staggerContainer} initial="initial" animate="animate">
         <h3 variants={fadeInUp} className={`text-xl lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-6 flex items-center gap-3`}>
         <FaBriefcase className={isDark ? 'text-[#e2e2e2]' : 'text-gray-800'} />
-        Experience
+        {t("experience")}
         </h3>
         <div className="space-y-6">
           <TimelineItem 
-            title="SpeedFixPlumbing LTD Company"
-            date="2024 — 2025 " 
-            duration="5mos"
-            description="At SpeedFix Plumbing, we don’t just solve problems — we redefine what it means to feel safe at home. I created this website as a reflection of our core values: speed, precision, and trust. With an elegant, user-friendly layout and locally targeted features, it brings our 24/7 emergency plumbing services closer to Cambridge residents than ever before.
+            title={t("speedfix-title")}
+            date={t("speedfix-date")}
+            duration={t("speedfix-duration")}
+           description={
+  <div>
+    <p>{t("speedfix-description1")}</p>
+    <p>{t("speedfix-description2")}</p>
+  </div>
+}
 
-           Every detail — from the vibrant design to the carefully chosen words — was built to build confidence. The site highlights not just what we do, but why we care: clean water, warm homes, and fast response when it matters most."
+            
             isDark={isDark}
           />
 
       <TimelineItem 
-            title="Freelance Developer"
+            title={t("freelance-title")}
             date="2023 — 2024"
-            duration="1yr"
-            description="Collaborated with clients globally to deliver modern, high-performance websites tailored to their unique needs. Specialized in building responsive and accessible user interfaces using React and Tailwind CSS, while optimizing SEO and performance."
+            duration={t("freelance-duration")}
+            description={t("freelance-description")}
             isDark={isDark}
           />
           
@@ -102,35 +110,35 @@ const Resume = () => {
       <section variants={staggerContainer} initial="initial" animate="animate">
         <motion.h3 variants={fadeInUp} className={`text-xl lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-6 flex items-center gap-3`}>
           <FaTrophy className={`${isDark ? 'text-[#e2e2e2]' : 'text-gray-800'} text-2xl`} />
-          Rewards & Achievements
+          {t("rewards-title")}
         </motion.h3>
         <motion.div 
           variants={staggerContainer} 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
-          {[
-            {
-              title: "Hackathon Winner",
-              year: "2023",
-              description: "First place in regional web development hackathon",
-              Icon: FaTrophy,
-              color: "#FFD700"
-            },
-            {
-              title: "Top Performer",
-              year: "2023",
-              description: "Recognized as top student at Najot Ta'lim",
-              Icon: FaMedal,
-              color: "#C0C0C0"
-            },
-            {
-              title: "Project Excellence",
-              year: "2024",
-              description: "Best project award for innovative web solution",
-              Icon: FaAward,
-              color: "#CD7F32"
-            }
-          ].map((reward) => (
+            {[
+          {
+            title: t("rewards.hackathon.title"),
+            description: t("rewards.hackathon.description"),
+            year: "2023",
+            Icon: FaTrophy,
+            color: "#FFD700",
+          },
+          {
+            title: t("rewards.top_performer.title"),
+            description: t("rewards.top_performer.description"),
+            year: "2023",
+            Icon: FaMedal,
+            color: "#C0C0C0",
+          },
+          {
+            title: t("rewards.project_excellence.title"),
+            description: t("rewards.project_excellence.description"),
+            year: "2024",
+            Icon: FaAward,
+            color: "#CD7F32",
+          }
+        ] .map((reward) => (
             <motion.div
               key={reward.title}
               variants={fadeInUp}
@@ -163,9 +171,9 @@ const Resume = () => {
       <section variants={staggerContainer} initial="initial" animate="animate">
         <h3 variants={fadeInUp} className={`text-xl lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-6 flex items-center gap-3`}>
           <BsBook className={isDark ? 'text-[#e2e2e2]' : 'text-gray-800'} />
-          My Skills
+          {t("skills.title")}
         </h3>
-        <p className={isDark ? 'text-[#e2e2e2] mb-4' : 'text-gray-800 mb-4' }>Here are some of the technologies I work with daily, and the ones I'm continuously mastering :</p>
+        <p className={isDark ? 'text-[#e2e2e2] mb-4' : 'text-gray-800 mb-4' }> {t("skills.description")}</p>
         <div 
           variants={staggerContainer} 
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
@@ -239,7 +247,7 @@ const TimelineItem = ({ title, date, duration, description, isDark }) => (
 </span>
 
   
-      <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm lg:text-base`}>{description}</p>
+<div className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm lg:text-base`}>{description} </div>
     </div>
   </div>
   </>

@@ -1,0 +1,106 @@
+
+
+  {
+    "about": "About",
+    "resume": "Resume",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact",
+    "open_to_work": "Open to work",
+    "looking-for-new-opportunities": "Looking for opportunities",
+    "about_me": "About Me",
+    "about-me-p1":"I'm a passionate software engineer originally from Uzbekistan, currently based in Cambridge, UK. I specialize in crafting modern, responsive, and user-friendly web applications using the latest technologies like React.js, Tailwind CSS, and JavaScript.From the moment I discovered programming, I knew it was more than just code — it was a way to solve real-world problems creatively and efficiently. I’m constantly learning and exploring new tools and techniques to build digital experiences that are both functional and beautifully designed.Whether it's developing full-stack web apps, designing portfolios, or helping businesses grow online — I approach every project with attention to detail and a strong focus on user experience.",
+    "about-me-p2": "In addition to coding, I'm interested in marketing, entrepreneurship, and building tools that make life easier. My mission is simple: <1>turn creative ideas into impactful digital products.</1>",
+    "what-i-do":"What I'am Doing",
+    "web-development":"Web Development",
+    "web-dev-p":" I create high-quality websites using modern technologies, focusing on frontend development.",
+    "seo-opt":"SEO Optimization",
+    "seo-description":" I optimize websites for better search engine visibility by improving structure, content, speed, and accessibility to help them rank higher on Google.",
+    "blog-title": "Blog Management",
+"blog-description": "I write useful and engaging blog posts on various topics, maintaining interactive communication with my audience.",
+  "i-here":"I'm here 🙈",
+  "resume-sec": "Resume",
+  "download-cv": "Download CV",
+    "education": "Education",
+    "timeline": {
+  "title": "Anglia Ruskin University",
+  "date": "2024 – Present",
+  "description": "Pursuing a Bachelor's degree in Computer Science at Anglia Ruskin University, Cambridge. The course covers software engineering, data structures, algorithms, databases, networks, and cybersecurity. Emphasis is placed on practical problem solving, real-world application of code, and collaborative projects. Currently developing skills in JavaScript, Python, and system design while staying up-to-date with the latest trends in modern web technologies."
+},
+"najot-title": "Najot Ta'lim Academy",
+"najot-date": "2023 – 2024",
+"najot-duration": "1yr 2mos",
+"najot-description": "Completed an intensive program in modern web development and IT fundamentals in Uzbekistan Tashkent. Gained hands-on experience by building multiple projects from scratch, collaborating in team-based coding environments, and applying industry-standard practices. The academy provided a strong foundation for future academic and freelance work.",
+"speedfix-title": "SpeedFix Plumbing LTD Company",
+"speedfix-date": "2024 – 2025",
+"speedfix-duration": "5mos",
+"speedfix-description1": "At SpeedFix Plumbing, we don’t just solve problems — we redefine what it means to feel safe at home. I created this website as a reflection of our core values: speed, precision, and trust. With an elegant, user-friendly layout and locally targeted features, it brings our 24/7 emergency plumbing services closer to Cambridge residents than ever before.",
+"speedfix-description2": "Every detail — from the vibrant design to the carefully chosen words — was built to build confidence. The site highlights not just what we do, but why we care: clean water, warm homes, and fast response when it matters most.",
+"experience": "Experience",
+"rewards-title": "Rewards & Achievements",
+"rewards": {
+  "hackathon": {
+    "title": "Hackathon Winner",
+    "description": "Third place in regional web development hackathon"
+  },
+  "top_performer": {
+    "title": "Top Performer",
+    "description": "Recognized as top student at Anglia Ruskin University"
+  },
+  "project_excellence": {
+    "title": "Project Excellence",
+    "description": "Best project award for innovative web solution"
+  }
+},
+"skills": {
+  "description": "Here are some of the technologies I work with daily, and the ones I'm continuously mastering:",
+  "title": "My Skills"
+},
+
+  "project1-title": "SpeedFix Plumbing Website",
+  "project1-description": "At SpeedFix Plumbing, we don't just solve problems — we redefine what it means to feel safe at home.",
+  
+  "project2-title": "COMING SOON",
+  "project2-description": "A full-featured e-commerce platform with cart functionality, user authentication, and payment integration.",
+
+  "project3-title": "COMING SOON",
+  "project3-description": "A responsive portfolio website with smooth animations and modern design.",
+    "projects-sec": "Projects",
+      "category-all": "All",
+      "category-react": "React",
+      "category-js": "JavaScript",
+      "category-node": "Node.js",
+      "coming-soon-title": "Coming Soon",
+"coming-soon-description": "Exciting content is on the way!",
+"contact-title": "Contact Me",
+"contact-description": "Feel free to reach out to me through any of these channels. I'm always open to new opportunities and collaborations.",
+"contact-info": "Contact Information",
+"contact-email": "Email",
+"contact-location": "Location",
+"contact-phone": "Phone",
+"form-name": "Name",
+"form-email": "Email",
+"form-message": "Message",
+"form-submit": "Send Message",
+"notification-sending": "Sending message...",
+"notification-success": "Message sent successfully!",
+"notification-error": "Failed to send message. Try again.",
+"social-media": "Social Media",
+"freelance-description": "Collaborated with clients globally to deliver modern, high-performance websites tailored to their unique needs. Specialized in building responsive and accessible user interfaces using React and Tailwind CSS, while optimizing SEO and performance.",
+"freelance-title": "Freelance Developer",
+"freelance-duration": "1yr"
+
+
+
+
+    
+
+
+
+
+
+
+
+
+  }
+  

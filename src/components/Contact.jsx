@@ -6,6 +6,7 @@ import { FaGithub, FaLinkedin, FaTelegram, FaWhatsapp, FaCheckCircle } from 'rea
 import { MdError } from 'react-icons/md';
 import { pageVariants, fadeInUp } from '../utils/animations';
 import { useTheme } from '../context/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 // Notification component
 const Notification = ({ status, message, onClose }) => {
@@ -72,6 +73,7 @@ const Contact = () => {
   const { isDark } = useTheme();
   const form = useRef();
   const [notification, setNotification] = useState(null);
+    const { t } = useTranslation();
 
   
 
@@ -79,7 +81,7 @@ const Contact = () => {
     e.preventDefault();
     
     // Show loading notification
-    setNotification({ status: 'loading', message: 'Sending message...' });
+    setNotification({ status: 'loading', message: t("notification-sending") });
 
     emailjs.sendForm(
     import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -91,14 +93,14 @@ const Contact = () => {
     .then(
       (result) => {
         // Show success notification
-        setNotification({ status: 'success', message: ' Message sent successfully!' });
+        setNotification({ status: 'success', message: t("notification-success")  });
         e.target.reset();
         // Clear notification after 3 seconds
         setTimeout(() => setNotification(null), 3000);
       }, 
       (error) => {
         // Show error notification
-        setNotification({ status: 'error', message: 'Failed to send message. Try again.' });
+        setNotification({ status: 'error', message: t("notification-error")});
         console.error(error.text);
         // Clear notification after 3 seconds
         setTimeout(() => setNotification(null), 3000);
@@ -143,7 +145,7 @@ const Contact = () => {
         <motion.div variants={fadeInUp} className="space-y-8">
           <div className="space-y-4">
             <h2 className={`text-2xl lg:text-3xl font-bold ${isDark ? 'text-white' : 'text-black'} flex items-center`}>
-              Contact Me
+            {t("contact-title")}
               <motion.span
                 initial={{ width: 0 }}
                 animate={{ width: "2rem" }}
@@ -152,29 +154,29 @@ const Contact = () => {
               ></motion.span>
             </h2>
             <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-base lg:text-lg leading-relaxed`}>
-              Feel free to reach out to me through any of these channels. I'm always open to new opportunities and collaborations.
+            {t("contact-description")}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-100'} p-6 rounded-2xl space-y-4`}>
-              <h3 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-black'}`}>Contact Information</h3>
+              <h3 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-black'}`}>{t("contact-info")}</h3>
               <div className="space-y-3">
                 <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                  <span className="font-medium">Email:</span> mavlonbeksultanbekov3@gmail.com
+                  <span className="font-medium">{t("contact-email")}:</span> mavlonbeksultanbekov3@gmail.com
                 </p>
                 <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                  <span className="font-medium">Location:</span> Cambridge, UK
+                  <span className="font-medium">{t("contact-location")}:</span> Cambridge, UK
                 </p>
                 <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                  <span className="font-medium">Phone: </span>
+                  <span className="font-medium">{t("contact-phone")}: </span>
                   <a href='tel:+4407881196552' className="hover:underline">+4407881196552</a>
                 </p>
               </div>
             </div>
 
             <div className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-100'} p-6 rounded-2xl space-y-4`}>
-              <h3 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-black'}`}>Social Media</h3>
+              <h3 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-black'}`}>{t("social-media")}</h3>
               <div className="flex space-x-4">
                 <a
                   href="https://github.com/mavlonbekswd"
@@ -216,7 +218,7 @@ const Contact = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className={`block mb-2 text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                  Name
+                {t("form-name")}
                 </label>
                 <input
                   type="text"
@@ -231,7 +233,7 @@ const Contact = () => {
               </div>
               <div>
                 <label htmlFor="email" className={`block mb-2 text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                  Email
+                {t("form-email")}
                 </label>
                 <input
                   type="email"
@@ -247,7 +249,7 @@ const Contact = () => {
             </div>
             <div>
               <label htmlFor="message" className={`block mb-2 text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                Message
+              {t("form-message")}
               </label>
               <textarea
                 id="message"
@@ -262,14 +264,14 @@ const Contact = () => {
             </div>
             <button 
               type="submit"
-               aria-label="Send message"
-              className={`px-6 py-3 rounded-lg font-medium transition-colors ${
-                isDark
-                  ? 'bg-white text-black hover:bg-gray-200 disabled:bg-gray-400'
-                  : 'bg-black text-white hover:bg-gray-800 disabled:bg-gray-600'
-              }`}
+              aria-label="Send message"
+              className={`px-6 py-3 rounded-lg shadow-lg font-medium flex items-center justify-center
+                ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/10'}
+                backdrop-blur-sm border-2 border-white/20 hover:border-white/30 transition-all duration-300
+                hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]
+                ${isDark ? 'text-white' : 'text-black'}`}
             >
-              Send Message
+              {t("form-submit")}
             </button>
           </form>
         </motion.div>
