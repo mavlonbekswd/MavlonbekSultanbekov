@@ -18,7 +18,7 @@
     "seo-description":" I optimize websites for better search engine visibility by improving structure, content, speed, and accessibility to help them rank higher on Google.",
     "blog-title": "Blog Management",
 "blog-description": "I write useful and engaging blog posts on various topics, maintaining interactive communication with my audience.",
-  "i-here":"I'm here 🙈",
+  "i-here":"I'm here 😎",
   "resume-sec": "Resume",
   "download-cv": "Download CV",
     "education": "Education",
@@ -88,7 +88,15 @@
 "social-media": "Social Media",
 "freelance-description": "Collaborated with clients globally to deliver modern, high-performance websites tailored to their unique needs. Specialized in building responsive and accessible user interfaces using React and Tailwind CSS, while optimizing SEO and performance.",
 "freelance-title": "Freelance Developer",
-"freelance-duration": "1yr"
+"freelance-duration": "1yr",
+  "form-name-placeholder": "John Doe",
+   "form-message-placeholder": "Type your message here...",
+  "form-message-title": "Please enter your message",
+  "form-email-placeholder": "example@email.com",
+  "form-email-title": "Please enter your email address",
+  "form-name-required": "Name is required.",
+  "form-email-required": "Email is required.",
+  "form-message-required": "Message is required."
 
 
 

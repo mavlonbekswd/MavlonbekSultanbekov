@@ -63,7 +63,7 @@ const AppContent = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden fixed top-4 left-16 z-50"
+            className="lg:hidden fixed top-[22px] left-16 z-50"
           >
             <motion.div
               animate={{ 
@@ -82,7 +82,7 @@ const AppContent = () => {
                 transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }}
                 className="flex items-center"
               >
-                <div className="w-2 h-2 transform rotate-45 border-l-2 border-b-2"
+                <div className="w-2 h-2  transform rotate-45 border-l-2 border-b-2"
                   style={{
                     borderColor: isDark ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)'
                   }}
@@ -134,12 +134,12 @@ const AppContent = () => {
             rotate: { duration: 0.5, ease: "easeInOut" }
           }}
         >
-          <HiOutlineUser className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
+          <HiOutlineUser className={`w-4.5 h-4.5 ${isDark ? 'text-white' : 'text-black'}`} />
         </motion.button>
 
         {/* Sidebar with animation */}
         <motion.div 
-          className={`fixed lg:fixed lg:w-[370px] lg:flex-shrink-0 w-[85%] h-lg lg:h-lg top-12 lg:top-11 left-13 z-40 sm:top-[20] md:w-[40%] overflow-y-auto lg:overflow-visible`}
+          className={`fixed lg:fixed lg:w-[370px] lg:flex-shrink-0 w-[85%] h-[620px] lg:h-[730px] top-12 lg:top-11 left-13 z-40 sm:top-[20] md:w-[40%] overflow-y-auto lg:overflow-visible`}
           initial={{ x: "-100%" }}
           animate={{ 
             x: showSidebar ? 0 : window.innerWidth <= 1024 ? "-100%" : 0,
@@ -159,7 +159,15 @@ const AppContent = () => {
         {/* Main Content */}
     <div className="w-full lg:w-[800px] pb-24 lg:pb-0 lg:ml-[420px]">
           {/* Desktop Navbar */}
-          <div className="hidden lg:block sticky top-10 z-40 mb-[100px]">
+          <div className="hidden lg:block sticky top-10 z-40 mb-[100px] left-500
+    pb-24 
+    lg:pb-0 
+    lg:ml-[20px] 
+    lg:w-[800px] 
+    2xl:ml-[auto] 
+    2xl:w-[800px] 
+    xl:ml-[200px] [@media(min-width:1280px)]:ml-[460px] 
+    [@media(min-width:1280px)]:w-[850px]">
             <Navbar />
           </div>
           

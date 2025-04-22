@@ -73,12 +73,38 @@ const Contact = () => {
   const { isDark } = useTheme();
   const form = useRef();
   const [notification, setNotification] = useState(null);
-    const { t } = useTranslation();
+  const [errors, setErrors] = useState({});
+  const { t  } = useTranslation();
 
-  
+  const validateForm = (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(form.current);
+    const newErrors = {};
+    
+    if (!formData.get('name').trim()) {
+      newErrors.name = "form-name-required";
+    }
+    if (!formData.get('email').trim()) {
+      newErrors.email = "form-email-required";
+    }
+    if (!formData.get('message').trim()) {
+      newErrors.message = "form-message-required";
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setTimeout(() => {
+        setErrors({});
+      }, 3000);
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const sendEmail = (e) => {
-    e.preventDefault();
+    if (!validateForm(e)) {
+      return;
+    }
     
     // Show loading notification
     setNotification({ status: 'loading', message: t("notification-sending") });
@@ -162,7 +188,7 @@ const Contact = () => {
             <div className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-100'} p-6 rounded-2xl space-y-4`}>
               <h3 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-black'}`}>{t("contact-info")}</h3>
               <div className="space-y-3">
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-[14px] lg:text-[15px] `}>
                   <span className="font-medium">{t("contact-email")}:</span> mavlonbeksultanbekov3@gmail.com
                 </p>
                 <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
@@ -218,49 +244,68 @@ const Contact = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className={`block mb-2 text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                {t("form-name")}
+                  {t("form-name")}
                 </label>
                 <input
                   type="text"
                   id="name"
                   name="name"
+                  placeholder={t("form-name-placeholder")}
                   className={`w-full px-4 py-2 rounded-lg ${
                     isDark 
                       ? 'bg-[#2a2a2a] text-white border-gray-600 focus:border-gray-500' 
                       : 'bg-gray-100 text-gray-900 border-gray-300 focus:border-gray-400'
-                  } border focus:outline-none focus:ring-2 focus:ring-opacity-50`}
+                  } ${errors.name ? 'border-red-500' : 'border'} focus:outline-none focus:ring-2 focus:ring-opacity-50`}
+                  onChange={() => setErrors({...errors, name: ''})}
                 />
+                {errors.name && (
+                  <p className="mt-2 text-sm text-red-600 dark:text-red-500">{t(errors.name)}</p>
+                )}
               </div>
               <div>
                 <label htmlFor="email" className={`block mb-2 text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                {t("form-email")}
+                  {t("form-email")}
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
+                  
+                  placeholder={t("form-email-placeholder")}
+                  title={t("form-email-title")}
                   className={`w-full px-4 py-2 rounded-lg ${
                     isDark 
                       ? 'bg-[#2a2a2a] text-white border-gray-600 focus:border-gray-500' 
                       : 'bg-gray-100 text-gray-900 border-gray-300 focus:border-gray-400'
-                  } border focus:outline-none focus:ring-2 focus:ring-opacity-50`}
+                  } ${errors.email ? 'border-red-500' : 'border'} focus:outline-none focus:ring-2 focus:ring-opacity-50`}
+                  onChange={() => setErrors({...errors, email: ''})}
                 />
+                {errors.email && (
+                  <p className="mt-2 text-sm text-red-600 dark:text-red-500">{t(errors.email)}</p>
+                )}
               </div>
             </div>
             <div>
               <label htmlFor="message" className={`block mb-2 text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-              {t("form-message")}
+                {t("form-message")}
               </label>
               <textarea
                 id="message"
                 name="message"
                 rows="4"
+                
+                placeholder={t("form-message-placeholder")}
+                title={t("form-message-title")}
                 className={`w-full px-4 py-2 rounded-lg ${
                   isDark 
                     ? 'bg-[#2a2a2a] text-white border-gray-600 focus:border-gray-500' 
                     : 'bg-gray-100 text-gray-900 border-gray-300 focus:border-gray-400'
-                } border focus:outline-none focus:ring-2 focus:ring-opacity-50`}
+                } ${errors.message ? 'border-red-500' : 'border'} focus:outline-none focus:ring-2 focus:ring-opacity-50`}
+                onChange={() => setErrors({...errors, message: ''})}
               ></textarea>
+              {errors.message && (
+                <p className="mt-2 text-sm text-red-600 dark:text-red-500">{t(errors.message)}</p>
+              )}
             </div>
             <button 
               type="submit"

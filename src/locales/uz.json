@@ -17,7 +17,7 @@
       "seo-description": "Men veb-saytlarni Google’da yuqori o‘rinlarga chiqishi uchun tuzilmasi, kontenti, tezligi va qulayligini yaxshilab optimallashtiraman.",
       "blog-title": "Blog Boshqaruvi",
 "blog-description": "Men turli mavzularda foydali va qiziqarli sahifa uchun postlar yarataman, obunachilarim bilan faol va manfaatli muloqotni ta'minlayman.",
-"i-here": "Men shu yerda 🙈",
+"i-here": "Men shu yerda 😎",
 "resume-sec": "Rezyume",
 "download-cv": "CV yuklash",
 "education": "Ta'lim",
@@ -90,7 +90,17 @@
 "social-media": "Ijtimoiy tarmoqlar",
 "freelance-description": "Dunyo bo'ylab mijozlar bilan hamkorlik qilib, ularning ehtiyojlariga mos zamonaviy va yuqori samarali veb-saytlar yaratdim. React va Tailwind CSS yordamida moslashuvchan va qulay interfeyslar yaratishga ixtisoslashganman, SEO va tezlikni optimallashtirishga e'tibor qaratgan holda.",
 "freelance-title": "Freelance Dasturchi",
-"freelance-duration": "1 yil"
+"freelance-duration": "1 yil",
+  "form-name-placeholder": "Falonchi",
+  "form-message-placeholder": "Xabaringizni shu yerga yozing...",
+  "form-message-title": "Iltimos, xabaringizni kiriting",
+   "form-email-placeholder": "falonchi@email.com",
+  "form-email-title": "Iltimos, elektron pochtangizni kiriting",
+    "form-name-required": "Ism majburiy",
+    "form-email-required": "Email majburiy",
+    "form-message-required": "Xabar majburiy"
+  
+  
 
 
 

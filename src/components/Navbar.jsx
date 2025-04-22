@@ -10,17 +10,36 @@ const Navbar = () => {
   const { t, i18n } = useTranslation();
   return (
     <>
+      {/* Mobile Theme Toggle */}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={toggleTheme}
+        aria-label="dark/light button"
+        className={`lg:hidden fixed top-4 right-4 z-50 p-2 rounded-lg shadow-lg flex items-center justify-center
+          ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
+          backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
+          hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+      >
+        {isDark ? 
+          <FaSun className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} /> : 
+          <FaMoon className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
+        }
+      </motion.button>
+
       {/* Mobile/Tablet Language Switcher */}
-      <div className="lg:hidden fixed top-4 right-4 z-50">
+      <div className="lg:hidden fixed  top-[16px] right-16 z-50">
         <LanguageSwitcher />
       </div>
 
       <motion.nav 
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className={`${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} fixed backdrop-blur-sm h-[55px] sm:h-[60px] md:h-[85px] lg:h-[70px] w-[92%] lg:left-[560px] md:left-[130px] sm:w-[450px] md:w-[600px] lg:top-[75px] lg:w-[800px] px-3 sm:px-4  left-[15px] md:px-6 md:bottom-[30px] lg:px-6 rounded-[32px] shadow-[0_0_20px_rgba(255,255,255,0.5)] flex items-center justify-between`}
+        className={`${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} fixed backdrop-blur-sm h-[55px] sm:h-[60px] md:h-[85px] lg:h-[70px] w-[92%] 
+         lg:left-[560px] md:left-[130px] sm:w-[450px] md:w-[600px] lg:top-[75px] lg:w-[800px] px-3 sm:px-4  left-[15px] md:px-6 md:bottom-[30px]      
+          lg:px-6 rounded-[32px] shadow-[0_0_20px_rgba(255,255,255,0.5)] flex items-center justify-between`}
       >
-        <ul className="flex items-center text-white gap-3.5  sm:gap-6 md:gap-10 lg:gap-10">
+        <ul className="flex items-center ml-3 text-white gap-3.5  sm:gap-5 md:gap-10 lg:gap-10">
           <li>
             <NavLink
               to="/"
@@ -108,22 +127,6 @@ const Navbar = () => {
           <div className="hidden lg:block">
             <LanguageSwitcher />
           </div>
-          {/* Mobile Theme Toggle */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={toggleTheme}
-            aria-label="dark/light button"
-            className={`lg:hidden p-1 rounded-lg shadow-lg flex items-center justify-center
-              ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
-              backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
-              hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
-          >
-            {isDark ? 
-              <FaSun className={`w-4 h-4 ${isDark ? 'text-white' : 'text-black'}`} /> : 
-              <FaMoon className={`w-4 h-4 ${isDark ? 'text-white' : 'text-black'}`} />
-            }
-          </motion.button>
 
           {/* Desktop Theme Toggle */}
           <motion.button

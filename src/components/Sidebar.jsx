@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { FaPhone } from "react-icons/fa6";
 import {
   FaEnvelope,
-  FaPhone,
   FaMapMarkerAlt,
   FaLinkedin,
   FaTelegram,
@@ -37,7 +37,7 @@ const Sidebar = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`h-full ${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.5)] overflow-y-auto`}
+      className={`h-full ${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.3)] overflow-y-auto`}
     >
       <div className="flex flex-col items-center w-full">
         {/* Avatar Section */}
@@ -60,7 +60,7 @@ const Sidebar = () => {
               className="absolute -bottom-2 -right-2 transform"
             >
               <div className={`relative group cursor-pointer`}>
-                <div className={`w-16 md:w-20 lg:w-20 h-6 md:h-6.5 lg:h-7 rounded-full flex items-center justify-center ${
+                <div className={`w-19 md:w-20 lg:w-20 h-6 md:h-6.5 lg:h-7 rounded-full flex items-center justify-center ${
                   isDark 
                     ? 'bg-[#0A6] bg-opacity-90' 
                     : 'bg-[#0A6] bg-opacity-90'
@@ -118,7 +118,7 @@ const Sidebar = () => {
         <div className={`w-full h-[1px] my-4 md:my-5 lg:my-6 ${isDark ? 'bg-gradient-to-r from-transparent via-gray-700 to-transparent' : 'bg-gradient-to-r from-transparent via-gray-200 to-transparent'}`} />
 
         {/* Contact Info */}
-        <div className="space-y-3 md:space-y-3.5 lg:space-y-4 w-full text-left">
+        <div className="space-y-2 lg:space-y-7 md:space-y-3.5 lg:space-y-4 w-full  text-left">
           
           <ContactItem  
             icon={<FaEnvelope />}
@@ -145,7 +145,7 @@ const Sidebar = () => {
         </div>
           
         {/* Socials */}
-        <div className="flex items-center gap-2 mt-4">
+        <div className="flex items-center lg:gap-5 gap-3 mt-9">
           <motion.a
             href="https://github.com/mavlonbekswd"
             target="_blank"
@@ -160,11 +160,10 @@ const Sidebar = () => {
             <FaGithub className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
           </motion.a>
           <motion.a
-            href="https://www.linkedin.com/in/mavlonbek-sultanbekov-a5a295292/"
+            href="https://www.linkedin.com/in/mavlonbek-sultanbekov-219098283/"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            
             className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
               ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
               backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
@@ -173,11 +172,10 @@ const Sidebar = () => {
             <FaLinkedin className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
           </motion.a>
           <motion.a
-            href="https://t.me/mavlonbekswd"
+            href="https://t.me/mavlono_sulton"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+           
             className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
               ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
               backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
@@ -189,8 +187,7 @@ const Sidebar = () => {
             href="https://wa.me/+4407881196552"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            
             className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
               ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
               backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
