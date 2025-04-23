@@ -100,7 +100,7 @@ const Sidebar = () => {
 
         {/* Download CV Button */}
         <motion.a
-          href="/CS-resume MavlonbekSultonbekov.pdf"
+          href="/CV-Mavlonbek Sultonbekov.pdf"
           download
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

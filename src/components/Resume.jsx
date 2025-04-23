@@ -35,7 +35,7 @@ const Resume = () => {
         </h2>
         <a
           variants={scaleIn}
-          href="/CS-resume MavlonbekSultonbekov.pdf"
+          href="/CV-Mavlonbek Sultonbekov.pdf"
           download
           
           className={`flex items-center gap-2 px-4 py-2 rounded-lg shadow-lg
