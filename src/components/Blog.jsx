@@ -15,6 +15,7 @@ const Blog = () => {
   const [selectedPost, setSelectedPost] = useState(null);
   const [explodingPostId, setExplodingPostId] = useState(null);
 const [explosionType, setExplosionType] = useState('like'); // like yoki dislike uchun
+const [visibleCount, setVisibleCount] = useState(6); // Boshlanish uchun 6 ta post ko'rsatamiz
   
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const [explosionType, setExplosionType] = useState('like'); // like yoki dislike
       .fetch(`*[_type == "post"]{
         _id,
         uzTitle,
+        uzExcerpt,
         slug,
         mainImage{
           asset->{url}
@@ -109,7 +111,7 @@ const [explosionType, setExplosionType] = useState('like'); // like yoki dislike
         setLikedPosts(newLikedPosts);
         localStorage.setItem('likedPosts', JSON.stringify(newLikedPosts));
 
-        // 3. serverga so‘rov yuborish
+        // 3. serverga so'rov yuborish
         sanityClient
           .patch(post._id)
           .set({ likes: (post.likes ?? 0) + (hasLiked ? -1 : 1) })
@@ -143,7 +145,7 @@ const [explosionType, setExplosionType] = useState('like'); // like yoki dislike
 
           {/* Blog List */}
           {/* Blog List */}
-{posts.map(post => (
+{posts.slice(0, visibleCount).map(post => (
   <motion.div
   key={post._id}
   onClick={() => handlePostClick(post)}
@@ -161,6 +163,12 @@ const [explosionType, setExplosionType] = useState('like'); // like yoki dislike
         <h2 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
           {post.uzTitle}
         </h2>
+
+        {post.uzExcerpt && (
+  <p className={`mt-1 text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+    {post.uzExcerpt}
+  </p>
+)}
         <div className={`flex items-center gap-3 mt-2 text-sm ${isDark ? 'text-gray-300' : 'text-gray-400'}`}>
           {post.publishedAt && (
             <>
@@ -198,6 +206,18 @@ const [explosionType, setExplosionType] = useState('like'); // like yoki dislike
     </div>
   </motion.div>
 ))}
+
+          {/* Load More Button */}  
+          {visibleCount < posts.length && (
+  <div className="flex justify-center mt-8">
+    <button
+      onClick={() => setVisibleCount(prev => prev + 6)}
+      className="px-6 py-2 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-semibold shadow-md hover:from-blue-700 hover:to-purple-700 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 text-sm sm:text-base"
+    >
+      Load More
+    </button>
+  </div>
+)}
         </div>
 
         {/* Modal */}
@@ -212,7 +232,7 @@ const [explosionType, setExplosionType] = useState('like'); // like yoki dislike
       {/* Close Button */}
       <button
         onClick={() => setSelectedPost(null)}
-        className="absolute top-3 right-3 text-gray-400 hover:text-gray-700 dark:hover:text-white text-2xl"
+        className="fixed  top-3 right-3 text-gray-400 hover:text-gray-700 dark:hover:text-white text-2xl"
       >
         &times;
       </button>

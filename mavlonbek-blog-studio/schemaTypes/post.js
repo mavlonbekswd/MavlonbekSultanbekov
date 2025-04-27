@@ -27,7 +27,6 @@ export default defineType({
       type: 'number',
       initialValue: 0,
     }),
-    
     defineField({
       name: 'ruTitle',
       title: 'Title (Russian)',
@@ -38,6 +37,31 @@ export default defineType({
       title: 'Title (English)',
       type: 'string',
     }),
+
+    // 🔥 Yangi qism: Excerpt (short description)
+    defineField({
+      name: 'uzExcerpt',
+      title: 'Excerpt (Uzbek)',
+      type: 'text',
+      description: 'Qisqacha tavsif (Uzbek).',
+      validation: (Rule) => Rule.max(160).warning('160 ta belgi faqat.') // SEO uchun optimal
+    }),
+    defineField({
+      name: 'ruExcerpt',
+      title: 'Excerpt (Russian)',
+      type: 'text',
+      description: 'Qisqacha tavsif (Russian).',
+      validation: (Rule) => Rule.max(160).warning('160 ta belgidan oshmaydi.')
+    }),
+    defineField({
+      name: 'enExcerpt',
+      title: 'Excerpt (English)',
+      type: 'text',
+      description: 'Qisqacha tavsif (English).',
+      validation: (Rule) => Rule.max(160).warning('160 ta belgidan oshmaydi.')
+    }),
+    // 🔥 Tugadi
+
     defineField({
       name: 'slug',
       title: 'Slug',
