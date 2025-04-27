@@ -11,13 +11,7 @@
     }
   ],
   "routes": [
-    {
-      "src": "/api/telegram",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+    { "src": "/api/telegram", "dest": "/server.js" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
