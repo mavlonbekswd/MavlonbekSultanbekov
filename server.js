@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
@@ -21,10 +20,10 @@ const fetchPostFromSanity = async (documentId) => {
       uzContent,
       "mainImageUrl": mainImage.asset->url
     }`;
-    
+
     const encodedQuery = encodeURIComponent(query);
     const url = `https://${SANITY_PROJECT_ID}.api.sanity.io/v2021-03-25/data/query/${SANITY_DATASET}?query=${encodedQuery}`;
-    
+
     const response = await axios.get(url);
     return response.data.result;
   } catch (error) {
@@ -83,6 +82,5 @@ app.post("/api/telegram", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// 👇 Faqat buni export qilamiz!
+export default app;
