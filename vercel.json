@@ -10,11 +10,13 @@
       "use": "@vercel/static-build"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/telegram",
-      "dest": "/api/telegram.js"
-    },
+      "source": "/api/telegram",
+      "destination": "/api/telegram.js"
+    }
+  ],
+  "routes": [
     {
       "src": "/(.*)",
       "dest": "/index.html"
