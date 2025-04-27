@@ -2,18 +2,21 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build"
+      "src": "vite.config.js",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
     },
     {
-      "src": "server.js",
+      "src": "Server/server.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/telegram",
-      "dest": "/server.js"
+      "src": "/api/(.*)",
+      "dest": "Server/server.js"
     },
     {
       "src": "/(.*)",
