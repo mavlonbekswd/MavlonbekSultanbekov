@@ -4,7 +4,7 @@
     { "src": "api/telegram.js", "use": "@vercel/node" },
     { "src": "package.json", "use": "@vercel/static-build" }
   ],
-  "rewrites": [
+  "routes": [
     { "src": "/api/telegram", "dest": "/api/telegram.js" },
     {
       "source": "/(.*)",
