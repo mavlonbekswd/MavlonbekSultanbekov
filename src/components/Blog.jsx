@@ -15,6 +15,7 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { FaTelegramPlane } from "react-icons/fa";
 import { useLanguage } from '../context/LanguageContext'; // manzilingni to'g'ri qo'y
 import { useNavigate, useParams } from 'react-router-dom'; 
+import {  fadeInUp,  } from '../utils/animations';
 
 // contextdan language olamiz
 
@@ -30,6 +31,7 @@ const [modalScroll, setModalScroll] = useState(0);
 const { language } = useLanguage();
 const navigate = useNavigate(); // URL o'zgartirish uchun
 const { slug } = useParams(); // URL ichidan `slug`ni olish uchun
+const [explosionVisible, setExplosionVisible] = useState(false);
 
   
 useEffect(() => {
@@ -83,15 +85,6 @@ useEffect(() => {
 
 
 
-useEffect(() => {
-  if (typeof window !== 'undefined') {
-    const savedPost = localStorage.getItem('selectedPost');
-    if (savedPost) {
-      const post = JSON.parse(savedPost);
-      setSelectedPost(post);
-    }
-  }
-}, []);
  
   // 📌 Browserda localStorage dan 'bookmarkedPosts' ni olib, boshlang'ich state yaratamiz
 const [bookmarkedPosts, setBookmarkedPosts] = useState(() => {
@@ -183,44 +176,79 @@ useEffect(() => {
       // Like tugmasini bosilganda
       const handleLikeToggle = (post) => {
         const hasLiked = likedPosts.includes(post._id);
-
-        // 1. Frontendni darrov optimistik yangilash
+      
         const updatedPosts = posts.map(p =>
           p._id === post._id
             ? { ...p, likes: (p.likes ?? 0) + (hasLiked ? -1 : 1) }
             : p
         );
         setPosts(updatedPosts);
-
+      
+        // ✅ Agar selectedPost ochilgan bo'lsa, uni ham frontendda yangilaymiz
         if (selectedPost && selectedPost._id === post._id) {
-          setSelectedPost({
-            ...selectedPost,
-            likes: (selectedPost.likes ?? 0) + (hasLiked ? -1 : 1)
-          });
+          setSelectedPost(prev => ({
+            ...prev,
+            likes: (prev.likes ?? 0) + (hasLiked ? -1 : 1)
+          }));
         }
-
-        // 2. likedPosts ni yangilash
+      
+        // ✅ Like qilingan postlar ro‘yxatini yangilash
         const newLikedPosts = hasLiked
           ? likedPosts.filter(id => id !== post._id)
           : [...likedPosts, post._id];
         setLikedPosts(newLikedPosts);
         localStorage.setItem('likedPosts', JSON.stringify(newLikedPosts));
-
-        // 3. serverga so'rov yuborish
+      
+        // ✅ Sanity backendni ham yangilash
         sanityClient
           .patch(post._id)
           .set({ likes: (post.likes ?? 0) + (hasLiked ? -1 : 1) })
           .commit()
           .then(() => console.log('Like updated!'))
-          .catch((err) => console.error('Failed to update like:', err));
+          .catch(err => console.error('Failed to update like:', err));
+      
+        // ✅ Explosion animatsiya
+        setExplosionType(hasLiked ? 'dislike' : 'like');
+        setExplodingPostId(post._id);
+        setTimeout(() => {
+          setExplodingPostId(null);
+        }, 800);
+      };
 
-          // Exploding boshlash
-          setExplosionType(hasLiked ? 'dislike' : 'like');  // 💔 yoki ❤️
-          setExplodingPostId(post._id);
-          setTimeout(() => {
-            setExplodingPostId(null);
-          }, 800);
-              };
+      const handleModalLikeToggle = () => {
+        if (!selectedPost) return;
+      
+        const hasLiked = likedPosts.includes(selectedPost._id);
+      
+        // Frontend optimistik yangilash
+        const updatedLikes = (selectedPost.likes ?? 0) + (hasLiked ? -1 : 1);
+        setSelectedPost({
+          ...selectedPost,
+          likes: updatedLikes,
+        });
+      
+        // likedPosts localStorage ni yangilash
+        const updatedLikedPosts = hasLiked
+          ? likedPosts.filter(id => id !== selectedPost._id)
+          : [...likedPosts, selectedPost._id];
+        setLikedPosts(updatedLikedPosts);
+        localStorage.setItem('likedPosts', JSON.stringify(updatedLikedPosts));
+      
+        // Serverga Like yuborish
+        sanityClient
+          .patch(selectedPost._id)
+          .set({ likes: updatedLikes })
+          .commit()
+          .then(() => console.log('Like updated!'))
+          .catch((err) => console.error('Failed to update like:', err));
+      
+        // Explosion efekt boshlash
+        setExplosionType(hasLiked ? 'dislike' : 'like');
+        setExplodingPostId(selectedPost._id);
+        setTimeout(() => {
+          setExplodingPostId(null);
+        }, 800);
+      };
 
   // Modal scroll progress handler
   useEffect(() => {
@@ -271,7 +299,26 @@ useEffect(() => {
     return post.enContent || post.uzContent || post.ruContent || [];
   };
   
+  useEffect(() => {
+    if (selectedPost && !isModalLoading) {
+      const viewedPosts = JSON.parse(localStorage.getItem('viewedPosts')) || [];
   
+      if (!viewedPosts.includes(selectedPost._id)) {
+        // Frontendni darrov yangilash (view +1)
+        setSelectedPost(prev => ({
+          ...prev,
+          views: (prev.views ?? 0) + 1
+        }));
+  
+        // Serverga ham view qo'shamiz
+        addView(selectedPost._id, selectedPost.views);
+  
+        // LocalStorage'ga bu postni ko'rilganlar ro'yxatiga qo'shamiz
+        const updatedViewedPosts = [...viewedPosts, selectedPost._id];
+        localStorage.setItem('viewedPosts', JSON.stringify(updatedViewedPosts));
+      }
+    }
+  }, [selectedPost, isModalLoading]);
 
   return (
     <>
@@ -284,14 +331,23 @@ useEffect(() => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
-        className={`min-h-screen relative ${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} p-6  rounded-[32px] scrollbar-thin scrollbar-thumb-gradient scrollbar-track-gray-100 dark:scrollbar-track-[#232323]`}
+        className={`min-h-screen relative  p-6  rounded-[32px] scrollbar-thin scrollbar-thumb-gradient scrollbar-track-gray-100 ${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.3)]`}
         style={{
           scrollbarColor: isDark ? '#60a5fa #232323' : '#6366f1 #f3f4f6',
           scrollbarWidth: 'thin',
         }}
       >
-        <div className="max-w-3xl mx-auto space-y-6">
-          <h1 className={`text-4xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Blog</h1>
+        
+        <div className="max-w-3xl mx-auto  space-y-6">
+          <motion.h2 variants={fadeInUp} className={`text-2xl lg:text-3xl font-bold ${isDark ? 'text-white' : 'text-black'} mb-4 flex items-center`}> 
+                    {language === 'uz' ? 'Blog' : language === 'ru' ? 'Блог' : 'Blog'}
+                    <motion.span
+                      initial={{ width: 0 }}
+                      animate={{ width: "2rem" }}
+                      transition={{ duration: 0.3, delay: 0.3 }}
+                      className={`block mt-1.5 h-1 ${isDark ? 'bg-[#e2e2e2]' : 'bg-gray-800'} ml-4`}
+                    ></motion.span>
+                  </motion.h2>
 
           {/* Blog List */}
 <motion.div
@@ -326,12 +382,12 @@ useEffect(() => {
       <div className="flex items-center justify-between gap-3">
   {/* Text part */}
   <div className="flex-1">
-    <h2 className={` text-md lg:text-lg font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+    <h2 className={` text-md lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
     {getTitle(post)}
     </h2>
 
     {getExcerpt(post) ? (
-  <p className={`mt-1 text-[13px] lg:text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+  <p className={`mt-1 text-[13px] lg:text-[16px] ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
     {String(getExcerpt(post)).slice(0, 150)}...
   </p>
 ) : null}
@@ -352,15 +408,26 @@ useEffect(() => {
         <FaEye /> {post.views ?? 0}
       </div>
       <div 
-        onClick={(e) => {
-          e.stopPropagation();
-          handleLikeToggle(post);
-        }}
-        className={`flex items-center gap-1 ${isDark ? 'text-gray-300' : 'text-gray-400'} cursor-pointer`}
-      >
-        <FaHeart className={`text-xs  ${likedPosts.includes(post._id) ? 'text-red-500' : ''}`} />
-        <span>{post.likes ?? 0}</span>
-      </div>
+  onClick={(e) => {
+    e.stopPropagation();
+    handleLikeToggle(post); // 🔥 like bosilganda
+  }}
+  className={`relative flex items-center gap-1 ${isDark ? 'text-gray-300' : 'text-gray-400'} cursor-pointer`}
+>
+  <div className="relative w-6 h-6 flex items-center justify-center">
+    <FaHeart
+      className={`text-xs transition-colors duration-300 ${
+        likedPosts.includes(post._id) ? 'text-red-500' : ''
+      }`}
+    />
+    {/* 🚀 Explosion listda ham ishlasin */}
+    {explodingPostId === post._id && (
+      <LikeExplosion type={explosionType} />
+    )}
+  </div>
+
+  <span>{post.likes ?? 0}</span>
+</div>
     </div>
   </div>
 
@@ -392,7 +459,7 @@ useEffect(() => {
                   transition-all duration-200
                   sm:px-4 sm:py-2 sm:text-sm sm:rounded-lg`}
               >
-                Load More
+                 {`language === 'uz' ? ${`Ko'proq korish`}  : language === 'ru' ? 'Блог' : 'Blog'`}
               </button>
             </div>
           )}
@@ -510,26 +577,29 @@ useEffect(() => {
                      <div className="flex items-center gap-2 md:ml-[-144px] ml-[-8px]">
                        {/* Like Button */}
                        {selectedPost && (
-                      <div 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleLikeToggle(selectedPost);
-                        }} 
-                        className="relative flex items-center gap-1 cursor-pointer transition-transform duration-300 active:scale-125"
-                      >
-                        <div className="relative">
-                          <FaHeart
-                            className={` text-md lg:text-[20px] transition-colors text-gray-400 duration-300 ${
-                              likedPosts.includes(selectedPost?._id) ? 'text-red-500' : ''
-                            }`}
-                          />
-                          {explodingPostId === selectedPost._id && (
-                            <LikeExplosion type={explosionType} />
-                          )}
-                        </div>
-                        <span>{selectedPost.likes ?? 0}</span>
-                      </div>
-                    )}
+  <div
+    onClick={(e) => {
+      e.stopPropagation();
+      handleModalLikeToggle(); // Modal uchun alohida Like toggle chaqir
+    }}
+    className="relative flex items-center gap-1 cursor-pointer transition-transform duration-300 active:scale-125"
+  >
+    <div className="relative">
+      <FaHeart
+        className={`text-md lg:text-[20px] transition-colors text-gray-400 duration-300 ${
+          likedPosts.includes(selectedPost._id) ? 'text-red-500' : ''
+        }`}
+      />
+      {/* Explosion faqat clicked paytida chiqadi */}
+      {explodingPostId === selectedPost._id && (
+        <div className="absolute inset-0">
+          <LikeExplosion type={explosionType} />
+        </div>
+      )}
+    </div>
+    <span>{selectedPost.likes ?? 0}</span>
+  </div>
+)}
                        {/* Save (Bookmark) Button */}
                        <button
                          onClick={() => handleBookmarkToggle(selectedPost?._id)}
@@ -597,7 +667,7 @@ useEffect(() => {
                      </div>
                    </div>
                    {/* Eng pastda xira, kichik ism yozuvi */}
-                   <div className="w-full flex justify-center ml-3 mt-5 mb-[-22px]">
+                   <div className="w-full flex justify-center ml-0 mt-5 mb-[-22px]">
                      <span className="text-xs text-gray-500 dark:text-gray-600 tracking-wide select-none">© 2025 mavlonbek.com</span>
                    </div>
                 </motion.div>

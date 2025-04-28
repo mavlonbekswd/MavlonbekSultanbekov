@@ -37,7 +37,7 @@ const About = () => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className={`${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} p-3 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.5)]`}
+      className={`${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} p-3 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.2)]`}
 
     >
       {/* About Me Section */}
@@ -49,11 +49,11 @@ const About = () => {
             initial={{ width: 0 }}
             animate={{ width: "2rem" }}
             transition={{ duration: 0.3, delay: 0.3 }}
-            className={`block h-1 ${isDark ? 'bg-[#e2e2e2]' : 'bg-gray-800'} ml-4`}
+            className={`block mt-1.5 h-1 ${isDark ? 'bg-[#e2e2e2]' : 'bg-gray-800'} ml-4`}
           ></motion.span>
         </motion.h2>
-        <motion.div variants={staggerContainer} className={`${isDark ? 'text-gray-400' : 'text-gray-600'} space-y-4`}>
-          <motion.p variants={fadeInUp} className="text-base lg:text-lg leading-relaxed">
+        <motion.div variants={staggerContainer} className={`${isDark ? 'text-gray-400' : 'text-gray-600'}  space-y-4`}>
+          <motion.p variants={fadeInUp} className="text-base lg:text-lg  leading-relaxed">
             {t("about-me-p1")}
          
 

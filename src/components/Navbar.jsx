@@ -59,7 +59,7 @@ const [lastScrollY, setLastScrollY] = useState(0);
         transition={{ duration: 0.7 }}
         className={`${isDark ? 'bg-[#1f1f1f]' : 'bg-white border border-gray-400 hover:border-gray-700'} fixed backdrop-blur-sm h-[55px] sm:h-[60px] md:h-[85px] lg:h-[70px] w-[92%] 
          lg:left-[560px] md:left-[130px] sm:w-[450px] md:w-[600px] lg:top-[75px] lg:w-[800px] px-3 sm:px-4  left-[15px] md:px-6 md:bottom-[30px]      
-          lg:px-6 rounded-[32px] shadow-[0_0_20px_rgba(255,255,255,0.5)] flex items-center justify-between`}
+          lg:px-6 rounded-[32px] shadow-[0_0_20px_rgba(255,255,255,0.3)] flex items-center justify-between`}
       >
 
         

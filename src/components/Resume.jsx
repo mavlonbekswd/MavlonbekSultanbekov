@@ -14,23 +14,23 @@ const Resume = () => {
  
 
   return (
-    <div
+    <motion.div
       variants={pageVariants}
       initial="initial"
       animate="animate"
       exit="exit"
      
-      className={` space-y-8 lg:space-y-12 ${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.5)]`}
+      className={` space-y-8 lg:space-y-12 ${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.2)]`}
     >
       {/* Header with Download Button */}
-      <div variants={fadeInUp} className="flex justify-between items-center">
+      <motion.div variants={fadeInUp} className="flex justify-between items-center">
         <h2 className={`text-2xl lg:text-3xl font-bold ${isDark ? 'text-white' : 'text-black'} flex items-center`}>
           {t("resume-sec")}
           <span
             initial={{ width: 0 }}
             animate={{ width: "2rem" }}
             transition={{ duration: 0.3, delay: 0.3 }}
-            className={`block h-1 ${isDark ? 'bg-[#e2e2e2]' : 'bg-gray-800'} ml-4`}
+            className={`block mt-1.5 h-1 ${isDark ? 'bg-[#e2e2e2]' : 'bg-gray-800'} ml-4`}
           ></span>
         </h2>
         <a
@@ -46,7 +46,7 @@ const Resume = () => {
           <FaDownload className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
           <span className={`hidden  ${isDark ? 'text-white' : 'text-black'} sm:inline`}>{t("download-cv")}</span>
         </a>
-      </div>
+      </motion.div>
 
       {/* Education Section */}
       <motion.section variants={staggerContainer} initial="initial" animate="animate">
@@ -206,7 +206,7 @@ const Resume = () => {
           })}
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 
