@@ -62,15 +62,7 @@ export default defineType({
     }),
     // 🔥 Tugadi
 
-    defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'uzTitle',
-        maxLength: 96,
-      },
-    }),
+    
     defineField({
       name: 'mainImage',
       title: 'Main Image',
@@ -99,6 +91,34 @@ export default defineType({
       name: 'enContent',
       title: 'Content (English)',
       type: 'blockContent',
+    }),
+
+    defineField({
+      name: 'uzSlug',
+      title: 'Slug (Uzbek)',
+      type: 'slug',
+      options: {
+        source: 'uzTitle',
+        maxLength: 96,
+      },
+    }),
+    defineField({
+      name: 'ruSlug',
+      title: 'Slug (Russian)',
+      type: 'slug',
+      options: {
+        source: 'ruTitle',
+        maxLength: 96,
+      },
+    }),
+    defineField({
+      name: 'enSlug',
+      title: 'Slug (English)',
+      type: 'slug',
+      options: {
+        source: 'enTitle',
+        maxLength: 96,
+      },
     }),
   ],
 })

@@ -44,6 +44,7 @@ const AppContent = () => {
       document.body.style.overflow = 'unset';
     };
   }, [showSidebar]);
+ 
 
   useEffect(() => {
     // Simulate loading time
@@ -117,7 +118,7 @@ const AppContent = () => {
         <motion.button 
           onClick={() => setShowSidebar(!showSidebar)}
           className={`lg:hidden fixed top-4 left-4 z-50 
-            ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'} 
+            ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : ' border border-gray-400 hover:border-gray-700 bg-gradient-to-r from-white to-white/80'} 
             p-2.5 rounded-lg shadow-lg flex items-center gap-2 backdrop-blur-sm
             border border-white/20 hover:border-white/30 transition-all duration-300
             hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
@@ -182,6 +183,7 @@ const AppContent = () => {
                   <Route path="/projects" element={<Projects />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/blog" element={<Blog />} />
+                  <Route path="/blog/:slug" element={<Blog />} /> {/* 🔥 BUNI QO'SHISH SHART */}
                 </Routes>
               )}
             </AnimatePresence>
@@ -189,7 +191,7 @@ const AppContent = () => {
         </div>
 
         {/* Mobile Bottom Navbar */}
-        <div className="fixed bottom-14 left-0   right-0  lg:hidden z-30 px-7  pb-4">
+        <div className="fixed bottom-14 left-0   right-0  lg:hidden z-30 px-7  pb-4 ">
           <Navbar />
         </div>
       </div>
