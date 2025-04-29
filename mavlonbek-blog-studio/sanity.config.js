@@ -3,6 +3,7 @@ import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 
+
 export default defineConfig({
   name: 'default',
   title: 'Mavlonbek Blog',
@@ -10,8 +11,7 @@ export default defineConfig({
   projectId: '5a03o7rz',
   dataset: 'production',
 
-  plugins: [structureTool(), visionTool()],
-
+  plugins: [structureTool(), visionTool() ],
   schema: {
     types: schemaTypes,
   },

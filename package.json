@@ -15,6 +15,7 @@
     "@headlessui/react": "^2.2.2",
     "@portabletext/react": "^3.2.1",
     "@sanity/client": "^6.29.1",
+    "@sanity/color-input": "^4.0.3",
     "@vercel/speed-insights": "^1.2.0",
     "axios": "^1.9.0",
     "body-parser": "^2.2.0",

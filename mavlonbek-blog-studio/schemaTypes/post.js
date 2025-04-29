@@ -28,6 +28,13 @@ export default defineType({
       initialValue: 0,
     }),
     defineField({
+      name: 'isPinned',
+      title: 'Pin This Post',
+      type: 'boolean',
+      initialValue: false,
+      description: 'Agar true bo\'lsa, bu post blog ro\'yxatining tepasida ko\'rinadi.',
+    }),
+    defineField({
       name: 'ruTitle',
       title: 'Title (Russian)',
       type: 'string',
@@ -86,6 +93,7 @@ export default defineType({
       name: 'ruContent',
       title: 'Content (Russian)',
       type: 'blockContent',
+      
     }),
     defineField({
       name: 'enContent',

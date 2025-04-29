@@ -16,6 +16,9 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { useLanguage } from '../context/LanguageContext'; // manzilingni to'g'ri qo'y
 import { useNavigate, useParams } from 'react-router-dom'; 
 import {  fadeInUp,  } from '../utils/animations';
+import { useMemo } from 'react';
+import { BsPinAngleFill } from "react-icons/bs";
+
 
 // contextdan language olamiz
 
@@ -24,7 +27,7 @@ const Blog = () => {
   const [posts, setPosts] = useState([]);
   const [explodingPostId, setExplodingPostId] = useState(null);
 const [explosionType, setExplosionType] = useState('like'); // like yoki dislike uchun
-const [visibleCount, setVisibleCount] = useState(8); // Boshlanish uchun 6 ta post ko'rsatamiz
+const [visibleCount, setVisibleCount] = useState(4); // Boshlanish uchun 6 ta post ko'rsatamiz
 const [isModalLoading, setIsModalLoading] = useState(false);
 const modalContentRef = useRef(null);
 const [modalScroll, setModalScroll] = useState(0);
@@ -32,11 +35,19 @@ const { language } = useLanguage();
 const navigate = useNavigate(); // URL o'zgartirish uchun
 const { slug } = useParams(); // URL ichidan `slug`ni olish uchun
 const [explosionVisible, setExplosionVisible] = useState(false);
+const pinnedPost = useMemo(() => posts.find(post => post.isPinned), [posts]);
+const otherPosts = useMemo(() => 
+  posts
+    .filter(post => !post.isPinned)
+    .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)), 
+[posts]);
+
+
 
   
 useEffect(() => {
   sanityClient
-    .fetch(`*[_type == "post"] | order(publishedAt desc) {
+    .fetch(`*[_type == "post"]  {
       _id,
       uzTitle,
       ruTitle,
@@ -55,7 +66,8 @@ useEffect(() => {
       publishedAt,
       categories,
       views,
-      likes
+      likes,
+      isPinned
     }`)
     .then(data => setPosts(data))
     .catch(console.error);
@@ -63,25 +75,26 @@ useEffect(() => {
 
  
 useEffect(() => {
-  if (slug && posts.length > 0) {
-    const matchedPost = posts.find(post => {
-      if (language === 'uz') return post.uzSlug?.current === slug;
-      if (language === 'ru') return post.ruSlug?.current === slug;
-      if (language === 'en') return post.enSlug?.current === slug;
-      return false;
-    });
+  if (!slug || posts.length === 0) return;
 
-    if (matchedPost) {
-      setIsModalLoading(true);
-      setTimeout(() => {
-        setSelectedPost(matchedPost);
-        setIsModalLoading(false);
-      }, 1000); // ozgina loading effekti
-    }
-  } else {
-    setSelectedPost(null); // slug yo'q bo'lsa modal yopiladi
+  const matchedPost = posts.find(post => {
+    if (language === 'uz') return post.uzSlug?.current === slug;
+    if (language === 'ru') return post.ruSlug?.current === slug;
+    if (language === 'en') return post.enSlug?.current === slug;
+    return false;
+  });
+
+  if (matchedPost) {
+    // loading effekti orqali ochamiz
+    setIsModalLoading(true);
+    setTimeout(() => {
+      setSelectedPost(matchedPost); // 🔥 Faqat matched bo‘lsa modal ochiladi
+      setIsModalLoading(false);
+    }, 1000);
   }
 }, [slug, posts, language]);
+
+
 
 
 
@@ -129,15 +142,30 @@ const handleBookmarkToggle = (postId) => {
         };
 
         const handlePostClick = (post) => {
-  const postSlug = 
-    language === 'uz' ? post.uzSlug?.current :
-    language === 'ru' ? post.ruSlug?.current :
-    post.enSlug?.current;
-
-  if (postSlug) {
-    navigate(`/blog/${postSlug}`); // ❗ Faqat navigate() qilsin
-  }
-};
+          const postSlug = 
+            language === 'uz' ? post.uzSlug?.current :
+            language === 'ru' ? post.ruSlug?.current :
+            post.enSlug?.current;
+        
+          if (!postSlug) return;
+        
+          const targetPath = `/blog/${postSlug}`;
+          const currentPath = window.location.pathname;
+        
+          setSelectedPost(null); // Modalni tozalaymiz
+          setIsModalLoading(true); // Loader yoqamiz
+        
+          if (currentPath === targetPath) {
+            // Agar shu post ochiq bo‘lsa, avval boshqa sahifaga navigate qilamiz, keyin qaytamiz
+            navigate('/', { replace: true }); 
+            setTimeout(() => navigate(targetPath), 20); // 20ms keyin qayta navigate
+          } else {
+            navigate(targetPath);
+          }
+        };
+        
+        
+        
 
        
 
@@ -363,7 +391,116 @@ useEffect(() => {
     }
   }}
 >
-  {posts.slice(0, visibleCount).map(post => (
+
+{pinnedPost && (
+  <motion.div
+    key={pinnedPost._id}
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{ type: 'spring', stiffness: 120, damping: 18 }}
+    whileHover={{ y: -2 }}
+    whileTap={{ scale: 0.95 }}
+    className={`p-4 rounded-xl gap-3 cursor-pointer transition-all duration-300 mb-6 relative
+      ${isDark
+        ? 'bg-[#232323] border border-white/10 hover:border-white/20 hover:shadow-[0_4px_24px_rgba(255,255,255,0.1)]'
+        : 'bg-white border border-gray-200 hover:border-gray-300 hover:shadow-[0_4px_24px_rgba(0,0,0,0.08)]'
+      }`}
+      onClick={() => {
+        const slug = 
+          language === 'uz' ? pinnedPost?.uzSlug?.current :
+          language === 'ru' ? pinnedPost?.ruSlug?.current :
+          pinnedPost?.enSlug?.current;
+      
+        if (slug) {
+          setSelectedPost(null);
+          setIsModalLoading(true);
+          navigate(`/blog/${slug}`);
+        }
+      }}
+  >
+    {/* 📌 Pin Icon */}
+    <div className="absolute top-3 right-3 z-10">
+      <BsPinAngleFill className="text-sm text-blue-400" />
+    </div>
+
+    {/* Content */}
+    <div className="flex items-center justify-between gap-3">
+      
+      {/* Text part */}
+      <div className="flex-1">
+        {/* Title */}
+        <h2 className={`text-md lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+          {getTitle(pinnedPost)}
+        </h2>
+
+        {/* Excerpt */}
+        {getExcerpt(pinnedPost) && (
+          <p className={`mt-1 text-[13px] lg:text-[16px] ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+            {String(getExcerpt(pinnedPost)).slice(0, 150)}...
+          </p>
+        )}
+
+        {/* Views, Likes, Date */}
+        <div className="flex gap-2 mt-2 mb-0 text-sm">
+          {/* Published Date */}
+          {pinnedPost.publishedAt && (
+            <div className={`flex items-center gap-1 text-xs lg:text-sm ${isDark ? 'text-gray-300' : 'text-gray-400'}`}>
+              <FaCalendarAlt /> {format(new Date(pinnedPost.publishedAt), 'dd/MM/yy')}
+            </div>
+          )}
+
+          {/* Views */}
+          <div className={`flex items-center gap-1 ${isDark ? 'text-gray-300' : 'text-gray-400'}`}>
+            <FaEye /> {pinnedPost.views ?? 0}
+          </div>
+
+          {/* Like & Explosion */}
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+              handleLikeToggle(pinnedPost); // Like toggle
+            }}
+            className={`relative flex items-center gap-0 ${isDark ? 'text-gray-300' : 'text-gray-400'} cursor-pointer`}
+          >
+            <div className="relative w-6 h-6 flex items-center justify-center">
+              <FaHeart
+                className={`text-xs transition-colors duration-300 ${
+                  likedPosts.includes(pinnedPost._id) ? 'text-red-500' : ''
+                }`}
+              />
+              {/* 💥 Explosion animation */}
+              {explodingPostId === pinnedPost._id && (
+                <LikeExplosion type={explosionType} />
+              )}
+            </div>
+
+            <span>{pinnedPost.likes ?? 0}</span>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Image part */}
+      {pinnedPost.mainImage?.asset?.url && (
+        <div className="flex-shrink-0 mr-3">
+          <img
+            src={pinnedPost.mainImage.asset.url}
+            alt={pinnedPost.uzTitle}
+            className="w-24 h-24 object-cover rounded-xl"
+          />
+        </div>
+      )}
+    </div>
+  </motion.div>
+)}
+
+
+
+
+
+
+  {otherPosts.slice(0, visibleCount).map(post => (
     <motion.div
     key={post._id}
     initial={{ opacity: 0, y: 30 }}
@@ -395,16 +532,16 @@ useEffect(() => {
 
 
     {/* Views and Likes */}
-    <div className="flex gap-5 mt-2 mb-0 text-sm">
+    <div className="flex gap-2 mt-2 mb-0 text-sm">
 
-    <div className={`flex items-center gap-3 text-xs lg:text-sm ${isDark ? 'text-gray-300' : 'text-gray-400'}`}>
+    <div className={`flex items-center gap-1 text-xs lg:text-sm ${isDark ? 'text-gray-300' : 'text-gray-400'}`}>
       {post.publishedAt && (
         <>
-          <FaCalendarAlt /> {format(new Date(post.publishedAt), 'dd MMMM yyyy')}
+          <FaCalendarAlt /> {format(new Date(post.publishedAt), 'dd/MM/yy')}
         </>
       )}
     </div>
-      <div className={`flex items-center gap-1 ${isDark ? 'text-gray-300' : 'text-gray-400'} cursor-pointer`}>
+      <div className={`flex items-center gap-1 text-xs lg:text-sm ${isDark ? 'text-gray-300' : 'text-gray-400'} cursor-pointer`}>
         <FaEye /> {post.views ?? 0}
       </div>
       <div 
@@ -412,11 +549,11 @@ useEffect(() => {
     e.stopPropagation();
     handleLikeToggle(post); // 🔥 like bosilganda
   }}
-  className={`relative flex items-center gap-1 ${isDark ? 'text-gray-300' : 'text-gray-400'} cursor-pointer`}
+  className={`relative flex items-center gap-0 ${isDark ? 'text-gray-300' : 'text-gray-400'} cursor-pointer`}
 >
-  <div className="relative w-6 h-6 flex items-center justify-center">
+  <div className="relative  w-6 h-6 flex items-center justify-center">
     <FaHeart
-      className={`text-xs transition-colors duration-300 ${
+      className={`text-xs lg:text-sm transition-colors duration-300 ${
         likedPosts.includes(post._id) ? 'text-red-500' : ''
       }`}
     />
@@ -449,7 +586,7 @@ useEffect(() => {
 </motion.div>
 
           {/* Load More Button */}  
-          {visibleCount < posts.length && (
+          {visibleCount >= 4 && visibleCount < posts.length && (
             <div className="flex justify-center mt-8">
               <button
                 onClick={() => setVisibleCount(prev => prev + 4)}
@@ -466,7 +603,11 @@ useEffect(() => {
         </div>
        
         {/* Modal */}
-        <Dialog open={!!selectedPost || isModalLoading} onClose={closeModal} className="relative z-50">
+        <Dialog
+  open={!!slug && (isModalLoading || selectedPost  !== null)}
+  onClose={closeModal}
+  className="relative z-50"
+>
           <div className="fixed  inset-0   backdrop-blur-md  transition-all duration-300
             hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] bg-black/40" aria-hidden="true" />
        
@@ -500,14 +641,17 @@ useEffect(() => {
                 >
                   {/* Main Image */}
                   {selectedPost?.mainImage?.asset?.url && (
+                    <div className="w-full relative pt-[75%] (4:3) mb-4 rounded-xl overflow-hidden"> 
                     <motion.img
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.15, duration: 0.4 }}
                       src={selectedPost.mainImage.asset.url}
                       alt={selectedPost.uzTitle}
-                      className="w-full h-60 object-cover rounded-xl mb-4"
+                      className="absolute top-0 left-0 w-full h-full object-cover"
                     />
+                  </div>
+                  
                   )}
 
                   {/* Title */}
@@ -529,7 +673,7 @@ useEffect(() => {
                   >
                     {selectedPost?.publishedAt && (
                       <div className="flex items-center gap-1">
-                        <FaCalendarAlt /> {format(new Date(selectedPost.publishedAt), 'dd MMMM yyyy')}
+                        <FaCalendarAlt /> {format(new Date(selectedPost.publishedAt), 'dd/MM/yy')}
                       </div>
                     )}
                     <div className="flex items-center gap-1">
