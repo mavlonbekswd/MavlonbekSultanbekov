@@ -452,14 +452,14 @@ useEffect(() => {
           {visibleCount < posts.length && (
             <div className="flex justify-center mt-8">
               <button
-                onClick={() => setVisibleCount(prev => prev + 6)}
+                onClick={() => setVisibleCount(prev => prev + 4)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md shadow
                   text-xs font-medium
                   ${isDark ? 'bg-[#232323] text-gray-200 border border-white/20 hover:border-white/30' : 'bg-white text-gray-700 border border-gray-200 hover:border-gray-400'}
                   transition-all duration-200
                   sm:px-4 sm:py-2 sm:text-sm sm:rounded-lg`}
               >
-                 {`language === 'uz' ? ${`Ko'proq korish`}  : language === 'ru' ? 'Блог' : 'Blog'`}
+                Load More
               </button>
             </div>
           )}
