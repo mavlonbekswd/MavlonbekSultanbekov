@@ -160,15 +160,10 @@ const AppContent = () => {
         {/* Main Content */}
     <div className="w-full lg:w-[800px] pb-24 lg:pb-0 lg:ml-[420px]">
           {/* Desktop Navbar */}
-          <div className="hidden lg:block sticky top-10 z-40 mb-[100px] left-500
+          <div className="hidden lg:block sticky top-10 z-40 mb-[100px] 
     pb-24 
-    lg:pb-0 
-    lg:ml-[20px] 
-    lg:w-[800px] 
-    2xl:ml-[auto] 
-    2xl:w-[800px] 
-    xl:ml-[200px] [@media(min-width:1280px)]:ml-[460px] 
-    [@media(min-width:1280px)]:w-[850px]">
+    lg:pb-0  
+   ">
             <Navbar />
           </div>
           

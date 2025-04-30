@@ -37,7 +37,7 @@ const About = () => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className={`${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} p-3 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.2)]`}
+      className={`${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEEEE]'} p-3 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.2)]`}
 
     >
       {/* About Me Section */}

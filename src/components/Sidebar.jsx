@@ -37,7 +37,7 @@ const Sidebar = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`h-full ${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.3)] overflow-y-auto`}
+      className={`h-full ${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEE]'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.3)] overflow-y-auto`}
     >
       <div className="flex flex-col items-center w-full">
         {/* Avatar Section */}

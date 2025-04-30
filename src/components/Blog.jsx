@@ -361,7 +361,7 @@ useEffect(() => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
-        className={`min-h-screen relative  p-6  rounded-[32px] scrollbar-thin scrollbar-thumb-gradient scrollbar-track-gray-100 ${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.3)]`}
+        className={`min-h-screen relative  p-6  rounded-[32px] scrollbar-thin scrollbar-thumb-gradient scrollbar-track-gray-100 ${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEEEE]'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.3)]`}
         style={{
           scrollbarColor: isDark ? '#60a5fa #232323' : '#6366f1 #f3f4f6',
           scrollbarWidth: 'thin',
@@ -406,7 +406,7 @@ useEffect(() => {
     className={`p-4 rounded-xl gap-3 cursor-pointer transition-all duration-300 mb-6 relative
       ${isDark
         ? 'bg-[#232323] border border-white/10 hover:border-white/20 hover:shadow-[0_4px_24px_rgba(255,255,255,0.1)]'
-        : 'bg-white border border-gray-200 hover:border-gray-300 hover:shadow-[0_4px_24px_rgba(0,0,0,0.08)]'
+        : 'bg-[#F5F5F7] border border-gray-200 hover:border-gray-300 hover:shadow-[0_4px_24px_rgba(0,0,0,0.08)]'
       }`}
       onClick={() => {
         const slug = 
@@ -514,7 +514,7 @@ useEffect(() => {
     className={`p-4 rounded-xl gap-3 cursor-pointer transition-all duration-300 mb-6
       ${isDark
         ? 'bg-[#232323] border border-white/10 hover:border-white/20 hover:shadow-[0_4px_24px_rgba(255,255,255,0.1)]'
-        : 'bg-white border border-gray-200 hover:border-gray-300 hover:shadow-[0_4px_24px_rgba(0,0,0,0.08)]'
+        : 'bg-[#F5F5F7] border border-gray-200 hover:border-gray-300 hover:shadow-[0_4px_24px_rgba(0,0,0,0.08)]'
       }`}
     onClick={() => handlePostClick(post)}
     >

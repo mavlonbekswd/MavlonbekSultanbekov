@@ -20,7 +20,7 @@ const Resume = () => {
       animate="animate"
       exit="exit"
      
-      className={` space-y-8 lg:space-y-12 ${isDark ? 'bg-[#1f1f1f]' : 'bg-white'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.2)]`}
+      className={` space-y-8 lg:space-y-12 ${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEEEE]'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.2)]`}
     >
       {/* Header with Download Button */}
       <motion.div variants={fadeInUp} className="flex justify-between items-center">
