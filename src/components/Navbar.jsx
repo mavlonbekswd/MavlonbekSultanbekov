@@ -57,9 +57,19 @@ const [lastScrollY, setLastScrollY] = useState(0);
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: showNavbar ? 0 : -50, opacity: showNavbar ? 1 : 0 }}
         transition={{ duration: 0.7 }}
-        className={`${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEE] border border-gray-400 hover:border-gray-700'} fixed backdrop-blur-sm h-[55px] sm:h-[60px] md:h-[85px] lg:h-[70px] w-[92%] 
-         lg:left-[560px]  custom-navbar-position  md:left-[130px] sm:w-[450px] md:w-[600px] sm:right-[206px] sm:translate-x-0  lg:top-[75px] lg:w-[800px] px-3 sm:px-4  left-[15px] md:px-6 md:bottom-[30px]      
-          lg:px-6 rounded-[32px] shadow-[0_0_20px_rgba(255,255,255,0.3)] flex items-center justify-between`}
+        className={`fixed lg:top-[80px] left-1/5 -translate-x-1/2 z-50 
+          w-full max-w-[350px] px-2 mx-auto
+          sm:max-w-[20px]  md:max-w-[820px]
+          lg:max-w-[800px] 
+          xl:max-w-[800px]
+          2xl:max-w-[800px]
+          backdrop-blur-sm 
+          h-[55px] sm:h-[60px] md:h-[85px] lg:h-[70px] 
+          border 
+          ${isDark ? 'bg-[#1f1f1f]' : 'bg-[#f5f5f7]'} 
+          ${isDark ? 'border-white/5 ' : 'border-gray-400 hover:border-gray-700'} 
+          flex items-center justify-between 
+          px-3 sm:px-4 lg:px-6 rounded-[32px] shadow-[0_0_20px_rgba(255,255,255,0.3)]`}
       >
 
         
