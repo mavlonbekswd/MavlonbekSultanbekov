@@ -11,7 +11,7 @@ export default defineConfig({
       output: {
         assetFileNames: (assetInfo) => {
           if (assetInfo.name.endsWith('.css')) {
-            return 'styles/[name][extname]'
+            return 'styles/index.css'
           }
           return 'assets/[name][extname]'
         }
