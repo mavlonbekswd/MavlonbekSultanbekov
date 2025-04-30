@@ -15,6 +15,8 @@ import { initGA, logPageView } from "./utils/analytics";
 import { LanguageProvider } from './context/LanguageContext';
 import './i18n';
 import { useTranslation } from 'react-i18next';
+import "./index.css"; // Import your CSS file here
+import './styles/index.css'
 
 
 
