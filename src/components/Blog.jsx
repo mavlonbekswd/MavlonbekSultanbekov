@@ -617,14 +617,14 @@ useEffect(() => {
             <div className="fixed inset-0 z-50 backdrop-blur-sm flex items-center justify-center">
               <div className="flex flex-col items-center justify-center">
                 <GiBookCover className={`mb-2 h-12 w-12 ${isDark ? 'text-white' : 'text-white'} animate-bounce`} />
-                <span className={`text-gray-400  ${isDark ? 'text-white' : 'text-white'}`}>{t("loading")}</span>
+                <span className={`text-white  ${isDark ? 'text-white' : 'text-blue'}`}>{t("loading")}</span>
               </div>
             </div>
           ) : (
             <div className="fixed inset-0  flex items-center justify-center p-4">
               {/* Modal scroll progress bar */}
               <div className="fixed left-0 top-0 w-full z-[9999]">
-            <div className="h-1 bg-gradient-to-r from-gray-300 via-gray-500 to-gray-900 dark:from-gray-700 dark:via-gray-400 dark:to-white transition-all duration-200" style={{ width: `${modalScroll}%` , opacity: 0.95}} />
+            <div className="h-1 bg-gradient-to-r from-blue-300 via-blue-500 to-blue-900 dark:from-gray-700 dark:via-gray-400 dark:to-white transition-all duration-200" style={{ width: `${modalScroll}%` , opacity: 0.95}} />
               </div>
               <Dialog.Panel ref={modalContentRef} className={`relative  rounded-2xl shadow-xl w-full md:mt-[-1%] md:max-w-3xl mx-auto p-1 px-5 py-6 lg:p-1 lg:px-8 lg:py-9 md:ml-[34%]  max-h-[80vh] overflow-y-auto  backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
                 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] ${isDark ? 'bg-[#232323] text-white' : 'bg-white text-gray-900'} `} >
