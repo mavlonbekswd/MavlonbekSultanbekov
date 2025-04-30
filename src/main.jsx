@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App.jsx';
 import './i18n.js';
-import './styles/navbar-fix.css';
+
 
 // SpeedInsights();
 createRoot(document.getElementById('root')).render(
