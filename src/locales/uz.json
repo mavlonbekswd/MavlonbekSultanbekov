@@ -98,7 +98,9 @@
   "form-email-title": "Iltimos, elektron pochtangizni kiriting",
     "form-name-required": "Ism majburiy",
     "form-email-required": "Email majburiy",
-    "form-message-required": "Xabar majburiy"
+    "form-message-required": "Xabar majburiy",
+    "loadMore":"Ko'proq ko'rish",
+    "loading": "Maqola yuklanmoqda..."
   
   
 

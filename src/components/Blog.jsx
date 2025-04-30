@@ -18,12 +18,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import {  fadeInUp,  } from '../utils/animations';
 import { useMemo } from 'react';
 import { BsPinAngleFill } from "react-icons/bs";
+import { useTranslation } from 'react-i18next';
 
 
 // contextdan language olamiz
 
 const Blog = () => {
   const { isDark } = useTheme();
+   const { t  } = useTranslation();
   const [posts, setPosts] = useState([]);
   const [explodingPostId, setExplodingPostId] = useState(null);
 const [explosionType, setExplosionType] = useState('like'); // like yoki dislike uchun
@@ -596,7 +598,7 @@ useEffect(() => {
                   transition-all duration-200
                   sm:px-4 sm:py-2 sm:text-sm sm:rounded-lg`}
               >
-                Load More
+                {t('loadMore')}
               </button>
             </div>
           )}
@@ -615,7 +617,7 @@ useEffect(() => {
             <div className="fixed inset-0 z-50 backdrop-blur-sm flex items-center justify-center">
               <div className="flex flex-col items-center justify-center">
                 <GiBookCover className={`mb-2 h-12 w-12 ${isDark ? 'text-white' : 'text-white'} animate-bounce`} />
-                <span className={`text-gray-400  ${isDark ? 'text-white' : 'text-white'}`}>Loading article...</span>
+                <span className={`text-gray-400  ${isDark ? 'text-white' : 'text-white'}`}>{t("loading")}</span>
               </div>
             </div>
           ) : (
@@ -793,7 +795,7 @@ useEffect(() => {
                      <div className="flex items-center  gap-2 md:mr-[-144px] mr-[-8px] relative group">
                        {/* Telegram Button */}
                        <a
-                         href="https://t.me/mavlono_sulton" // o'zingizning telegram kanal/linkingizni qo'ying
+                         href="https://t.me/mavlonoodev" // o'zingizning telegram kanal/linkingizni qo'ying
                          target="_blank"
                          rel="noopener noreferrer"
                          className="flex items-center justify-center p-0.5 text-gray-400 dark:text-gray-300 hover:text-blue-500 transition-all duration-150 focus:outline-none"

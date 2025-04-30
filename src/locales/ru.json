@@ -94,7 +94,9 @@
   "form-email-title": "Пожалуйста, введите вашу эл. почту",
   "form-name-required": "Имя обязательно.",
   "form-email-required": "Эл. почта обязательна.",
-  "form-message-required": "Сообщение обязательно."
+  "form-message-required": "Сообщение обязательно.",
+  "loadMore":"Загрузить больше",
+  "loading": "Загрузка статьи..."
 
 
 

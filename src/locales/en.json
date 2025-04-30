@@ -96,7 +96,9 @@
   "form-email-title": "Please enter your email address",
   "form-name-required": "Name is required.",
   "form-email-required": "Email is required.",
-  "form-message-required": "Message is required."
+  "form-message-required": "Message is required.",
+  "loadMore":"Load More",
+  "loading": "Loading Article..."
 
 
 
