@@ -69,7 +69,6 @@ useEffect(() => {
       ruContent,
       enContent,
       publishedAt,
-      categories,
       views,
       likes,
       isPinned
@@ -463,7 +462,7 @@ useEffect(() => {
 >
 
 
-{pinnedPost && (
+{activeCategory === 'All' && pinnedPost &&  (
   <motion.div
     key={pinnedPost._id}
     initial={{ opacity: 0, y: 30 }}
@@ -764,7 +763,7 @@ useEffect(() => {
                   >
                     {Array.isArray(selectedPost?.categories) && selectedPost.categories.map((cat, i) => (
                       <span key={i} className="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-white/10 dark:text-white text-gray-800">
-                        {typeof cat === 'string' ? cat : cat.title || 'Category'}
+                        {cat?.title || 'Category'}
                       </span>
                     ))}
                   </motion.div>

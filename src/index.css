@@ -1,12 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap'); 
+
 body {
   margin: 0;
   min-height: 100vh;
   background-color: rgb(0, 0, 0);
-  font-family: "Plus-jakarta-sans", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .comic-font {
+    font-family: 'Comic Relief', cursive;
+  }
+}
 
 /* Transition styles */
 * {

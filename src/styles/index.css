@@ -1,3 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .comic-font {
+    font-family: 'Comic Relief', cursive;
+  }
+}
+
 .custom-navbar-position {
     position: absolute;
     top: 1px;
@@ -13,7 +34,7 @@
         position: absolute;
       left: 520px; /* yoki 0px */
        /* optional */
-      transform: none; /* translateX o‘chiriladi */
+      transform: none; /* translateX o'chiriladi */
       width: 500px;
     
       bottom: 30%;
@@ -28,7 +49,7 @@
     .custom-navbar-position {
       left: 420px; /* yoki 0px */
        /* optional */
-      transform: none; /* translateX o‘chiriladi */
+      transform: none; /* translateX o'chiriladi */
       width: 390px;
       display: flex;
       justify-content: center;
@@ -43,7 +64,7 @@
     .custom-navbar-position {
       left: 420px; /* yoki 0px */
        /* optional */
-      transform: none; /* translateX o‘chiriladi */
+      transform: none; /* translateX o'chiriladi */
       width: 360px;
 
     
@@ -54,7 +75,7 @@
     .custom-navbar-position {
       left: 420px; /* yoki 0px */
        /* optional */
-      transform: none; /* translateX o‘chiriladi */
+      transform: none; /* translateX o'chiriladi */
       width: 350px;
 
 
@@ -65,7 +86,7 @@
     .custom-navbar-position {
       left: 420px; /* yoki 0px */
        /* optional */
-      transform: none; /* translateX o‘chiriladi */
+      transform: none; /* translateX o'chiriladi */
       width: 340px;
 
     
@@ -75,7 +96,7 @@
     .custom-navbar-position {
       left: 420px; /* yoki 0px */
        /* optional */
-      transform: none; /* translateX o‘chiriladi */
+      transform: none; /* translateX o'chiriladi */
       width: 320px;
       display: flex;
       justify-content: center;
