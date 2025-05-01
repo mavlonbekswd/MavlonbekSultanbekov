@@ -43,6 +43,8 @@ const otherPosts = useMemo(() =>
     .filter(post => !post.isPinned)
     .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)), 
 [posts]);
+const [categories, setCategories] = useState([]);
+const [activeCategory, setActiveCategory] = useState('All');
 
 
 
@@ -62,6 +64,7 @@ useEffect(() => {
       ruSlug,
       enSlug,
       mainImage{ asset->{url} },
+      categories[]->{title}, 
       uzContent,
       ruContent,
       enContent,
@@ -74,6 +77,28 @@ useEffect(() => {
     .then(data => setPosts(data))
     .catch(console.error);
 }, []);
+
+
+useEffect(() => {
+  sanityClient
+    .fetch(`*[_type == "category"]{_id, title}`)
+    .then(data => setCategories(data))
+    .catch(console.error);
+}, []);
+
+const filteredPosts = useMemo(() => {
+  if (activeCategory === 'All') return otherPosts;
+
+  return otherPosts.filter(post =>
+    Array.isArray(post.categories) &&
+    post.categories.some(cat =>
+      typeof cat === 'object' ? cat.title === activeCategory : cat === activeCategory
+    )
+  );
+}, [otherPosts, activeCategory]);
+
+
+
 
  
 useEffect(() => {
@@ -90,7 +115,7 @@ useEffect(() => {
     // loading effekti orqali ochamiz
     setIsModalLoading(true);
     setTimeout(() => {
-      setSelectedPost(matchedPost); // 🔥 Faqat matched bo‘lsa modal ochiladi
+      setSelectedPost(matchedPost); // 🔥 Faqat matched bo'lsa modal ochiladi
       setIsModalLoading(false);
     }, 1000);
   }
@@ -158,7 +183,7 @@ const handleBookmarkToggle = (postId) => {
           setIsModalLoading(true); // Loader yoqamiz
         
           if (currentPath === targetPath) {
-            // Agar shu post ochiq bo‘lsa, avval boshqa sahifaga navigate qilamiz, keyin qaytamiz
+            // Agar shu post ochiq bo'lsa, avval boshqa sahifaga navigate qilamiz, keyin qaytamiz
             navigate('/', { replace: true }); 
             setTimeout(() => navigate(targetPath), 20); // 20ms keyin qayta navigate
           } else {
@@ -222,7 +247,7 @@ useEffect(() => {
           }));
         }
       
-        // ✅ Like qilingan postlar ro‘yxatini yangilash
+        // ✅ Like qilingan postlar ro'yxatini yangilash
         const newLikedPosts = hasLiked
           ? likedPosts.filter(id => id !== post._id)
           : [...likedPosts, post._id];
@@ -368,16 +393,59 @@ useEffect(() => {
         }}
       >
         
-        <div className="max-w-3xl mx-auto  space-y-6">
-          <motion.h2 variants={fadeInUp} className={`text-2xl lg:text-3xl font-bold ${isDark ? 'text-white' : 'text-black'} mb-4 flex items-center`}> 
-                    {language === 'uz' ? 'Blog' : language === 'ru' ? 'Блог' : 'Blog'}
-                    <motion.span
-                      initial={{ width: 0 }}
-                      animate={{ width: "2rem" }}
-                      transition={{ duration: 0.3, delay: 0.3 }}
-                      className={`block mt-1.5 h-1 ${isDark ? 'bg-[#e2e2e2]' : 'bg-gray-800'} ml-4`}
-                    ></motion.span>
-                  </motion.h2>
+        <div className="max-w-3xl mx-auto space-y-6">
+          <div className="flex items-center justify-between gap-4 mb-6">
+            <motion.h2 variants={fadeInUp} className={`text-2xl lg:text-3xl font-bold ${isDark ? 'text-white' : 'text-black'} flex items-center`}> 
+              {language === 'uz' ? 'Blog' : language === 'ru' ? 'Блог' : 'Blog'}
+              <motion.span
+                initial={{ width: 0 }}
+                animate={{ width: "2rem" }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+                className={`block mt-1.5 h-1 ${isDark ? 'bg-[#e2e2e2]' : 'bg-gray-800'} ml-4`}
+              ></motion.span>
+            </motion.h2>
+
+            {/* Categories */}
+            <motion.div 
+              className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <button
+                onClick={() => setActiveCategory('All')}
+                className={`px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200
+                  ${activeCategory === 'All' 
+                    ? isDark 
+                      ? 'bg-gradient-to-r from-white/10 to-white/5 text-white border border-white/20' 
+                      : 'bg-gradient-to-r from-gray-900 to-gray-800 text-white border border-gray-700'
+                    : isDark
+                      ? 'bg-[#232323] text-gray-300 border border-white/10 hover:border-white/20 hover:bg-white/5'
+                      : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                  }`}
+              >
+                {language === 'uz' ? 'Barchasi' : language === 'ru' ? 'Все' : 'All'}
+              </button>
+              
+              {categories.map(cat => (
+                <button
+                  key={cat._id}
+                  onClick={() => setActiveCategory(cat.title)}
+                  className={`px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200
+                    ${activeCategory === cat.title
+                      ? isDark
+                        ? 'bg-gradient-to-r from-white/10 to-white/5 text-white border border-white/20'
+                        : 'bg-gradient-to-r from-gray-900 to-gray-800 text-white border border-gray-700'
+                      : isDark
+                        ? 'bg-[#232323] text-gray-300 border border-white/10 hover:border-white/20 hover:bg-white/5'
+                        : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                    }`}
+                >
+                  {cat.title}
+                </button>
+              ))}
+            </motion.div>
+          </div>
 
           {/* Blog List */}
 <motion.div
@@ -393,6 +461,7 @@ useEffect(() => {
     }
   }}
 >
+
 
 {pinnedPost && (
   <motion.div
@@ -502,7 +571,7 @@ useEffect(() => {
 
 
 
-  {otherPosts.slice(0, visibleCount).map(post => (
+  {filteredPosts.slice(0, visibleCount).map(post => (
     <motion.div
     key={post._id}
     initial={{ opacity: 0, y: 30 }}
@@ -518,6 +587,8 @@ useEffect(() => {
       }`}
     onClick={() => handlePostClick(post)}
     >
+
+      
       <div className="flex items-center justify-between gap-3">
   {/* Text part */}
   <div className="flex-1">
