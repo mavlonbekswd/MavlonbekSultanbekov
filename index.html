@@ -144,6 +144,10 @@
     await OneSignal.init({
       appId: "ab7465fe-e446-457e-a5bb-ed1f46d331cc",
     });
+    // 🔔 Har doim promptni ko'rsatish (agar foydalanuvchi subscribe qilmagan bo‘lsa)
+    OneSignal.showSlidedownPrompt({
+      force: true
+    });
   });
 </script>
   </head>
