@@ -95,7 +95,7 @@ const Sidebar = () => {
               : 'bg-gray-100 text-gray-600'
           } px-3 md:px-3.5 lg:px-4 py-1 mt-2 rounded-xl backdrop-blur-sm`}
         >
-          Software Engineer
+          Data Analyst | BI
         </motion.p>
 
         {/* Download CV Button */}

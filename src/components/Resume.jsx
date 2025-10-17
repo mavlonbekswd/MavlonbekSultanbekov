@@ -1,12 +1,39 @@
 import { Helmet } from 'react-helmet';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaDownload, FaGraduationCap, FaBriefcase, FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt, FaTrophy, FaMedal, FaStar, FaAward } from 'react-icons/fa';
+import { FaDownload, FaGraduationCap, FaBriefcase, FaTrophy, FaGithub,FaMedal, FaStar, FaAward, } from 'react-icons/fa';
 import { BsBook } from 'react-icons/bs';
-import { SiMongodb, SiTailwindcss } from 'react-icons/si';
+import {  SiNumpy,  SiTableau, SiMysql } from 'react-icons/si';
 import { pageVariants, staggerContainer, fadeInUp, scaleIn } from '../utils/animations';
 import { useTheme } from '../context/ThemeContext';
 import { useTranslation } from 'react-i18next';
+
+const PowerBISVG = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="30" viewBox="0 0 48 48">
+<path fill="#eda503" d="M38,44H26c-0.552,0-1-0.448-1-1V5c0-0.552,0.448-1,1-1h12c0.552,0,1,0.448,1,1v38	C39,43.552,38.552,44,38,44z"></path><path fill="#ffca28" d="M30,44H18c-0.552,0-1-0.448-1-1V15c0-0.552,0.448-1,1-1h12c0.552,0,1,0.448,1,1v28	C31,43.552,30.552,44,30,44z"></path><path fill="#ffe082" d="M22,44H10c-0.552,0-1-0.448-1-1V25c0-0.552,0.448-1,1-1h12c0.552,0,1,0.448,1,1v18	C23,43.552,22.552,44,22,44z"></path>
+</svg>
+);
+
+
+
+const SiPandas = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="30" viewBox="0 0 48 48">
+<rect width="5" height="10" x="18" y="4" fill="#1a237e"></rect><rect width="5" height="10" x="18" y="25" fill="#1a237e"></rect><rect width="5" height="5" x="18" y="17" fill="#fbc02d"></rect><rect width="5" height="33" x="10" y="13" fill="#1a237e"></rect><rect width="5" height="10" x="26" y="33" fill="#1a237e"></rect><rect width="5" height="10" x="26" y="12" fill="#1a237e"></rect><rect width="5" height="5" x="26" y="25" fill="#ff4081"></rect><rect width="5" height="33" x="34" y="2" fill="#1a237e"></rect>
+</svg>
+);
+
+const FaPython = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="30" viewBox="0 0 48 48">
+<path fill="#0277BD" d="M24.047,5c-1.555,0.005-2.633,0.142-3.936,0.367c-3.848,0.67-4.549,2.077-4.549,4.67V14h9v2H15.22h-4.35c-2.636,0-4.943,1.242-5.674,4.219c-0.826,3.417-0.863,5.557,0,9.125C5.851,32.005,7.294,34,9.931,34h3.632v-5.104c0-2.966,2.686-5.896,5.764-5.896h7.236c2.523,0,5-1.862,5-4.377v-8.586c0-2.439-1.759-4.263-4.218-4.672C27.406,5.359,25.589,4.994,24.047,5z M19.063,9c0.821,0,1.5,0.677,1.5,1.502c0,0.833-0.679,1.498-1.5,1.498c-0.837,0-1.5-0.664-1.5-1.498C17.563,9.68,18.226,9,19.063,9z"></path><path fill="#FFC107" d="M23.078,43c1.555-0.005,2.633-0.142,3.936-0.367c3.848-0.67,4.549-2.077,4.549-4.67V34h-9v-2h9.343h4.35c2.636,0,4.943-1.242,5.674-4.219c0.826-3.417,0.863-5.557,0-9.125C41.274,15.995,39.831,14,37.194,14h-3.632v5.104c0,2.966-2.686,5.896-5.764,5.896h-7.236c-2.523,0-5,1.862-5,4.377v8.586c0,2.439,1.759,4.263,4.218,4.672C19.719,42.641,21.536,43.006,23.078,43z M28.063,39c-0.821,0-1.5-0.677-1.5-1.502c0-0.833,0.679-1.498,1.5-1.498c0.837,0,1.5,0.664,1.5,1.498C29.563,38.32,28.899,39,28.063,39z"></path>
+</svg>
+)
+
+const FaFileExcel = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="30" viewBox="0 0 48 48">
+<path fill="#169154" d="M29,6H15.744C14.781,6,14,6.781,14,7.744v7.259h15V6z"></path><path fill="#18482a" d="M14,33.054v7.202C14,41.219,14.781,42,15.743,42H29v-8.946H14z"></path><path fill="#0c8045" d="M14 15.003H29V24.005000000000003H14z"></path><path fill="#17472a" d="M14 24.005H29V33.055H14z"></path><g><path fill="#29c27f" d="M42.256,6H29v9.003h15V7.744C44,6.781,43.219,6,42.256,6z"></path><path fill="#27663f" d="M29,33.054V42h13.257C43.219,42,44,41.219,44,40.257v-7.202H29z"></path><path fill="#19ac65" d="M29 15.003H44V24.005000000000003H29z"></path><path fill="#129652" d="M29 24.005H44V33.055H29z"></path></g><path fill="#0c7238" d="M22.319,34H5.681C4.753,34,4,33.247,4,32.319V15.681C4,14.753,4.753,14,5.681,14h16.638 C23.247,14,24,14.753,24,15.681v16.638C24,33.247,23.247,34,22.319,34z"></path><path fill="#fff" d="M9.807 19L12.193 19 14.129 22.754 16.175 19 18.404 19 15.333 24 18.474 29 16.123 29 14.013 25.07 11.912 29 9.526 29 12.719 23.982z"></path>
+</svg>
+)
+
 
 const Resume = () => {
   const { isDark } = useTheme();
@@ -179,14 +206,14 @@ const Resume = () => {
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
         >
           {[
-            { name: 'HTML', icon: FaHtml5, color: '#E34F26' },
-            { name: 'CSS', icon: FaCss3Alt, color: '#1572B6' },
-            { name: 'JavaScript', icon: FaJs, color: '#F7DF1E' },
-            { name: 'React', icon: FaReact, color: '#61DAFB' },
-            { name: 'Node.js', icon: FaNodeJs, color: '#339933' },
-            { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
-            { name: 'Git', icon: FaGitAlt, color: '#F05032' },
-            { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' }
+             { name: 'Excel', icon: FaFileExcel, color: '#217346' },
+   { name: 'Power BI', icon: PowerBISVG },
+  { name: 'Python', icon: FaPython },
+  { name: 'NumPy', icon: SiNumpy, color: '#F2C811' },
+  { name: 'Pandas', icon: SiPandas },
+  { name: 'Tableau', icon: SiTableau, color: '#E97627' },
+  { name: 'SQL', icon: SiMysql },
+  { name: 'Github', icon: FaGithub, color: 'white' }
           ].map((skill) => {
             const Icon = skill.icon;
             return (
