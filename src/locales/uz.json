@@ -8,15 +8,17 @@
     "open_to_work" : "Ishga tayyor",
     "looking-for-new-opportunities":"Yangi imkoniyatlarni izlayapman",
     "about_me":"Men haqimda",
-    "about-me-p1":"Men dasturlashga ishtiyoqmand bo‘lgan dasturiy ta'minot muhandisiman. Asl vatani O‘zbekiston, hozirda esa Angliyaning Cambridge shahrida yashayman. Men zamonaviy, moslashuvchan va foydalanuvchilar uchun qulay veb-ilovalarni yaratishga ixtisoslashganman — asosan React.js, Tailwind CSS va JavaScript texnologiyalaridan foydalanaman.Dasturlashni kashf qilgan kunimdan boshlab bu nafaqat kod yozish, balki real muammolarga ijodiy va samarali yechim topish usuli ekanini anglaganman. Men doimo yangi vositalar va texnikalarni o‘rganishga intilaman, chunki ular orqali funksional va estetik jihatdan mukammal raqamli tajribalar yaratish mumkin.To‘liq funktsional veb-ilovalar yaratishmi, portfoliolar dizayni yoki bizneslarga onlayn o‘sishga yordam berishmi — har bir loyihaga men detallar va foydalanuvchi tajribasiga katta e’tibor bilan yondashaman.",
-    "about-me-p2": "Dasturlashdan tashqari, men marketing, tadbirkorlik va hayotni yengillashtiradigan vositalarni yaratishga qiziqaman. Mening maqsadim oddiy: <1>ijodiy gʻoyalarni samarali raqamli mahsulotlarga aylantirish.</1>",
+    "about-me-p1":"Men Data Analitik va Business Intelligence (BI) Developer sifatida ma’lumotlarni tahlil qilish va ularni foydali qarorlarga aylantirishga ixtisoslashganman. Aslim O‘zbekistondanman, hozirda London (Buyuk Britaniya) shahrida yashayman. Men Power BI, SQL Server, Excel va Python kabi vositalar orqali murakkab biznes va moliyaviy ma’lumotlarni tahlil qilib, ularni amaliy xulosalarga aylantiraman. Ma’lumot modellashtirish, moliyaviy hisobotlar va ishlash samaradorligi tahlili sohasidagi tajribam orqali kompaniyalarga yashirin tendensiyalarni aniqlash, KPI’larni kuzatish va ma’lumotga asoslangan qarorlar qabul qilishda yordam beraman. Ishim texnik aniqlik bilan biznes tushunchani uyg‘unlashtiradi — ma’lumotlarni strategiya va samaradorlikni oshiruvchi vizual hikoyalarga aylantiraman. Men interaktiv dashboardlar, avtomatlashtirilgan moliyaviy hisobotlar va ETL jarayonlarini ishlab chiqaman — bu orqali ma’lumot manbadan to sof tahliliy ko‘rinishgacha samarali oqib o‘tadi. Tajribam sotuv, marketing va moliya yo‘nalishlarida, ayniqsa prognozlash aniqligini, xarajat tahlilini va foydalilikni oshirishga qaratilgan.",
+    "about-me-p2": "Ma’lumotlar biznes samaradorligini qanday harakatga keltirishini o‘rganishga juda qiziqaman va doimiy ravishda vizualizatsiya, Power Query, DAX va moliyaviy modellashtirish bo‘yicha ko‘nikmalarimni rivojlantiraman. <1>Ma’lumotlarni aniqlikka, aniqlikni esa o‘sishga aylantiraman.</1>",
     "what-i-do":"Nimalar qilayapman",
-      "web-development":"Veb Daturlash",
-      "web-dev-p":"Zamonaviy texnologiyalar yordamida jozibali va sifatli saytlar yarataman. Asosiy e’tiborim — foydalanuvchi interfeysi.",
-      "seo-opt":"SEO Optimallashtirish",
-      "seo-description": "Men veb-saytlarni Google’da yuqori o‘rinlarga chiqishi uchun tuzilmasi, kontenti, tezligi va qulayligini yaxshilab optimallashtiraman.",
-      "blog-title": "Blog Boshqaruvi",
-"blog-description": "Men turli mavzularda foydali va qiziqarli sahifa uchun postlar yarataman, obunachilarim bilan faol va manfaatli muloqotni ta'minlayman.",
+      "web-development":"Ma’lumotlarni tahlil qilish va xulosalar chiqarish",
+      "web-dev-p":"Men SQL, Python va Excel orqali turli ma’lumotlar to‘plamini tahlil qilib, biznesga qaror qabul qilishda yordam beruvchi tendensiyalar va imkoniyatlarni aniqlayman. Maqsadim — ma’lumotlarni aniq, tushunarli va qiymatli tahlilga aylantirish.",
+      "seo-opt":"Business Intelligence va Dashboard dizayni",
+      "seo-description": "Men Power BI orqali zamonaviy, interaktiv dashboardlar yarataman. Ular murakkab ma’lumotlarni vizual shaklda oddiy va tushunarli ko‘rsatib, rahbarlar uchun strategik qarorlarni osonlashtiradi.",
+      "blog-title": "Moliyaviy tahlil va hisobotlar",
+"blog-description": "Men Power BI, Excel va DAX yordamida real vaqt rejimida ishlaydigan moliyaviy dashboardlar ishlab chiqaman. Bu orqali daromad, xarajat, ROI va boshqa muhim ko‘rsatkichlar asosida tahlil olib borish, byudjet va prognozlarni yaxshilash imkonini beradi.",
+"data-modeling-title":"Ma’lumotlar modellashtirish va ETL avtomatlashtirish",
+"data-modeling": "Men Power Query va SQL Server yordamida ma’lumotlarni tozalash, birlashtirish va avtomatik ravishda yangilab turadigan ETL jarayonlarini yarataman. Bu tizimlar ma’lumotlarni to‘liq ishonchli va tahlilga tayyor holatda saqlaydi.",
 "i-here": "Men shu yerda 😎",
 "resume-sec": "Rezyume",
 "download-cv": "CV yuklash",
@@ -55,13 +57,13 @@
 "skills": {
   "description": "Quyida men har kuni ishlatadigan va doimiy ravishda mukammallashtirayotgan texnologiyalarim keltirilgan:",
   "title":"Bilim va Ko'nikmalarim"
-  
-  
+
+
 },
 
   "project1-title": "SpeedFix Plumbing Vebsayti",
   "project1-description": "SpeedFix Plumbing'da biz muammolarni shunchaki hal qilmaymiz — biz xavfsizlik tushunchasini qayta talqin qilamiz.",
-  
+
   "project2-title": "TEZ KUNDA",
   "project2-description": "To‘liq funksiyalarga ega onlayn do‘kon: savatcha, foydalanuvchi avtorizatsiyasi va to‘lov tizimi bilan integratsiya.",
 
@@ -101,10 +103,9 @@
     "form-message-required": "Xabar majburiy",
     "loadMore":"Ko'proq ko'rish",
     "loading": "Maqola yuklanmoqda..."
-  
-  
+
+
 
 
 
     }
-  

@@ -1,8 +1,10 @@
 import { Helmet } from 'react-helmet';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaCode } from 'react-icons/fa';
-import { BiMessageSquareDetail } from 'react-icons/bi';
+import { CgInsights } from "react-icons/cg";
+import { MdBusinessCenter } from "react-icons/md";
+import { BsClipboard2Data } from "react-icons/bs";
+import { BsDatabase } from "react-icons/bs";
 import { pageVariants, staggerContainer, fadeInUp, scaleIn } from '../utils/animations';
 import { useTheme } from '../context/ThemeContext';
 import { FaSearch } from "react-icons/fa";
@@ -21,12 +23,12 @@ const About = () => {
   <title>About Me | Mavlonbek Sultanbekov</title>
   <meta
     name="description"
-    content="Learn more about Mavlonbek Sultanbekov – a passionate software engineer based in Cambridge, UK, building modern and user-friendly digital experiences."
-    
+    content="Learn more about Mavlonbek Sultanbekov – a passionate data analytics based in London, UK, building modern and user-friendly digital experiences."
+
   />
   <meta
     name="keywords"
-    content="Mavlonbek Sultanbekov, About Mavlonbek, Software Engineer, Web Developer, Cambridge, Portfolio"
+    content="Mavlonbek Sultanbekov, About Mavlonbek, Data Analytics, BI developer, London, Portfolio"
   />
   <meta name="author" content="Mavlonbek Sultanbekov" />
   <link rel="canonical" href="https://www.mavlonbek.com/about" />
@@ -42,7 +44,7 @@ const About = () => {
     >
       {/* About Me Section */}
       <motion.section variants={staggerContainer}>
-        
+
         <motion.h2 variants={fadeInUp} className={`text-2xl lg:text-3xl font-bold ${isDark ? 'text-white' : 'text-black'} mb-4 flex items-center`}>
           {t("about_me")}
           <motion.span
@@ -55,7 +57,7 @@ const About = () => {
         <motion.div variants={staggerContainer} className={`${isDark ? 'text-gray-400' : 'text-gray-600'}  space-y-4`}>
           <motion.p variants={fadeInUp} className="text-base lg:text-lg  leading-relaxed">
             {t("about-me-p1")}
-         
+
 
 
 
@@ -88,7 +90,7 @@ const About = () => {
           >
             <div className="flex items-start gap-4">
               <div className={`text-${isDark ? 'white' : 'gray-800'} text-xl lg:text-2xl`}>
-                <FaCode />
+                <CgInsights />
               </div>
               <div>
                 <h3 className={`text-lg lg:text-xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>{t("web-development")}</h3>
@@ -107,7 +109,7 @@ const About = () => {
           >
             <div className="flex items-start gap-4">
               <div className={`text-${isDark ? 'white' : 'gray-800'} text-xl lg:text-2xl`}>
-                <FaSearch />
+                <MdBusinessCenter />
               </div>
               <div>
                 <h3 className={`text-lg lg:text-xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>{t("seo-opt")}</h3>
@@ -127,12 +129,29 @@ const About = () => {
           >
             <div className="flex items-start gap-4">
               <div className={`text-${isDark ? 'white' : 'gray-800'} text-xl lg:text-2xl`}>
-                <BiMessageSquareDetail />
+                <BsClipboard2Data />
               </div>
               <div>
                 <h3 className={`text-lg lg:text-xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>{t("blog-title")}</h3>
                 <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-base lg:text-lg leading-relaxed`}>
                 {t("blog-description")}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+          <motion.div
+            variants={scaleIn}
+            whileHover={{ scale: 1.02 }}
+            className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-200'} p-4 lg:p-6 rounded-2xl shadow-[0_3px_10px_#000000] shadow-[0_0_15px_rgba(255,255,255,0.1)]`}
+          >
+            <div className="flex items-start gap-4">
+              <div className={`text-${isDark ? 'white' : 'gray-800'} text-xl lg:text-2xl`}>
+                <BsDatabase />
+              </div>
+              <div>
+                <h3 className={`text-lg lg:text-xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>{t("data-modeling-title")}</h3>
+                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-base lg:text-lg leading-relaxed`}>
+                {t("data-modeling")}
                 </p>
               </div>
             </div>

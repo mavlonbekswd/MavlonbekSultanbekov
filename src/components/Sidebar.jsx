@@ -19,7 +19,7 @@ const Sidebar = () => {
   const { isDark } = useTheme();
   const [downloadError, setDownloadError] = useState(false);
   const { t } = useTranslation();
-  
+
 
   const handleDownloadCV = () => {
     try {
@@ -51,7 +51,7 @@ const Sidebar = () => {
                 isDark ? 'bg-[#2a2a2a]' : 'bg-gray-100'
               } p-2`}
             />
-            
+
             {/* LinkedIn-style Open to Work Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -61,21 +61,21 @@ const Sidebar = () => {
             >
               <div className={`relative group cursor-pointer`}>
                 <div className={`w-19 md:w-20 lg:w-20 h-6 md:h-6.5 lg:h-7 rounded-full flex items-center justify-center ${
-                  isDark 
-                    ? 'bg-[#0A6] bg-opacity-90' 
+                  isDark
+                    ? 'bg-[#0A6] bg-opacity-90'
                     : 'bg-[#0A6] bg-opacity-90'
                 } border-2 border-[#0A66]`}>
                   <span className="text-[9px] md:text-[9.5px] lg:text-[10px] font-medium text-white">{t('open_to_work')}</span>
                 </div>
-                
+
  {/* Hover tooltip */}
-                <div className={`absolute -top-12 left-1/2 -translate-x-1/2 w-32 p-2 rounded-lg text-[10px] 
-                  ${isDark 
-                    ? 'bg-[#2a2a2a] text-white' 
-                    : 'bg-white text-gray-800'} 
+                <div className={`absolute -top-12 left-1/2 -translate-x-1/2 w-32 p-2 rounded-lg text-[10px]
+                  ${isDark
+                    ? 'bg-[#2a2a2a] text-white'
+                    : 'bg-white text-gray-800'}
                   shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-center`}>
                   <p className="font-medium">{t('looking-for-new-opportunities')}</p>
-                  <div className={`absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 
+                  <div className={`absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 rotate-45
                     ${isDark ? 'bg-[#2a2a2a]' : 'bg-white'}`}></div>
                 </div>
               </div>
@@ -90,8 +90,8 @@ const Sidebar = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
           className={`text-xs md:text-[13px] lg:text-sm ${
-            isDark 
-              ? 'bg-[#2a2a2a] text-gray-300' 
+            isDark
+              ? 'bg-[#2a2a2a] text-gray-300'
               : 'bg-gray-100 text-gray-600'
           } px-3 md:px-3.5 lg:px-4 py-1 mt-2 rounded-xl backdrop-blur-sm`}
         >
@@ -119,15 +119,15 @@ const Sidebar = () => {
 
         {/* Contact Info */}
         <div className="space-y-2 lg:space-y-7 md:space-y-3.5 lg:space-y-4 w-full  text-left">
-          
-          <ContactItem  
+
+          <ContactItem
             icon={<FaEnvelope />}
             label={t("contact-email")}
-            value="mavlonbeksultanbekov3@gmail.com" 
+            value="mavlondata@gmail.com"
             className={`text-[11px] md:text-[12px] lg:text-[13px] tracking-tight`}
             isDark={isDark}
           />
-          
+
           <ContactItem
             icon={<FaPhone />}
             label={t("contact-phone")}
@@ -138,12 +138,12 @@ const Sidebar = () => {
           <ContactItem
             icon={<FaMapMarkerAlt />}
             label={t("contact-location")}
-            value="Cambridge, UK"
+            value="London, UK"
             className="text-xs md:text-[13px] lg:text-sm"
             isDark={isDark}
           />
         </div>
-          
+
         {/* Socials */}
         <div className="flex items-center lg:gap-5 gap-3 mt-9">
           <motion.a
@@ -163,7 +163,7 @@ const Sidebar = () => {
             href="https://www.linkedin.com/in/mavlonbek-sultanbekov-219098283/"
             target="_blank"
             rel="noopener noreferrer"
-            
+
             className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
               ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
               backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
@@ -175,7 +175,7 @@ const Sidebar = () => {
             href="https://t.me/mavlono_sulton"
             target="_blank"
             rel="noopener noreferrer"
-           
+
             className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
               ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
               backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
@@ -187,7 +187,7 @@ const Sidebar = () => {
             href="https://wa.me/+4407881196552"
             target="_blank"
             rel="noopener noreferrer"
-            
+
             className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
               ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
               backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
@@ -238,7 +238,7 @@ const ContactItem = ({ icon, label, value, isDark, className }) => {
         <p className={`${className || 'text-sm'} ${isDark ? 'text-white' : 'text-black'}`}>{value}</p>
       </div>
       {isClickable && (
-        <motion.div 
+        <motion.div
           className={`opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-2 rounded-lg
             ${isDark ? 'text-white' : 'text-black'}`}
         >
@@ -273,4 +273,3 @@ const SocialIcon = ({ href, icon, isDark }) => (
 );
 
 export default Sidebar;
-  

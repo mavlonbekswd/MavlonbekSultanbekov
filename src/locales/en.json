@@ -9,15 +9,17 @@
     "open_to_work": "Open to work",
     "looking-for-new-opportunities": "Looking for opportunities",
     "about_me": "About Me",
-    "about-me-p1":"I'm a passionate software engineer originally from Uzbekistan, currently based in Cambridge, UK. I specialize in crafting modern, responsive, and user-friendly web applications using the latest technologies like React.js, Tailwind CSS, and JavaScript.From the moment I discovered programming, I knew it was more than just code — it was a way to solve real-world problems creatively and efficiently. I’m constantly learning and exploring new tools and techniques to build digital experiences that are both functional and beautifully designed.Whether it's developing full-stack web apps, designing portfolios, or helping businesses grow online — I approach every project with attention to detail and a strong focus on user experience.",
-    "about-me-p2": "In addition to coding, I'm interested in marketing, entrepreneurship, and building tools that make life easier. My mission is simple: <1>turn creative ideas into impactful digital products.</1>",
+    "about-me-p1":"I'm a passionate Data Analyst and Business Intelligence Developer originally from Uzbekistan, currently based in London, UK. I specialize in transforming complex business and financial data into actionable insights through tools like Power BI, SQL Server, Excel, and Python. With a solid understanding of data modeling, financial reporting, and performance analytics, I help organizations uncover hidden trends, monitor KPIs, and make smarter, data-driven decisions. My work blends technical accuracy with business awareness — turning data into visual stories that inform strategy and improve efficiency.",
+    "about-me-p2": "I design and develop interactive dashboards, automated financial reports, and ETL workflows that streamline how data moves from raw sources to clear visual insights. I’ve worked with data across domains like sales, marketing, and finance, focusing on improving forecasting accuracy, cost analysis, and profitability tracking. I’m deeply curious about how data drives business performance, and I continuously refine my skills in data visualization, Power Query, DAX, and financial modeling. My mission is simple yet powerful: <1>Transform data into clarity, and clarity into business growth.</1>",
     "what-i-do":"What I'am Doing",
-    "web-development":"Web Development",
-    "web-dev-p":" I create high-quality websites using modern technologies, focusing on frontend development.",
-    "seo-opt":"SEO Optimization",
-    "seo-description":" I optimize websites for better search engine visibility by improving structure, content, speed, and accessibility to help them rank higher on Google.",
-    "blog-title": "Blog Management",
-"blog-description": "I write useful and engaging blog posts on various topics, maintaining interactive communication with my audience.",
+    "web-development":"Data Analytics & Insights",
+    "web-dev-p":" I explore and analyze datasets using SQL, Python, and Excel to uncover trends, correlations, and opportunities that help businesses make informed, data-driven decisions. My focus is on accuracy, storytelling, and translating data into clear business value.",
+    "seo-opt":"Business Intelligence & Dashboard Design",
+    "seo-description":"I develop modern, interactive dashboards in Power BI that transform raw data into powerful visual insights. From executive overviews to department-level analytics, I create dynamic data models and intuitive visuals that simplify complex metrics.",
+    "blog-title": "Financial Analytics & Reporting",
+"blog-description": "I design and automate financial dashboards that track revenue, expenses, ROI, and performance KPIs. Using tools like Excel, Power BI, and DAX, I deliver real-time financial insights that improve budgeting, forecasting, and decision-making.",
+"data-modeling-title":"Data Modeling & ETL Automation",
+"data-modeling": "I build efficient ETL pipelines to clean, transform, and integrate data from multiple sources. With Power Query and SQL Server, I ensure accuracy, scalability, and automation in every step of the data process.",
   "i-here":"I'm here 😎",
   "resume-sec": "Resume",
   "download-cv": "Download CV",
@@ -59,7 +61,7 @@
 
   "project1-title": "SpeedFix Plumbing Website",
   "project1-description": "At SpeedFix Plumbing, we don't just solve problems — we redefine what it means to feel safe at home.",
-  
+
   "project2-title": "COMING SOON",
   "project2-description": "A full-featured e-commerce platform with cart functionality, user authentication, and payment integration.",
 
@@ -103,7 +105,7 @@
 
 
 
-    
+
 
 
 
@@ -113,4 +115,3 @@
 
 
   }
-  
