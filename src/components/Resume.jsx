@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaDownload, FaGraduationCap, FaBriefcase, FaTrophy, FaGithub,FaMedal, FaStar, FaAward, } from 'react-icons/fa';
+import { ExternalLink } from "lucide-react";
 import { BsBook } from 'react-icons/bs';
 import {  SiNumpy,  SiTableau, SiMysql } from 'react-icons/si';
 import { pageVariants, staggerContainer, fadeInUp, scaleIn } from '../utils/animations';
@@ -38,7 +39,7 @@ const FaFileExcel = () => (
 const Resume = () => {
   const { isDark } = useTheme();
   const { t } = useTranslation();
- 
+
 
   return (
     <motion.div
@@ -46,7 +47,7 @@ const Resume = () => {
       initial="initial"
       animate="animate"
       exit="exit"
-     
+
       className={` space-y-8 lg:space-y-12 ${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEEEE]'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.2)]`}
     >
       {/* Header with Download Button */}
@@ -64,7 +65,7 @@ const Resume = () => {
           variants={scaleIn}
           href="/CV-Mavlonbek Sultonbekov.pdf"
           download
-          
+
           className={`flex items-center gap-2 px-4 py-2 rounded-lg shadow-lg
             ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
             backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
@@ -75,6 +76,188 @@ const Resume = () => {
         </a>
       </motion.div>
 
+            {/* Experience Section */}
+
+
+      <section variants={staggerContainer} initial="initial" animate="animate">
+        <h3 variants={fadeInUp} className={`text-xl lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-6 flex items-center gap-3`}>
+        <FaBriefcase className={isDark ? 'text-[#e2e2e2]' : 'text-gray-800'} />
+        {t("experience")}
+        </h3>
+        <div className="space-y-6">
+
+
+
+    {/* Emotiv Online */}
+<TimelineItem
+  title={
+    <div className="flex items-center gap-2">
+      {/* Job + Company same line */}
+      <span className="font-semibold text-lg">
+        {t("emotiv-role")}
+      </span>
+      <a
+        href="https://emotivonline.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-500 hover:text-blue-600 dark:hover:text-amber-400 transition-colors flex items-center gap-1"
+      >
+        <span>{t("emotiv-title")}</span>
+        <ExternalLink size={16} />
+      </a>
+    </div>
+  }
+  date={
+    <span className="text-sm">
+      {t("emotiv-date")}
+    </span>
+  }
+  duration={
+    <span className="text-sm">
+      {t("emotiv-duration")}
+    </span>
+  }
+  description={
+    <div className="mt-2 leading-relaxed">
+      <p>{t("emotiv-description1")}</p>
+      <p>{t("emotiv-description2")}</p>
+    </div>
+  }
+  isDark={isDark}
+/>
+
+
+                  {/* Itransition Group */}
+            <TimelineItem
+            title={
+              <div className="flex items-center gap-2">
+                {/* Job + Company same line */}
+                <span className="font-semibold  text-lg">
+                  {t("itransition-role")}
+                </span>
+                <a
+                  href="https://www.itransition.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-500  hover:text-blue-600 dark:hover:text-amber-400 transition-colors flex items-center gap-1"
+                >
+                  <span>{t("itransition-title")}</span>
+                  <ExternalLink size={16} />
+                </a>
+              </div>
+            }
+            date={
+              <span className="text-sm ">
+                {t("itransition-date")}
+              </span>
+            }
+            duration={
+              <span className="text-sm  ">
+                {t("itransition-duration")}
+              </span>
+            }
+            description={
+              <div className="mt-2 leading-relaxed  ">
+                <p>{t("itransition-description1")}</p>
+                <p>{t("itransition-description2")}</p>
+              </div>
+            }
+            isDark={isDark}
+          />
+
+
+
+            {/* Quy Mill Hotel & Spa */}
+            <TimelineItem
+              title={
+                <div className="flex items-center gap-2">
+                  {/* Job + Company same line */}
+                  <span className="font-semibold text-lg">
+                    {t("quymill-role")}
+                  </span>
+                  <a
+                    href="https://www.cambridgequymill.co.uk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-500 hover:text-blue-600 dark:hover:text-amber-400 transition-colors flex items-center gap-1"
+                  >
+                    <span>{t("quymill-title")}</span>
+                    <ExternalLink size={16} />
+                  </a>
+                </div>
+              }
+              date={
+                <span className="text-sm">
+                  {t("quymill-date")}
+                </span>
+              }
+              duration={
+                <span className="text-sm">
+                  {t("quymill-duration")}
+                </span>
+              }
+              description={
+                <div className="mt-2 leading-relaxed">
+                  <p>{t("quymill-description1")}</p>
+                  <p>{t("quymill-description2")}</p>
+                </div>
+              }
+              isDark={isDark}
+            />
+
+
+
+
+
+
+         {/* SpeedFix Plumbing LTD */}
+          <TimelineItem
+            title={
+              <div className="flex items-center gap-2">
+                {/* Job + Company same line */}
+                <span className="font-semibold text-lg">
+                  {t("speedfix-role")}
+                </span>
+                <a
+                  href="https://urgentplumbing.uk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-500 hover:text-blue-600 dark:hover:text-amber-400 transition-colors flex items-center gap-1"
+                >
+                  <span>{t("speedfix-title")}</span>
+                  <ExternalLink size={16} />
+                </a>
+              </div>
+            }
+            date={
+              <span className="text-sm">
+                {t("speedfix-date")}
+              </span>
+            }
+            duration={
+              <span className="text-sm">
+                {t("speedfix-duration")}
+              </span>
+            }
+            description={
+              <div className="mt-2 leading-relaxed">
+                <p>{t("speedfix-description1")}</p>
+                <p>{t("speedfix-description2")}</p>
+              </div>
+            }
+            isDark={isDark}
+          />
+
+
+
+
+
+
+      
+
+        </div>
+      </section>
+
       {/* Education Section */}
       <motion.section variants={staggerContainer} initial="initial" animate="animate">
         <motion.h3 variants={fadeInUp} className={`text-xl lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-6 flex items-center gap-3`}>
@@ -82,13 +265,13 @@ const Resume = () => {
           {t("education")}
         </motion.h3>
         <div className="space-y-6">
-          <TimelineItem 
+          <TimelineItem
             title={t("timeline.title")}
             date={t("timeline.date")}
             description={t("timeline.description")}
             isDark={isDark}
           />
-          <TimelineItem 
+          <TimelineItem
             title={t("najot-title")}
             date={t("najot-date")}
             duration={t("najot-duration")}
@@ -98,40 +281,7 @@ const Resume = () => {
         </div>
       </motion.section>
 
-      {/* Experience Section */}
-      
 
-      <section variants={staggerContainer} initial="initial" animate="animate">
-        <h3 variants={fadeInUp} className={`text-xl lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-6 flex items-center gap-3`}>
-        <FaBriefcase className={isDark ? 'text-[#e2e2e2]' : 'text-gray-800'} />
-        {t("experience")}
-        </h3>
-        <div className="space-y-6">
-          <TimelineItem 
-            title={t("speedfix-title")}
-            date={t("speedfix-date")}
-            duration={t("speedfix-duration")}
-           description={
-  <div>
-    <p>{t("speedfix-description1")}</p>
-    <p>{t("speedfix-description2")}</p>
-  </div>
-}
-
-            
-            isDark={isDark}
-          />
-
-      <TimelineItem 
-            title={t("freelance-title")}
-            date="2023 — 2024"
-            duration={t("freelance-duration")}
-            description={t("freelance-description")}
-            isDark={isDark}
-          />
-          
-        </div>
-      </section>
 
       {/* Rewards Section */}
       <section variants={staggerContainer} initial="initial" animate="animate">
@@ -139,8 +289,8 @@ const Resume = () => {
           <FaTrophy className={`${isDark ? 'text-[#e2e2e2]' : 'text-gray-800'} text-2xl`} />
           {t("rewards-title")}
         </motion.h3>
-        <motion.div 
-          variants={staggerContainer} 
+        <motion.div
+          variants={staggerContainer}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
             {[
@@ -170,8 +320,8 @@ const Resume = () => {
               key={reward.title}
               variants={fadeInUp}
               className={`p-4 rounded-xl ${
-                isDark 
-                  ? 'bg-[#2a2a2a] text-[#e2e2e2]' 
+                isDark
+                  ? 'bg-[#2a2a2a] text-[#e2e2e2]'
                   : 'bg-gray-100 text-gray-800'
               } hover:transform hover:scale-105 transition-transform duration-300`}
             >
@@ -201,8 +351,8 @@ const Resume = () => {
           {t("skills.title")}
         </h3>
         <p className={isDark ? 'text-[#e2e2e2] mb-4' : 'text-gray-800 mb-4' }> {t("skills.description")}</p>
-        <div 
-          variants={staggerContainer} 
+        <div
+          variants={staggerContainer}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
         >
           {[
@@ -221,8 +371,8 @@ const Resume = () => {
                 key={skill.name}
                 variants={fadeInUp}
                 className={`px-4 py-3 rounded-lg flex items-center justify-center gap-2 ${
-                  isDark 
-                    ? 'bg-[#2a2a2a] text-[#e2e2e2]' 
+                  isDark
+                    ? 'bg-[#2a2a2a] text-[#e2e2e2]'
                     : 'bg-gray-100 text-gray-800'
                 }`}
               >
@@ -266,14 +416,14 @@ const TimelineItem = ({ title, date, duration, description, isDark }) => (
     ></div>
     <div>
       <h4 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-black'} mb-1`}>{title}</h4>
-      
-      
+
+
       <span className={`${isDark ? 'text-[#e2e2e2]' : 'text-gray-600'} text-sm mb-2 block`}>
   {date}
   <span className="text-xs ml-2 text-gray-400" >{duration}</span>
 </span>
 
-  
+
 <div className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm lg:text-base`}>{description} </div>
     </div>
   </div>
