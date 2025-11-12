@@ -318,7 +318,7 @@ const Resume = () => {
 
 
       {/* Rewards Section */}
-      <section variants={staggerContainer} initial="initial" animate="animate">
+      {/* <section variants={staggerContainer} initial="initial" animate="animate">
         <motion.h3 variants={fadeInUp} className={`text-xl lg:text-2xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-6 flex items-center gap-3`}>
           <FaTrophy className={`${isDark ? 'text-[#e2e2e2]' : 'text-gray-800'} text-2xl`} />
           {t("rewards-title")}
@@ -376,7 +376,9 @@ const Resume = () => {
             </motion.div>
           ))}
         </motion.div>
-      </section>
+      </section> */}
+
+
 
       {/* Skills Section */}
       <section variants={staggerContainer} initial="initial" animate="animate">

@@ -9,17 +9,17 @@ import { useTranslation } from 'react-i18next';
 
 // Sample projects data - replace with your actual projects
 let projectsData = [
-  
+
   {
     id: 1,
     titleKey: "project1-title",
     descriptionKey: "project1-description",
-    category: "JavaScript",
+    category: "PowerBI",
     loading:"lazy",
-    image: "/SpeedFixLogo.webp",
-    technologies: ["JavaScript", "React", "Scss"],
+    image: "/carselaes_dash.png",
+    technologies: ["PowerBI", "Excel", "SQL"],
     githubLink: "https://github.com/mavlonbekswd/SpeedFixPlumbingComp.git",
-    liveLink: "https://speedfixplumbing.co.uk/"
+    liveLink: "https://app.powerbi.com/view?r=eyJrIjoiOTBjZTU2MGEtOTUzNS00MTYwLThhMWQtNjExYjgyNmExOTg0IiwidCI6ImIxNzNiMGY3LWMyNGItNGQ3OS04NzZlLWI1ZjBhZDUxNmQ0MSIsImMiOjZ9"
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ let projectsData = [
     category: "React",
     loading:"lazy",
     image: "/Cooming-Soon.webp",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+    technologies: ["DAX", "Github", "NumPy", "Pandas"],
     githubLink: "https://github.com/yourusername/project1",
     liveLink: "https://project1.com"
   },
@@ -60,7 +60,8 @@ const Projects = () => {
     t("category-all"),
     t("category-react"),
     t("category-js"),
-    t("category-node")
+    t("category-node"),
+    t("category-excel")
   ];
 
   const filteredProjects = activeCategory === "All"
@@ -88,7 +89,7 @@ const Projects = () => {
       initial="initial"
       animate="animate"
       exit="exit"
-      
+
       className={` space-y-8 lg:space-y-12 ${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEEEE]'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.2)]`}
     >
       {/* Header */}
@@ -102,7 +103,7 @@ const Projects = () => {
             className={`block mt-1.5 h-1 ${isDark ? 'bg-[#e2e2e2]' : 'bg-gray-800'} ml-4`}
           ></motion.span>
         </h2>
-        
+
         {/* Filter Buttons */}
         <div className="flex flex-wrap gap-2">
           {categories.map((category) => (

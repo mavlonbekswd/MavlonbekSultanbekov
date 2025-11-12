@@ -85,8 +85,8 @@
   "title": "My Skills"
 },
 
-  "project1-title": "SpeedFix Plumbing Website",
-  "project1-description": "At SpeedFix Plumbing, we don't just solve problems — we redefine what it means to feel safe at home.",
+  "project1-title": "Car Sales Project",
+  "project1-description": "Car Sales Dashboard that visualizes key business insights like:Year-to-Date (YTD) total sales,Average selling prices,Popular car body styles,Company-wise performance,and Weekly sales trends.",
 
   "project2-title": "COMING SOON",
   "project2-description": "A full-featured e-commerce platform with cart functionality, user authentication, and payment integration.",
@@ -95,9 +95,10 @@
   "project3-description": "A responsive portfolio website with smooth animations and modern design.",
     "projects-sec": "Projects",
       "category-all": "All",
-      "category-react": "React",
-      "category-js": "JavaScript",
-      "category-node": "Node.js",
+      "category-react": "PowerBI",
+      "category-js": "Python",
+      "category-node": "SQL",
+      "category-excel": "Excel",
       "coming-soon-title": "Coming Soon",
 "coming-soon-description": "Exciting content is on the way!",
 "contact-title": "Contact Me",

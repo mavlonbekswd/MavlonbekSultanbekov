@@ -11,16 +11,16 @@ import { useTranslation } from 'react-i18next';
 // Notification component
 const Notification = ({ status, message, onClose }) => {
   const { isDark } = useTheme();
-  
+
   return (
-    
+
     <motion.div
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -50 }}
       className={`fixed top-4 right-4 p-4 rounded-lg shadow-lg ${
-        status === 'loading' 
-          ? (isDark ? 'bg-blue-900/90' : 'bg-blue-100') 
+        status === 'loading'
+          ? (isDark ? 'bg-blue-900/90' : 'bg-blue-100')
           : status === 'success'
           ? (isDark ? 'bg-green-900/90' : 'bg-green-100')
           : (isDark ? 'bg-red-900/90' : 'bg-red-100')
@@ -43,7 +43,7 @@ const Notification = ({ status, message, onClose }) => {
         {status === 'error' && (
           <motion.div
             initial={{ scale: 0 }}
-            animate={{ 
+            animate={{
               scale: 1,
               rotate: [0, 15, -15, 15, -15, 0],
               transition: {
@@ -56,7 +56,7 @@ const Notification = ({ status, message, onClose }) => {
           </motion.div>
         )}
         <p className={`${
-          status === 'loading' 
+          status === 'loading'
             ? (isDark ? 'text-blue-200' : 'text-blue-800')
             : status === 'success'
             ? (isDark ? 'text-green-200' : 'text-green-800')
@@ -78,10 +78,10 @@ const Contact = () => {
 
   const validateForm = (e) => {
     e.preventDefault();
-    
+
     const formData = new FormData(form.current);
     const newErrors = {};
-    
+
     if (!formData.get('name').trim()) {
       newErrors.name = "form-name-required";
     }
@@ -105,7 +105,7 @@ const Contact = () => {
     if (!validateForm(e)) {
       return;
     }
-    
+
     // Show loading notification
     setNotification({ status: 'loading', message: t("notification-sending") });
 
@@ -123,7 +123,7 @@ const Contact = () => {
         e.target.reset();
         // Clear notification after 3 seconds
         setTimeout(() => setNotification(null), 3000);
-      }, 
+      },
       (error) => {
         // Show error notification
         setNotification({ status: 'error', message: t("notification-error")});
@@ -141,7 +141,7 @@ const Contact = () => {
   <meta
     name="description"
     content="Get in touch with Mavlonbek Sultanbekov for collaborations, project inquiries, or just to say hello."
-    
+
   />
   <meta
     name="keywords"
@@ -160,7 +160,7 @@ const Contact = () => {
           />
         )}
       </AnimatePresence>
-      
+
       <motion.div
         variants={pageVariants}
         initial="initial"
@@ -189,10 +189,10 @@ const Contact = () => {
               <h3 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-black'}`}>{t("contact-info")}</h3>
               <div className="space-y-3">
                 <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-[14px] lg:text-[15px] `}>
-                  <span className="font-medium">{t("contact-email")}:</span> mavlonbeksultanbekov3@gmail.com
+                  <span className="font-medium">{t("contact-email")}:</span> mavlondata@gmail.com
                 </p>
                 <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                  <span className="font-medium">{t("contact-location")}:</span> Cambridge, UK
+                  <span className="font-medium">{t("contact-location")}:</span> London, UK
                 </p>
                 <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                   <span className="font-medium">{t("contact-phone")}: </span>
@@ -252,8 +252,8 @@ const Contact = () => {
                   name="name"
                   placeholder={t("form-name-placeholder")}
                   className={`w-full px-4 py-2 rounded-lg ${
-                    isDark 
-                      ? 'bg-[#2a2a2a] text-white border-gray-600 focus:border-gray-500' 
+                    isDark
+                      ? 'bg-[#2a2a2a] text-white border-gray-600 focus:border-gray-500'
                       : 'bg-gray-100 text-gray-900 border-gray-300 focus:border-gray-400'
                   } ${errors.name ? 'border-red-500' : 'border'} focus:outline-none focus:ring-2 focus:ring-opacity-50`}
                   onChange={() => setErrors({...errors, name: ''})}
@@ -270,12 +270,12 @@ const Contact = () => {
                   type="email"
                   id="email"
                   name="email"
-                  
+
                   placeholder={t("form-email-placeholder")}
                   title={t("form-email-title")}
                   className={`w-full px-4 py-2 rounded-lg ${
-                    isDark 
-                      ? 'bg-[#2a2a2a] text-white border-gray-600 focus:border-gray-500' 
+                    isDark
+                      ? 'bg-[#2a2a2a] text-white border-gray-600 focus:border-gray-500'
                       : 'bg-gray-100 text-gray-900 border-gray-300 focus:border-gray-400'
                   } ${errors.email ? 'border-red-500' : 'border'} focus:outline-none focus:ring-2 focus:ring-opacity-50`}
                   onChange={() => setErrors({...errors, email: ''})}
@@ -293,12 +293,12 @@ const Contact = () => {
                 id="message"
                 name="message"
                 rows="4"
-                
+
                 placeholder={t("form-message-placeholder")}
                 title={t("form-message-title")}
                 className={`w-full px-4 py-2 rounded-lg ${
-                  isDark 
-                    ? 'bg-[#2a2a2a] text-white border-gray-600 focus:border-gray-500' 
+                  isDark
+                    ? 'bg-[#2a2a2a] text-white border-gray-600 focus:border-gray-500'
                     : 'bg-gray-100 text-gray-900 border-gray-300 focus:border-gray-400'
                 } ${errors.message ? 'border-red-500' : 'border'} focus:outline-none focus:ring-2 focus:ring-opacity-50`}
                 onChange={() => setErrors({...errors, message: ''})}
@@ -307,7 +307,7 @@ const Contact = () => {
                 <p className="mt-2 text-sm text-red-600 dark:text-red-500">{t(errors.message)}</p>
               )}
             </div>
-            <button 
+            <button
               type="submit"
               aria-label="Send message"
               className={`px-6 py-3 rounded-lg shadow-lg font-medium flex items-center justify-center

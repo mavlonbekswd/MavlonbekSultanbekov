@@ -57,8 +57,9 @@
    "title": "Мои навыки"
 },
 
-  "project1-title": "Сайт SpeedFix Plumbing",
-  "project1-description": "В SpeedFix Plumbing мы не просто решаем проблемы — мы переосмысливаем понятие безопасности дома.",
+  "project1-title": "Car Sales Project",
+  "project1-description": "Car Sales Dashboard that visualizes key business insights like:Year-to-Date (YTD) total sales,Average selling prices,Popular car body styles,Company-wise performance,and Weekly sales trends.",
+
 
   "project2-title": "СКОРО БУДЕТ",
   "project2-description": "Полнофункциональная e-commerce платформа с корзиной, авторизацией и оплатой.",
@@ -67,9 +68,10 @@
   "project3-description": "Адаптивный сайт-портфолио с плавными анимациями и современным дизайном.",
     "projects-sec": "Проекты",
     "category-all": "Все",
-    "category-react": "React",
-    "category-js": "JavaScript",
-    "category-node": "Node.js",
+    "category-react": "PowerBI",
+      "category-js": "Python",
+      "category-node": "SQL",
+       "category-excel": "Excel",
     "coming-soon-title": "СКОРО",
 "coming-soon-description": "Интересный контент уже на подходе!",
 "contact-title": "Связаться со мной",

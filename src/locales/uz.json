@@ -80,8 +80,9 @@
 
 },
 
-  "project1-title": "SpeedFix Plumbing Vebsayti",
-  "project1-description": "SpeedFix Plumbing'da biz muammolarni shunchaki hal qilmaymiz — biz xavfsizlik tushunchasini qayta talqin qilamiz.",
+  "project1-title": "Car Sales Project",
+  "project1-description": "Car Sales Dashboard that visualizes key business insights like:Year-to-Date (YTD) total sales,Average selling prices,Popular car body styles,Company-wise performance,and Weekly sales trends.",
+
 
   "project2-title": "TEZ KUNDA",
   "project2-description": "To‘liq funksiyalarga ega onlayn do‘kon: savatcha, foydalanuvchi avtorizatsiyasi va to‘lov tizimi bilan integratsiya.",
@@ -90,9 +91,10 @@
   "project3-description": "Zamonaviy dizayn va silliq animatsiyalarga ega moslashuvchan portfolio sayti.",
   "projects-sec": "Loyihalar",
   "category-all": "Barchasi",
-  "category-react": "React",
-  "category-js": "Javascript",
-  "category-node": "Node.js",
+ "category-react": "PowerBI",
+      "category-js": "Python",
+      "category-node": "SQL",
+       "category-excel": "Excel",
   "coming-soon-title": "Tez Kunda",
 "coming-soon-description": "Yangi qiziqarli kontent tez orada joylanadi!",
 "contact-title": "Bog‘lanish",
