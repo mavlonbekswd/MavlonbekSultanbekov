@@ -250,11 +250,6 @@ const Resume = () => {
 
 
 
-
-
-
-      
-
         </div>
       </section>
 
@@ -265,19 +260,58 @@ const Resume = () => {
           {t("education")}
         </motion.h3>
         <div className="space-y-6">
-          <TimelineItem
-            title={t("timeline.title")}
-            date={t("timeline.date")}
-            description={t("timeline.description")}
-            isDark={isDark}
-          />
-          <TimelineItem
-            title={t("najot-title")}
-            date={t("najot-date")}
-            duration={t("najot-duration")}
-            description={t("najot-description")}
-            isDark={isDark}
-          />
+          {/* Anglia Ruskin University */}
+<TimelineItem
+  title={
+    <div className="flex items-center gap-2">
+      <span className="font-semibold text-lg">{t("aru-degree")}</span>
+      <a
+        href="https://aru.ac.uk"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-500 hover:text-blue-600 dark:hover:text-amber-400 flex items-center gap-1 transition-colors"
+      >
+        <span>{t("aru-title")}</span>
+        <ExternalLink size={16} />
+      </a>
+    </div>
+  }
+  date={<span className="text-sm">{t("aru-date")}</span>}
+  description={
+    <div className="mt-2 leading-relaxed">
+      <p>{t("aru-description1")}</p>
+      <p>{t("aru-description2")}</p>
+    </div>
+  }
+  isDark={isDark}
+/>
+
+{/* MAAB Innovation LLC */}
+<TimelineItem
+  title={
+    <div className="flex items-center gap-2">
+      <span className="font-semibold text-lg">{t("maab-degree")}</span>
+      <a
+        href="https://maab.uz"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-500 hover:text-blue-600 dark:hover:text-amber-400 flex items-center gap-1 transition-colors"
+      >
+        <span>{t("maab-title")}</span>
+        <ExternalLink size={16} />
+      </a>
+    </div>
+  }
+  date={<span className="text-sm">{t("maab-date")}</span>}
+  description={
+    <div className="mt-2 leading-relaxed">
+      <p>{t("maab-description1")}</p>
+      <p>{t("maab-description2")}</p>
+    </div>
+  }
+  isDark={isDark}
+/>
+
         </div>
       </motion.section>
 
