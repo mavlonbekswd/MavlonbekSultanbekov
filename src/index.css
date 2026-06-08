@@ -2,7 +2,12 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: rgb(0, 0, 0);
+  background-color: #07080a;
+  background-image:
+    radial-gradient(60rem 40rem at 18% -10%, rgba(56, 189, 248, 0.10), transparent 60%),
+    radial-gradient(50rem 38rem at 100% 0%, rgba(34, 211, 238, 0.06), transparent 55%),
+    radial-gradient(70rem 50rem at 50% 120%, rgba(2, 132, 199, 0.08), transparent 60%);
+  background-attachment: fixed;
   font-family: "Plus Jakarta Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -18,8 +23,9 @@ body {
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
     font-weight: 700;
+    letter-spacing: -0.01em;
   }
 }
 

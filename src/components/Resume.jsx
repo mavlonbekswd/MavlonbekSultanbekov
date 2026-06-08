@@ -48,7 +48,7 @@ const Resume = () => {
       animate="animate"
       exit="exit"
 
-      className={` space-y-8 lg:space-y-12 ${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEEEE]'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.2)]`}
+      className={` space-y-8 lg:space-y-12 ${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEEEE]'} p-6 lg:p-8 rounded-[32px] shadow-soft ring-1 ring-white/10`}
     >
       {/* Header with Download Button */}
       <motion.div variants={fadeInUp} className="flex justify-between items-center">
@@ -58,7 +58,7 @@ const Resume = () => {
             initial={{ width: 0 }}
             animate={{ width: "2rem" }}
             transition={{ duration: 0.3, delay: 0.3 }}
-            className={`block mt-1.5 h-1 ${isDark ? 'bg-[#e2e2e2]' : 'bg-gray-800'} ml-4`}
+            className={`block mt-1.5 h-1 bg-accent ml-4`}
           ></span>
         </h2>
         <a
@@ -69,7 +69,7 @@ const Resume = () => {
           className={`flex items-center gap-2 px-4 py-2 rounded-lg shadow-lg
             ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
             backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
-            hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+            hover:shadow-glow`}
         >
           <FaDownload className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
           <span className={`hidden  ${isDark ? 'text-white' : 'text-black'} sm:inline`}>{t("download-cv")}</span>

@@ -398,7 +398,7 @@ useEffect(() => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className={`min-h-[60vh] flex flex-col items-center justify-center text-center p-8 lg:p-12 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.3)] ${
+          className={`min-h-[60vh] flex flex-col items-center justify-center text-center p-8 lg:p-12 rounded-[32px] shadow-soft ring-1 ring-white/10 ${
             isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEEEE]'
           }`}
         >
@@ -446,7 +446,7 @@ useEffect(() => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
-        className={`min-h-screen relative  p-6  rounded-[32px] scrollbar-thin scrollbar-thumb-gradient scrollbar-track-gray-100 ${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEEEE]'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.3)]`}
+        className={`min-h-screen relative  p-6  rounded-[32px] scrollbar-thin scrollbar-thumb-gradient scrollbar-track-gray-100 ${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEEEE]'} p-6 lg:p-8 rounded-[32px] shadow-soft ring-1 ring-white/10`}
         style={{
           scrollbarColor: isDark ? '#60a5fa #232323' : '#6366f1 #f3f4f6',
           scrollbarWidth: 'thin',
@@ -461,7 +461,7 @@ useEffect(() => {
                 initial={{ width: 0 }}
                 animate={{ width: "2rem" }}
                 transition={{ duration: 0.3, delay: 0.3 }}
-                className={`block mt-1.5 h-1 ${isDark ? 'bg-[#e2e2e2]' : 'bg-gray-800'} ml-4`}
+                className={`block mt-1.5 h-1 bg-accent ml-4`}
               ></motion.span>
             </motion.h2>
 
@@ -534,7 +534,7 @@ useEffect(() => {
     whileTap={{ scale: 0.95 }}
     className={`p-4 rounded-xl gap-3 cursor-pointer transition-all duration-300 mb-6 relative
       ${isDark
-        ? 'bg-[#232323] border border-white/10 hover:border-white/20 hover:shadow-[0_4px_24px_rgba(255,255,255,0.1)]'
+        ? 'bg-[#232323] border border-white/10 hover:border-white/20 hover:shadow-glow'
         : 'bg-[#F5F5F7] border border-gray-200 hover:border-gray-300 hover:shadow-[0_4px_24px_rgba(0,0,0,0.08)]'
       }`}
       onClick={() => {
@@ -642,7 +642,7 @@ useEffect(() => {
     whileTap={{ scale: 0.95 }}
     className={`p-4 rounded-xl gap-3 cursor-pointer transition-all duration-300 mb-6
       ${isDark
-        ? 'bg-[#232323] border border-white/10 hover:border-white/20 hover:shadow-[0_4px_24px_rgba(255,255,255,0.1)]'
+        ? 'bg-[#232323] border border-white/10 hover:border-white/20 hover:shadow-glow'
         : 'bg-[#F5F5F7] border border-gray-200 hover:border-gray-300 hover:shadow-[0_4px_24px_rgba(0,0,0,0.08)]'
       }`}
     onClick={() => handlePostClick(post)}
@@ -742,7 +742,7 @@ useEffect(() => {
   className="relative z-50"
 >
           <div className="fixed  inset-0   backdrop-blur-md  transition-all duration-300
-            hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] bg-black/40" aria-hidden="true" />
+            hover:shadow-glow bg-black/40" aria-hidden="true" />
        
           {isModalLoading ? (
             <div className="fixed inset-0 z-50 backdrop-blur-sm flex items-center justify-center">
@@ -758,7 +758,7 @@ useEffect(() => {
             <div className="h-1 bg-gradient-to-r from-blue-300 via-blue-500 to-blue-900 dark:from-gray-700 dark:via-gray-400 dark:to-white transition-all duration-200" style={{ width: `${modalScroll}%` , opacity: 0.95}} />
               </div>
               <Dialog.Panel ref={modalContentRef} className={`relative  rounded-2xl shadow-xl w-full md:mt-[-1%] md:max-w-3xl mx-auto p-1 px-5 py-6 lg:p-1 lg:px-8 lg:py-9 md:ml-[34%]  max-h-[80vh] overflow-y-auto  backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
-                hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] ${isDark ? 'bg-[#232323] text-white' : 'bg-white text-gray-900'} `} >
+                hover:shadow-glow ${isDark ? 'bg-[#232323] text-white' : 'bg-white text-gray-900'} `} >
                 {/* Close Button */}
                 <button
                   onClick={closeModal}

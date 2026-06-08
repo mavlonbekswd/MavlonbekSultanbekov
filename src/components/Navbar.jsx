@@ -40,7 +40,7 @@ const [lastScrollY, setLastScrollY] = useState(0);
         className={`lg:hidden fixed  top-4 right-4 z-50  p-2 rounded-lg shadow-lg flex items-center justify-center
           ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5  ' : ' border border-gray-400 hover:border-gray-700 bg-gradient-to-r from-white to-white/80'}
           backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
-          hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+          hover:shadow-glow`}
       >
         {isDark ? 
           <FaSun className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} /> : 
@@ -69,7 +69,7 @@ const [lastScrollY, setLastScrollY] = useState(0);
           ${isDark ? 'bg-[#1f1f1f]' : 'bg-[#f5f5f7]'} 
           ${isDark ? 'border-white/5 ' : 'border-gray-400 hover:border-gray-700'} 
           flex items-center justify-between 
-          px-3 sm:px-4 lg:px-6 rounded-[32px] shadow-[0_0_20px_rgba(255,255,255,0.3)]`}
+          px-3 sm:px-4 lg:px-6 rounded-[32px] shadow-soft`}
       >
 
         
@@ -79,7 +79,7 @@ const [lastScrollY, setLastScrollY] = useState(0);
               to="/"
               className={({ isActive }) =>
                 `${isActive 
-                  ? (isDark ? 'text-white' : 'text-black')
+                  ? 'text-accent font-semibold'
                   : (isDark ? 'text-gray-400' : 'text-gray-600')
                 } hover:${isDark ? 'text-white' : 'text-black'}  
                 ${i18n.language === 'ru' 
@@ -95,7 +95,7 @@ const [lastScrollY, setLastScrollY] = useState(0);
               to="/resume"
               className={({ isActive }) =>
                 `${isActive 
-                  ? (isDark ? 'text-white' : 'text-black')
+                  ? 'text-accent font-semibold'
                   : (isDark ? 'text-gray-400' : 'text-gray-600')
                 } hover:${isDark ? 'text-white' : 'text-black'} transition-colors
                  ${i18n.language === 'ru' 
@@ -111,7 +111,7 @@ const [lastScrollY, setLastScrollY] = useState(0);
               to="/projects"
               className={({ isActive }) =>
                 `${isActive 
-                  ? (isDark ? 'text-white' : 'text-black')
+                  ? 'text-accent font-semibold'
                   : (isDark ? 'text-gray-400' : 'text-gray-600')
                 } hover:${isDark ? 'text-white' : 'text-black'} transition-colors 
                  ${i18n.language === 'ru' 
@@ -127,7 +127,7 @@ const [lastScrollY, setLastScrollY] = useState(0);
               to="/blog"
               className={({ isActive }) =>
                 `${isActive 
-                  ? (isDark ? 'text-white' : 'text-black')
+                  ? 'text-accent font-semibold'
                   : (isDark ? 'text-gray-400' : 'text-gray-600')
                 } hover:${isDark ? 'text-white' : 'text-black'} transition-colors 
                 ${i18n.language === 'ru' 
@@ -143,7 +143,7 @@ const [lastScrollY, setLastScrollY] = useState(0);
               to="/contact"
               className={({ isActive }) =>
                 `${isActive 
-                  ? (isDark ? 'text-white' : 'text-black')
+                  ? 'text-accent font-semibold'
                   : (isDark ? 'text-gray-400' : 'text-gray-600')
                 } hover:${isDark ? 'text-white' : 'text-black'} transition-colors 
                  ${i18n.language === 'ru' 
@@ -171,7 +171,7 @@ const [lastScrollY, setLastScrollY] = useState(0);
             className={`hidden lg:flex p-2.5 rounded-lg shadow-lg items-center justify-center
               ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
               backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
-              hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+              hover:shadow-glow`}
           >
             {isDark ? 
               <FaSun className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} /> : 

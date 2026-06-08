@@ -11,7 +11,7 @@
     "about_me": "About Me",
     "about-me-p1":"I'm a Data Analyst and Software Engineering student originally from Uzbekistan, currently based in London, UK. I have hands-on experience building data pipelines, writing SQL, and designing dashboards in Power BI — including an end-to-end data engineering project on Microsoft Fabric and a data engineering internship working with Python and PostgreSQL. I'm comfortable cleaning messy data, modelling it through staged layers, and turning analysis into decisions stakeholders can act on. My work blends technical accuracy with business awareness — turning raw data into visual stories that inform strategy and improve efficiency.",
     "about-me-p2": "I design and develop interactive dashboards, automated financial reports, and ETL workflows that streamline how data moves from raw sources to clear visual insights. I’ve worked with data across domains like sales, marketing, and finance, focusing on improving forecasting accuracy, cost analysis, and profitability tracking. I’m deeply curious about how data drives business performance, and I continuously refine my skills in data visualization, Power Query, DAX, and financial modeling. My mission is simple yet powerful: <1>Transform data into clarity, and clarity into business growth.</1>",
-    "what-i-do":"What I'am Doing",
+    "what-i-do":"What I'm Doing",
     "web-development":"Data Analytics & Insights",
     "web-dev-p":" I explore and analyze datasets using SQL, Python, and Excel to uncover trends, correlations, and opportunities that help businesses make informed, data-driven decisions. My focus is on accuracy, storytelling, and translating data into clear business value.",
     "seo-opt":"Business Intelligence & Dashboard Design",

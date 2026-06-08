@@ -61,7 +61,7 @@ const LoadingScreen = () => {
             duration: 1.0,
             ease: "easeInOut"
           }}
-          className={`w-full h-full ${isDark ? 'bg-blue-500' : 'bg-blue-600'}`}
+          className={`w-full h-full bg-gradient-to-r from-accent to-accent-soft`}
         />
       </div>
 

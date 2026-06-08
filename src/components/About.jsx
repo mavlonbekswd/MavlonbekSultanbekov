@@ -39,7 +39,7 @@ const About = () => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className={`${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEEEE]'} p-3 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.2)]`}
+      className={`${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEEEE]'} p-3 lg:p-8 rounded-[32px] shadow-soft ring-1 ring-white/10`}
 
     >
       {/* About Me Section */}
@@ -51,7 +51,7 @@ const About = () => {
             initial={{ width: 0 }}
             animate={{ width: "2rem" }}
             transition={{ duration: 0.3, delay: 0.3 }}
-            className={`block mt-1.5 h-1 ${isDark ? 'bg-[#e2e2e2]' : 'bg-gray-800'} ml-4`}
+            className={`block mt-1.5 h-1 bg-accent ml-4`}
           ></motion.span>
         </motion.h2>
         <motion.div variants={staggerContainer} className={`${isDark ? 'text-gray-400' : 'text-gray-600'}  space-y-4`}>
@@ -64,7 +64,7 @@ const About = () => {
           </motion.p>
           <motion.p variants={fadeInUp} className="text-base lg:text-lg leading-relaxed"> <Trans i18nKey="about-me-p2">
     In addition to coding, I'm interested in marketing, entrepreneurship, and building tools that make life easier.
-    My mission is simple: <span className='text-green-600'>turn creative ideas into impactful digital products.</span>
+    My mission is simple: <span className='text-accent font-medium'>turn creative ideas into impactful digital products.</span>
   </Trans>
           </motion.p>
         </motion.div>
@@ -78,7 +78,7 @@ const About = () => {
             initial={{ width: 0 }}
             animate={{ width: "2rem" }}
             transition={{ duration: 0.3, delay: 0.3 }}
-            className={`block h-1 ${isDark ? 'bg-[#e2e2e2]' : 'bg-gray-800'} ml-4`}
+            className={`block h-1 bg-accent ml-4`}
           ></motion.span>
         </motion.h2>
         <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
@@ -86,7 +86,7 @@ const About = () => {
           <motion.div
             variants={scaleIn}
             whileHover={{ scale: 1.02 }}
-            className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-200'} p-4 lg:p-6 rounded-2xl shadow-[0_3px_10px_#000000] shadow-[0_0_15px_rgba(255,255,255,0.1)]`}
+            className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-200'} p-4 lg:p-6 rounded-2xl shadow-[0_12px_30px_-16px_rgba(0,0,0,0.65)] ring-1 ring-white/5 hover:ring-accent/30`}
           >
             <div className="flex items-start gap-4">
               <div className={`text-${isDark ? 'white' : 'gray-800'} text-xl lg:text-2xl`}>
@@ -105,7 +105,7 @@ const About = () => {
           <motion.div
             variants={scaleIn}
             whileHover={{ scale: 1.02 }}
-            className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-200'} p-4 lg:p-6 rounded-2xl shadow-[0_3px_10px_#000000] shadow-[0_0_15px_rgba(255,255,255,0.1)]`}
+            className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-200'} p-4 lg:p-6 rounded-2xl shadow-[0_12px_30px_-16px_rgba(0,0,0,0.65)] ring-1 ring-white/5 hover:ring-accent/30`}
           >
             <div className="flex items-start gap-4">
               <div className={`text-${isDark ? 'white' : 'gray-800'} text-xl lg:text-2xl`}>
@@ -125,7 +125,7 @@ const About = () => {
           <motion.div
             variants={scaleIn}
             whileHover={{ scale: 1.02 }}
-            className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-200'} p-4 lg:p-6 rounded-2xl shadow-[0_3px_10px_#000000] shadow-[0_0_15px_rgba(255,255,255,0.1)]`}
+            className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-200'} p-4 lg:p-6 rounded-2xl shadow-[0_12px_30px_-16px_rgba(0,0,0,0.65)] ring-1 ring-white/5 hover:ring-accent/30`}
           >
             <div className="flex items-start gap-4">
               <div className={`text-${isDark ? 'white' : 'gray-800'} text-xl lg:text-2xl`}>
@@ -142,7 +142,7 @@ const About = () => {
           <motion.div
             variants={scaleIn}
             whileHover={{ scale: 1.02 }}
-            className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-200'} p-4 lg:p-6 rounded-2xl shadow-[0_3px_10px_#000000] shadow-[0_0_15px_rgba(255,255,255,0.1)]`}
+            className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-200'} p-4 lg:p-6 rounded-2xl shadow-[0_12px_30px_-16px_rgba(0,0,0,0.65)] ring-1 ring-white/5 hover:ring-accent/30`}
           >
             <div className="flex items-start gap-4">
               <div className={`text-${isDark ? 'white' : 'gray-800'} text-xl lg:text-2xl`}>

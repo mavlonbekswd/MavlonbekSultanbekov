@@ -59,7 +59,7 @@ const AppContent = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col lg:items-center py-8 lg:py-20 font-sans relative">
+    <div className="min-h-screen bg-transparent text-white flex flex-col lg:items-center py-8 lg:py-20 font-sans relative">
       {/* Find me here hint */}
       <AnimatePresence>
         {showHint && (
@@ -124,7 +124,7 @@ const AppContent = () => {
             ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : ' border border-gray-400 hover:border-gray-700 bg-gradient-to-r from-white to-white/80'} 
             p-2.5 rounded-lg shadow-lg flex items-center gap-2 backdrop-blur-sm
             border border-white/20 hover:border-white/30 transition-all duration-300
-            hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+            hover:shadow-glow`}
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ 
             opacity: 1, 

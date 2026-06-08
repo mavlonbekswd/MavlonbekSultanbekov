@@ -37,7 +37,7 @@ const Sidebar = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`h-full ${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEE]'} p-6 lg:p-8 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.3)] overflow-y-auto`}
+      className={`h-full ${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEE]'} p-6 lg:p-8 rounded-[32px] shadow-soft ring-1 ring-white/10 overflow-y-auto`}
     >
       <div className="flex flex-col items-center w-full">
         {/* Avatar Section */}
@@ -107,7 +107,7 @@ const Sidebar = () => {
           className={`mt-6 p-2.5 rounded-lg shadow-lg flex items-center justify-center gap-2
             ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
             backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
-            hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+            hover:shadow-glow`}
         >
           <FaDownload className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
           <span className={`text-sm font-medium ${isDark ? 'text-white' : 'text-black'}`}>
@@ -155,7 +155,7 @@ const Sidebar = () => {
             className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
               ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
               backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
-              hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+              hover:shadow-glow`}
           >
             <FaGithub className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
           </motion.a>
@@ -167,7 +167,7 @@ const Sidebar = () => {
             className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
               ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
               backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
-              hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+              hover:shadow-glow`}
           >
             <FaLinkedin className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
           </motion.a>
@@ -179,7 +179,7 @@ const Sidebar = () => {
             className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
               ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
               backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
-              hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+              hover:shadow-glow`}
           >
             <FaTelegram className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
           </motion.a>
@@ -191,7 +191,7 @@ const Sidebar = () => {
             className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
               ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
               backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
-              hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+              hover:shadow-glow`}
           >
             <FaWhatsapp className={`w-5 h-5 ${isDark ? 'text-white' : 'text-black'}`} />
           </motion.a>
@@ -227,7 +227,7 @@ const ContactItem = ({ icon, label, value, isDark, className }) => {
       <div className={`p-2.5 rounded-lg shadow-lg flex items-center justify-center
         ${isDark ? 'bg-gradient-to-r from-white/10 to-white/5' : 'bg-gradient-to-r from-white to-white/80'}
         backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-300
-        hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]`}
+        hover:shadow-glow`}
       >
         <span className={`w-5 h-5 flex items-center justify-center ${isDark ? 'text-white' : 'text-black'}`}>
           {icon}
