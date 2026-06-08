@@ -88,45 +88,6 @@ const Resume = () => {
 
 
 
-    {/* Emotiv Online */}
-<TimelineItem
-  title={
-    <div className="flex items-center gap-2">
-      {/* Job + Company same line */}
-      <span className="font-semibold text-lg">
-        {t("emotiv-role")}
-      </span>
-      <a
-        href="https://emotivonline.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-500 hover:text-blue-600 dark:hover:text-amber-400 transition-colors flex items-center gap-1"
-      >
-        <span>{t("emotiv-title")}</span>
-        <ExternalLink size={16} />
-      </a>
-    </div>
-  }
-  date={
-    <span className="text-sm">
-      {t("emotiv-date")}
-    </span>
-  }
-  duration={
-    <span className="text-sm">
-      {t("emotiv-duration")}
-    </span>
-  }
-  description={
-    <div className="mt-2 leading-relaxed">
-      <p>{t("emotiv-description1")}</p>
-      <p>{t("emotiv-description2")}</p>
-    </div>
-  }
-  isDark={isDark}
-/>
-
-
                   {/* Itransition Group */}
             <TimelineItem
             title={

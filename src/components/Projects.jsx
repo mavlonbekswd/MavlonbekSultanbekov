@@ -7,44 +7,34 @@ import { useTheme } from '../context/ThemeContext';
 import { useTranslation } from 'react-i18next';
 
 
-// Sample projects data - replace with your actual projects
+// Project data — kept in sync with the CV (Power BI + Microsoft Fabric work)
 let projectsData = [
 
   {
     id: 1,
     titleKey: "project1-title",
     descriptionKey: "project1-description",
-    category: "PowerBI",
     loading:"lazy",
     image: "/carselaes_dash.png",
-    technologies: ["PowerBI", "Excel", "SQL"],
-    githubLink: "https://github.com/mavlonbekswd/SpeedFixPlumbingComp.git",
+    technologies: ["Power BI", "DAX", "Excel", "SQL"],
+    githubLink: "https://github.com/mavlonbekswd/PowerBI_projects/tree/main",
     liveLink: "https://app.powerbi.com/view?r=eyJrIjoiOTBjZTU2MGEtOTUzNS00MTYwLThhMWQtNjExYjgyNmExOTg0IiwidCI6ImIxNzNiMGY3LWMyNGItNGQ3OS04NzZlLWI1ZjBhZDUxNmQ0MSIsImMiOjZ9"
   },
   {
     id: 2,
     titleKey: "project2-title",
     descriptionKey: "project2-description",
-    category: "React",
     loading:"lazy",
-    image: "/Cooming-Soon.webp",
-    technologies: ["DAX", "Github", "NumPy", "Pandas"],
-    githubLink: "https://github.com/yourusername/project1",
-    liveLink: "https://project1.com"
-  },
-  {
-    id: 3,
-    titleKey: "project3-title",
-    descriptionKey: "project3-description",
-    category: "React",
-    loading:"lazy",
-    image: "/Cooming-Soon.webp",
-    technologies: ["React", "Framer Motion", "Tailwind CSS"],
-    githubLink: "https://github.com/yourusername/project3",
-    liveLink: "https://project3.com"
+    image: "/fabric-pipeline.svg",
+    technologies: ["Microsoft Fabric", "Power BI", "SQL", "Python"],
+    githubLink: "https://github.com/mavlonbekswd/fabric-data-engineering-project",
+    liveLink: "https://github.com/mavlonbekswd/fabric-data-engineering-project"
   },
   // Add more projects as needed
 ];
+
+// Normalize so "Power BI" matches the "PowerBI" filter, etc.
+const normalizeTech = (value) => value.toLowerCase().replace(/[\s.]/g, "");
 
 
 
@@ -56,17 +46,20 @@ const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
   const { isDark } = useTheme();
 
+  // key stays constant across languages; label is translated for display
   const categories = [
-    t("category-all"),
-    t("category-react"),
-    t("category-js"),
-    t("category-node"),
-    t("category-excel")
+    { key: "All", label: t("category-all") },
+    { key: "PowerBI", label: t("category-react") },
+    { key: "Python", label: t("category-js") },
+    { key: "SQL", label: t("category-node") },
+    { key: "Excel", label: t("category-excel") }
   ];
 
   const filteredProjects = activeCategory === "All"
     ? projectsData
-    : projectsData.filter(project => project.category === activeCategory);
+    : projectsData.filter(project =>
+        project.technologies.some(tech => normalizeTech(tech) === normalizeTech(activeCategory))
+      );
 
   return (
     <>
@@ -108,18 +101,18 @@ const Projects = () => {
         <div className="flex flex-wrap gap-2">
           {categories.map((category) => (
             <motion.button
-              key={category}
+              key={category.key}
               variants={scaleIn}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => setActiveCategory(category.key)}
               className={`px-4 py-2 rounded-xl text-sm transition-colors ${
-                activeCategory === category
+                activeCategory === category.key
                   ? isDark ? 'bg-[#e2e2e2] text-black' : 'bg-gray-800 text-white'
                   : isDark ? 'bg-[#2a2a2a] text-[#e2e2e2]' : 'bg-gray-100 text-gray-600'
               }`}
             >
-              {category}
+              {category.label}
             </motion.button>
           ))}
         </div>

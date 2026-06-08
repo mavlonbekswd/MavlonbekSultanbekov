@@ -110,7 +110,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
     <script>
@@ -119,6 +119,12 @@
         theme: {
           extend: {
             colors: {
+              accent: {
+                DEFAULT: '#38bdf8',
+                soft: '#22d3ee',
+                dim: '#0ea5e9',
+                deep: '#0284c7'
+              },
               light: {
                 bg: '#f2f2f9 ',
                 card: '#f3f4f6',
@@ -132,6 +138,13 @@
                 border: '#374151'
               }
             },
+            fontFamily: {
+              display: ['Space Grotesk', 'Plus Jakarta Sans', 'sans-serif']
+            },
+            boxShadow: {
+              soft: '0 20px 50px -24px rgba(0,0,0,0.7)',
+              glow: '0 0 22px -2px rgba(56,189,248,0.5)'
+            }
           },
         },
       }

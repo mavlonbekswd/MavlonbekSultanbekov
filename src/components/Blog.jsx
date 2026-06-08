@@ -23,6 +23,9 @@ import { useTranslation } from 'react-i18next';
 
 // contextdan language olamiz
 
+// 🔧 Blog hozircha "Coming Soon" rejimida. Tayyor bo'lganda `false` qiling.
+const BLOG_COMING_SOON = true;
+
 const Blog = () => {
   const { isDark } = useTheme();
    const { t  } = useTranslation();
@@ -95,6 +98,11 @@ const filteredPosts = useMemo(() => {
     )
   );
 }, [otherPosts, activeCategory]);
+
+// Reset pagination whenever the active category changes
+useEffect(() => {
+  setVisibleCount(4);
+}, [activeCategory]);
 
 
 
@@ -374,11 +382,64 @@ useEffect(() => {
     }
   }, [selectedPost, isModalLoading]);
 
+  if (BLOG_COMING_SOON) {
+    return (
+      <>
+        <Helmet>
+          <title>Blog | Mavlonbek Sultanbekov</title>
+          <meta
+            name="description"
+            content="The blog by Mavlonbek Sultanbekov is coming soon — articles on data analytics, Power BI, and SQL."
+          />
+          <link rel="canonical" href="https://www.mavlonbek.com/blog/" />
+        </Helmet>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className={`min-h-[60vh] flex flex-col items-center justify-center text-center p-8 lg:p-12 rounded-[32px] shadow-[0_4px_30px_rgba(255,255,255,0.3)] ${
+            isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEEEE]'
+          }`}
+        >
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: 'spring', stiffness: 140, damping: 14, delay: 0.1 }}
+            className={`flex items-center justify-center w-20 h-20 rounded-2xl mb-6 ${
+              isDark ? 'bg-[#2a2a2a]' : 'bg-gray-200'
+            }`}
+          >
+            <GiBookCover className={`w-10 h-10 ${isDark ? 'text-[#eda503]' : 'text-gray-800'}`} />
+          </motion.div>
+
+          <h2 className={`text-2xl lg:text-4xl font-bold mb-3 ${isDark ? 'text-white' : 'text-black'}`}>
+            {t('coming-soon-title')}
+          </h2>
+          <p className={`max-w-md text-base lg:text-lg leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+            {t('coming-soon-description')}
+          </p>
+
+          <div className={`mt-6 h-1 w-16 rounded-full ${isDark ? 'bg-[#eda503]' : 'bg-gray-800'}`} />
+        </motion.div>
+      </>
+    );
+  }
+
   return (
     <>
       <Helmet>
         <title>Blog | Mavlonbek Sultanbekov</title>
-        <meta name="description" content="Mavlonbek Sultanbekov blog maqolalari." />
+        <meta
+          name="description"
+          content="Articles and notes by Mavlonbek Sultanbekov on data analytics, Power BI, SQL, and building data-driven projects."
+        />
+        <meta
+          name="keywords"
+          content="Mavlonbek Sultanbekov, Blog, Data Analytics, Power BI, SQL, Data Engineering"
+        />
+        <meta name="author" content="Mavlonbek Sultanbekov" />
+        <link rel="canonical" href="https://www.mavlonbek.com/blog/" />
       </Helmet>
 
       <motion.div
@@ -556,7 +617,7 @@ useEffect(() => {
         <div className="flex-shrink-0 mr-3">
           <img
             src={pinnedPost.mainImage.asset.url}
-            alt={pinnedPost.uzTitle}
+            alt={getTitle(pinnedPost)}
             className="w-24 h-24 object-cover rounded-xl"
           />
         </div>
@@ -645,7 +706,7 @@ useEffect(() => {
     <div className="flex-shrink-0">
       <img
         src={post.mainImage.asset.url}
-        alt={post.uzTitle}
+        alt={getTitle(post)}
         className="w-24 h-24 object-cover rounded-xl"
       />
     </div>
@@ -658,7 +719,7 @@ useEffect(() => {
 </motion.div>
 
           {/* Load More Button */}  
-          {visibleCount >= 4 && visibleCount < posts.length && (
+          {visibleCount >= 4 && visibleCount < filteredPosts.length && (
             <div className="flex justify-center mt-8">
               <button
                 onClick={() => setVisibleCount(prev => prev + 4)}
@@ -719,7 +780,7 @@ useEffect(() => {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.15, duration: 0.4 }}
                       src={selectedPost.mainImage.asset.url}
-                      alt={selectedPost.uzTitle}
+                      alt={getTitle(selectedPost)}
                       className="absolute top-0 left-0 w-full h-full object-cover"
                     />
                   </div>
