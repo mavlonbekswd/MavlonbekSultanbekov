@@ -1,64 +1,91 @@
 import axios from 'axios';
 
+const escapeHtml = (value = '') =>
+  String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;');
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(405).send('Only POST allowed');
+    res.setHeader('Allow', 'POST');
+    return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { body } = req;
-  const documentId = body?.ids?.[0];
+  const webhookSecret = process.env.SANITY_WEBHOOK_SECRET;
+  const suppliedSecret = req.headers['x-sanity-webhook-secret'];
 
-  if (!documentId) {
-    return res.status(400).json({ message: "Document ID topilmadi" });
+  if (!webhookSecret) {
+    return res.status(503).json({ message: 'Webhook is not configured' });
   }
 
-  const SANITY_PROJECT_ID = process.env.SANITY_PROJECT_ID || "5a03o7rz";
-  const SANITY_DATASET = process.env.SANITY_DATASET || "production";
-  const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-  const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+  if (suppliedSecret !== webhookSecret) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
 
-  const query = `*[_id == "${documentId}"][0]{ uzTitle, uzContent, "mainImageUrl": mainImage.asset->url }`;
-  const encodedQuery = encodeURIComponent(query);
-  const sanityURL = `https://${SANITY_PROJECT_ID}.api.sanity.io/v2021-03-25/data/query/${SANITY_DATASET}?query=${encodedQuery}`;
+  const documentId = req.body?.ids?.[0];
+  if (typeof documentId !== 'string' || !documentId.trim()) {
+    return res.status(400).json({ message: 'Document ID is required' });
+  }
+
+  const {
+    SANITY_PROJECT_ID: projectId,
+    SANITY_DATASET: dataset = 'production',
+    TELEGRAM_BOT_TOKEN: botToken,
+    TELEGRAM_CHAT_ID: chatId,
+  } = process.env;
+
+  if (!projectId || !botToken || !chatId) {
+    return res.status(503).json({ message: 'Webhook is not configured' });
+  }
+
+  const query =
+    '*[_id == $documentId][0]{ uzTitle, uzContent, "mainImageUrl": mainImage.asset->url }';
+  const sanityUrl = `https://${projectId}.api.sanity.io/v2023-01-01/data/query/${dataset}`;
 
   try {
-    const sanityRes = await axios.get(sanityURL);
-    const post = sanityRes.data.result;
+    const sanityResponse = await axios.get(sanityUrl, {
+      params: {
+        query,
+        $documentId: JSON.stringify(documentId),
+      },
+    });
+    const post = sanityResponse.data.result;
 
-    if (post) {
-      let contentText = "";
-      if (Array.isArray(post.uzContent)) {
-        contentText = post.uzContent.map(block =>
-          block?.children?.map(child => child.text).join("") || ""
-        ).join("\n");
-      } else if (typeof post.uzContent === "string") {
-        contentText = post.uzContent;
-      }
-
-      const text = `<b>${post.uzTitle}</b>\n\n${contentText}\n\n<b>Ko'proq ko'rish uchun:</b> mavlonbek.com`;
-      const telegramURL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}`;
-
-      if (post.mainImageUrl) {
-        await axios.post(`${telegramURL}/sendPhoto`, {
-          chat_id: TELEGRAM_CHAT_ID,
-          photo: post.mainImageUrl,
-          caption: text,
-          parse_mode: "HTML",
-        });
-      } else {
-        await axios.post(`${telegramURL}/sendMessage`, {
-          chat_id: TELEGRAM_CHAT_ID,
-          text,
-          parse_mode: "HTML",
-        });
-      }
-
-      return res.status(200).json({ message: "Telegramga yuborildi!" });
-    } else {
-      return res.status(404).json({ message: "Post topilmadi" });
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
     }
-  } catch (error) {
-    console.error(error.response?.data || error.message);
-    return res.status(500).json({ message: "Serverda xatolik" });
+
+    const contentText = Array.isArray(post.uzContent)
+      ? post.uzContent
+          .map((block) =>
+            block?.children?.map((child) => child.text).join(''),
+          )
+          .filter(Boolean)
+          .join('\n')
+      : typeof post.uzContent === 'string'
+        ? post.uzContent
+        : '';
+    const text = `<b>${escapeHtml(post.uzTitle)}</b>\n\n${escapeHtml(contentText)}\n\n<b>Ko'proq ko'rish uchun:</b> mavlonbek.com`;
+    const telegramUrl = `https://api.telegram.org/bot${botToken}`;
+
+    if (post.mainImageUrl) {
+      await axios.post(`${telegramUrl}/sendPhoto`, {
+        chat_id: chatId,
+        photo: post.mainImageUrl,
+        caption: text,
+        parse_mode: 'HTML',
+      });
+    } else {
+      await axios.post(`${telegramUrl}/sendMessage`, {
+        chat_id: chatId,
+        text,
+        parse_mode: 'HTML',
+      });
+    }
+
+    return res.status(200).json({ message: 'Post sent' });
+  } catch {
+    return res.status(502).json({ message: 'Upstream request failed' });
   }
 }

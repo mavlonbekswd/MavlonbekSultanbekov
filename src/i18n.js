@@ -1,15 +1,14 @@
 import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-
+import { initReactI18next } from 'react-i18next';
 import translationEn from './locales/en.json';
-import translationUz from './locales/uz.json';
 import translationRu from './locales/ru.json';
+import translationUz from './locales/uz.json';
 
 const resources = {
   en: { translation: translationEn },
-  uz: { translation: translationUz },
   ru: { translation: translationRu },
+  uz: { translation: translationUz },
 };
 
 i18n
@@ -18,7 +17,20 @@ i18n
   .init({
     resources,
     fallbackLng: 'en',
+    supportedLngs: ['en', 'ru', 'uz'],
     interpolation: { escapeValue: false },
+    detection: {
+      order: ['localStorage', 'navigator'],
+      caches: ['localStorage'],
+      lookupLocalStorage: 'portfolio-language-preference',
+    },
   });
+
+const updateDocumentLanguage = (language) => {
+  document.documentElement.lang = language?.split('-')[0] || 'en';
+};
+
+updateDocumentLanguage(i18n.resolvedLanguage);
+i18n.on('languageChanged', updateDocumentLanguage);
 
 export default i18n;

@@ -1,187 +1,176 @@
-import { Helmet } from 'react-helmet';
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import { pageVariants, staggerContainer, fadeInUp, scaleIn } from '../utils/animations';
-import { useTheme } from '../context/ThemeContext';
+import { Check, DatabaseZap } from 'lucide-react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-
-// Project data — kept in sync with the CV (Power BI + Microsoft Fabric work)
-let projectsData = [
-
-  {
-    id: 1,
-    titleKey: "project1-title",
-    descriptionKey: "project1-description",
-    loading:"lazy",
-    image: "/carselaes_dash.png",
-    technologies: ["Power BI", "DAX", "Excel", "SQL"],
-    githubLink: "https://github.com/mavlonbekswd/PowerBI_projects/tree/main",
-    liveLink: "https://app.powerbi.com/view?r=eyJrIjoiOTBjZTU2MGEtOTUzNS00MTYwLThhMWQtNjExYjgyNmExOTg0IiwidCI6ImIxNzNiMGY3LWMyNGItNGQ3OS04NzZlLWI1ZjBhZDUxNmQ0MSIsImMiOjZ9"
-  },
-  {
-    id: 2,
-    titleKey: "project2-title",
-    descriptionKey: "project2-description",
-    loading:"lazy",
-    image: "/fabric-pipeline.svg",
-    technologies: ["Microsoft Fabric", "Power BI", "SQL", "Python"],
-    githubLink: "https://github.com/mavlonbekswd/fabric-data-engineering-project",
-    liveLink: "https://github.com/mavlonbekswd/fabric-data-engineering-project"
-  },
-  // Add more projects as needed
-];
-
-// Normalize so "Power BI" matches the "PowerBI" filter, etc.
-const normalizeTech = (value) => value.toLowerCase().replace(/[\s.]/g, "");
-
-
-
+import ProjectActions from './ProjectActions';
+import ProjectImage from './ProjectImage';
+import Seo from './Seo';
+import {
+  getProjectText,
+  projectMatchesCategory,
+  projects,
+} from '../data/projects';
+import { pageSeo, profile } from '../data/profile';
 
 const Projects = () => {
-
-  const { t } = useTranslation();
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [hoveredProject, setHoveredProject] = useState(null);
-  const { isDark } = useTheme();
-
-  // key stays constant across languages; label is translated for display
-  const categories = [
-    { key: "All", label: t("category-all") },
-    { key: "PowerBI", label: t("category-react") },
-    { key: "Python", label: t("category-js") },
-    { key: "SQL", label: t("category-node") },
-    { key: "Excel", label: t("category-excel") }
-  ];
-
-  const filteredProjects = activeCategory === "All"
-    ? projectsData
-    : projectsData.filter(project =>
-        project.technologies.some(tech => normalizeTech(tech) === normalizeTech(activeCategory))
-      );
+  const { t, i18n } = useTranslation();
+  const [activeCategory, setActiveCategory] = useState('All');
+  const filteredProjects = useMemo(
+    () =>
+      projects.filter((project) =>
+        projectMatchesCategory(project, activeCategory),
+      ),
+    [activeCategory],
+  );
 
   return (
     <>
-        <Helmet>
-      <title>Projects | Mavlonbek Sultanbekov</title>
-      <meta
-        name="description"
-        content="Explore the web development and software engineering projects built by Mavlonbek Sultanbekov using modern technologies."
-      />
-      <meta
-        name="keywords"
-        content="Mavlonbek Projects, Portfolio, Web Development, JavaScript, React, Tailwind CSS"
-      />
-      <meta name="author" content="Mavlonbek Sultanbekov" />
-      <link rel="canonical" href="https://www.mavlonbek.com/project/" />
-    </Helmet>
+      <Seo {...pageSeo.projects} />
 
-    <motion.div
-      variants={pageVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
+      <article className="page-card projects-page">
+        <header className="page-header">
+          <div>
+            <p className="eyebrow">{profile.professionalTitle}</p>
+            <h1 data-page-heading tabIndex={-1}>
+              {t('projects-title')}
+            </h1>
+            <p className="page-lead">{t('projects-description')}</p>
+          </div>
+        </header>
 
-      className={` space-y-8 lg:space-y-12 ${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEEEE]'} p-6 lg:p-8 rounded-[32px] shadow-soft ring-1 ring-white/10`}
-    >
-      {/* Header */}
-      <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h2 className={`text-2xl lg:text-3xl font-bold ${isDark ? 'text-white' : 'text-black'} flex items-center`}>
-        {t("projects-sec")}
-          <motion.span
-            initial={{ width: 0 }}
-            animate={{ width: "2rem" }}
-            transition={{ duration: 0.3, delay: 0.3 }}
-            className={`block mt-1.5 h-1 bg-accent ml-4`}
-          ></motion.span>
-        </h2>
+        <div
+          className="project-filters"
+          role="group"
+          aria-label={t('filter-projects')}
+        >
+          {profile.projectCategories.map((category) => {
+            const isActive = activeCategory === category;
+            const label = category === 'All' ? t('category-all') : category;
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap gap-2">
-          {categories.map((category) => (
-            <motion.button
-              key={category.key}
-              variants={scaleIn}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveCategory(category.key)}
-              className={`px-4 py-2 rounded-xl text-sm transition-colors ${
-                activeCategory === category.key
-                  ? isDark ? 'bg-[#e2e2e2] text-black' : 'bg-gray-800 text-white'
-                  : isDark ? 'bg-[#2a2a2a] text-[#e2e2e2]' : 'bg-gray-100 text-gray-600'
-              }`}
-            >
-              {category.label}
-            </motion.button>
-          ))}
+            return (
+              <button
+                className="filter-button"
+                key={category}
+                type="button"
+                aria-pressed={isActive}
+                onClick={() => setActiveCategory(category)}
+              >
+                {isActive && <Check aria-hidden="true" size={15} />}
+                {label}
+              </button>
+            );
+          })}
         </div>
-      </motion.div>
 
-      {/* Projects Grid */}
-      <motion.div
-        variants={staggerContainer}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"
-      >
-        <AnimatePresence mode="wait">
-          {filteredProjects.map((project) => (
-            <motion.div
-              layout
-              key={project.id}
-              variants={scaleIn}
-              initial="initial"
-              animate="animate"
-              exit="initial"
-              whileHover={{ y: -5 }}
-              className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-100'} rounded-2xl overflow-hidden cursor-pointer`}
-              onClick={() => window.open(project.liveLink, '_blank')}
-              onHoverStart={() => setHoveredProject(project.id)}
-              onHoverEnd={() => setHoveredProject(null)}
-            >
-              {/* Project Image */}
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: hoveredProject === project.id ? 1 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0 bg-black/70 flex flex-col items-center justify-center gap-4 p-4"
+        <p className="sr-only" aria-live="polite">
+          {t('projects-filter-result', { count: filteredProjects.length })}
+        </p>
+
+        {filteredProjects.length > 0 ? (
+          <div className="project-grid">
+            {filteredProjects.map((project) => {
+              const text = getProjectText(
+                project,
+                i18n.resolvedLanguage,
+              );
+
+              return (
+                <article
+                  className={`project-card ${
+                    project.tier === 'flagship'
+                      ? 'flagship-project-card'
+                      : ''
+                  }`.trim()}
+                  key={project.id}
                 >
-                  <h3 className="text-white text-xl font-semibold text-center">{t(project.titleKey)}</h3>
-                  <p className="text-gray-300 text-sm text-center"> {t(project.descriptionKey)}</p>
-                  <div className="flex items-center gap-2">
-                    <FaExternalLinkAlt size={20} className="text-white" />
-                    <span className="text-white text-sm">Visit Website</span>
+                  <div className="project-card-media">
+                    <ProjectImage
+                      image={project.image}
+                      className={`project-image ${
+                        project.image.presentation === 'contain'
+                          ? 'project-image-contain'
+                          : ''
+                      }`.trim()}
+                      sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1120px) 55vw, 420px"
+                    />
+                    {project.featured && (
+                      <span className="featured-badge">
+                        {project.tier === 'flagship'
+                          ? t('flagship-project')
+                          : t('featured-project')}
+                      </span>
+                    )}
+                    {project.statusLabel && (
+                      <span className="project-status-badge">
+                        <span aria-hidden="true" />
+                        {project.statusLabel}
+                      </span>
+                    )}
                   </div>
-                </motion.div>
-              </div>
 
-              {/* Project Info */}
-              <div className="p-6">
-                <h3 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>{t(project.titleKey)}</h3>
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm mb-4`}>{t(project.descriptionKey)}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className={`px-3 py-1 ${
-                        isDark ? 'bg-[#1f1f1f] text-[#e2e2e2]' : 'bg-gray-200 text-gray-700'
-                      } text-xs rounded-full`}
+                  <div className="project-card-content">
+                    <div>
+                      <p className="project-category">
+                        {project.category}
+                      </p>
+                      <h2>{text.title}</h2>
+                      <p className="project-summary">{text.shortSummary}</p>
+                      {project.statusDetail && (
+                        <p className="project-status-detail">
+                          {project.statusDetail}
+                        </p>
+                      )}
+                    </div>
+
+                    <dl className="project-facts">
+                      {project.tier !== 'flagship' && (
+                        <>
+                          <div>
+                            <dt>{t('business-problem')}</dt>
+                            <dd>{project.businessProblem}</dd>
+                          </div>
+                          <div>
+                            <dt>{t('solution')}</dt>
+                            <dd>{project.solution}</dd>
+                          </div>
+                        </>
+                      )}
+                      <div>
+                        <dt>{t('evidence')}</dt>
+                        <dd>
+                          {('cardEvidence' in project
+                            ? project.cardEvidence
+                            : project.evidence)
+                            .slice(0, 2)
+                            .join(' · ')}
+                        </dd>
+                      </div>
+                    </dl>
+
+                    <div
+                      className="tag-list"
+                      aria-label={t('technology-stack')}
                     >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </motion.div>
-    </motion.div>
+                      {project.technologyStack.map((technology) => (
+                        <span className="tag" key={technology}>
+                          {technology}
+                        </span>
+                      ))}
+                    </div>
+
+                    <ProjectActions project={project} />
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="empty-state">
+            <DatabaseZap aria-hidden="true" size={34} />
+            <h2>{t('no-projects-title')}</h2>
+            <p>{t('no-projects-description')}</p>
+          </div>
+        )}
+      </article>
     </>
   );
 };

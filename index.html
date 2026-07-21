@@ -1,171 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- Performance Optimization -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
-    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
-    
-    
-    <script>
-      // Framer Motion Performance Config
-      window.__FRAMER_MOTION_FEATURES__ = {
-        measureLayout: false,
-        dragAndDrag: false,
-        projection: false
-      };
-      
-      // Disable dev mode warnings
-      window.__FRAMER_MOTION_DISABLE_WARNINGS__ = true;
-    </script>
-    
-    <!-- Resource Hints -->
-    <link rel="prefetch" href="/MavlonoIcons.png" as="image" />
-    <link rel="modulepreload" href="/src/main.jsx" />
-    
-    <!-- Performance Meta Tags -->
-    <meta http-equiv="Cache-Control" content="max-age=31536000" />
-    <meta name="renderMode" content="defer" />
-    <meta name="turbo-cache-control" content="no-cache" />
-    
-    <!-- Primary Meta Tags -->
-    <title>Mavlonbek Sultonbekov - Full Stack Developer Portfolio</title>
-    <meta name="title" content="Mavlonbek Sultonbekov - Full Stack Developer Portfolio" />
-    <meta name="description" content="Experienced Full Stack Developer specializing in React,JavaScript, Tailwindcss, Scss,HTML, Css, Node.js, and modern web technologies. View my projects and professional experience.Whether it's developing full-stack web apps, designing portfolios, or helping businesses grow online — I approach every project with attention to detail and a strong focus on user experience." />
-    <meta name="keywords" content="Mavlonbek Sultonbekov, Full Stack Developer, Web Developer, React Developer, JavaScript, Node.js, Portfolio" />
-    <meta name="author" content="Mavlonbek Sultonbekov" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="__THEME_COLOR__" />
+
+    <title>__SITE_TITLE__</title>
+    <meta name="title" content="__SITE_TITLE__" />
+    <meta name="description" content="__SITE_DESCRIPTION__" />
+    <meta
+      name="keywords"
+      content="Mavlonbek Sultonbekov, Data Analyst, SQL, Python, pandas, Power BI, PostgreSQL, Microsoft Fabric, applied AI"
+    />
+    <meta name="author" content="__FULL_NAME__" />
     <meta name="robots" content="index, follow" />
-    
-    
-    <!-- Open Graph / Facebook -->
+    <link rel="canonical" href="__CANONICAL_URL__/" />
+
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.mavlonbek.com/" />
-    <meta property="og:title" content="Mavlonbek Sultonbekov - Full Stack Developer Portfolio" />
-    <meta property="og:description" content="Experienced Full Stack Developer specializing in React, Node.js, and modern web technologies. View my projects and professional experience." />
-    <meta property="og:image" content="https://www.mavlonbek.com/MavlonoIcons.png" />
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.mavlonbek.com/" />
-    <meta property="twitter:title" content="Mavlonbek Sultonbekov - Full Stack Developer Portfolio" />
-    <meta property="twitter:description" content="Experienced Full Stack Developer specializing in React, Node.js, and modern web technologies. View my projects and professional experience." />
-    <meta property="twitter:image" content="https://www.mavlonbek.com/MavlonoIcons.png" />
+    <meta property="og:site_name" content="__SITE_TITLE__" />
+    <meta property="og:locale" content="__SITE_LOCALE__" />
+    <meta property="og:url" content="__CANONICAL_URL__/" />
+    <meta property="og:title" content="__SITE_TITLE__" />
+    <meta property="og:description" content="__SITE_DESCRIPTION__" />
+    <meta property="og:image" content="__SOCIAL_IMAGE_URL__" />
+    <meta property="og:image:alt" content="__SOCIAL_IMAGE_ALT__" />
+    <meta property="og:image:width" content="500" />
+    <meta property="og:image:height" content="500" />
 
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="__SITE_TITLE__" />
+    <meta name="twitter:description" content="__SITE_DESCRIPTION__" />
+    <meta name="twitter:image" content="__SOCIAL_IMAGE_URL__" />
+    <meta name="twitter:image:alt" content="__SOCIAL_IMAGE_ALT__" />
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Mavlonbek Sultanbekov",
-        "alternateName": "Mavlono",
-        "url": "https://www.mavlonbek.com",
-        "image": "https://www.mavlonbek.com/MavlonoIcons.png",
-        "jobTitle": "Full Stack Developer",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Freelance"
-        },
-        "alumniOf": {
-          "@type": "University",
-          "name": "Anglia Ruskin University",
-          "sameAs": "https://aru.ac.uk"
-        },
-        "sameAs": [
-          "https://github.com/mavlonbekswd",
-          "https://www.linkedin.com/in/mavlonbek-sultanbekov-219098283/",
-          "https://t.me/mavlono_sulton",
-          "https://wa.me/+4407881196552"
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Cambridge",
-          "addressCountry": "UK"
-        },
-        "email": "mailto:mavlonbeksultanbekov3@gmail.com",
-        "telephone": "+44 07881196552",
-        "description": "Experienced Full Stack Developer specializing in React.js, Tailwind CSS, Node.js, SCSS, HTML, and JavaScript. Building modern, responsive, and high-performance web applications for global clients."
-      }
-      </script>
-      
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="imgForSeo.png" />
-    <link rel="apple-touch-icon" href="imgForSeo.png" />
-    <meta property="og:image" content="https://www.mavlonbek.com/MavlonoIcons.PNG" />
-    <meta property="twitter:image" content="https://www.mavlonbek.com/MavlonoIcons.PNG" />
-
-    <!-- Theme Color --> 
-    <meta name="theme-color" content="#1f1f1f" />
-
-    <link rel="canonical" href="https://www.mavlonbek.com/" />
-    
-    <!-- External Resources -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <link rel="icon" type="image/png" href="/imgForSeo.png" />
+    <link rel="apple-touch-icon" href="/imgForSeo.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="preload"
+      as="image"
+      href="/mee-160.webp"
+      imagesrcset="/mee-160.webp 160w, /mee-320.webp 320w"
+      imagesizes="112px"
+      type="image/webp"
+    />
 
     <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              accent: {
-                DEFAULT: '#38bdf8',
-                soft: '#22d3ee',
-                dim: '#0ea5e9',
-                deep: '#0284c7'
-              },
-              light: {
-                bg: '#f2f2f9 ',
-                card: '#f3f4f6',
-                text: '#111827',
-                border: '#e5e7eb'
-              },
-              dark: {
-                bg: '#1f1f1f',
-                card: '#2a2a2a',
-                text: '#e2e2e2',
-                border: '#374151'
-              }
-            },
-            fontFamily: {
-              display: ['Space Grotesk', 'Plus Jakarta Sans', 'sans-serif']
-            },
-            boxShadow: {
-              soft: '0 20px 50px -24px rgba(0,0,0,0.7)',
-              glow: '0 0 22px -2px rgba(56,189,248,0.5)'
-            }
-          },
-        },
+      try {
+        const savedTheme = localStorage.getItem(
+          "portfolio-theme-preference",
+        );
+        const isDark = savedTheme === null ? true : JSON.parse(savedTheme);
+        document.documentElement.dataset.theme = isDark ? "dark" : "light";
+        document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+      } catch {
+        document.documentElement.dataset.theme = "dark";
       }
     </script>
-
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "ab7465fe-e446-457e-a5bb-ed1f46d331cc",
-    });
-    // 🔔 Har doim promptni ko'rsatish (agar foydalanuvchi subscribe qilmagan bo‘lsa)
-    OneSignal.showSlidedownPrompt({
-      force: true
-    });
-  });
-</script>
+    <script id="structured-data" type="application/ld+json">
+      __STRUCTURED_DATA__
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="./src/main.jsx"></script>
+    <noscript>
+      This portfolio requires JavaScript for client-side navigation. Its page
+      metadata and project links remain available to search engines.
+    </noscript>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

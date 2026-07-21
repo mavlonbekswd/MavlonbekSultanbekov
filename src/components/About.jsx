@@ -1,164 +1,47 @@
-import { Helmet } from 'react-helmet';
-import React from 'react';
-import { motion } from 'framer-motion';
-import { CgInsights } from "react-icons/cg";
-import { MdBusinessCenter } from "react-icons/md";
-import { BsClipboard2Data } from "react-icons/bs";
-import { BsDatabase } from "react-icons/bs";
-import { pageVariants, staggerContainer, fadeInUp, scaleIn } from '../utils/animations';
-import { useTheme } from '../context/ThemeContext';
-import { FaSearch } from "react-icons/fa";
-import LanguageSwitcher from './LanguageSwitcher';
+import { ArrowRight, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Trans } from 'react-i18next';
+import Seo from './Seo';
+import { pageSeo, profile } from '../data/profile';
 
 const About = () => {
-  const { isDark } = useTheme();
-  const { t } = useTranslation();
-  <LanguageSwitcher />
+  const { t, i18n } = useTranslation();
+  const language = i18n.resolvedLanguage?.split('-')[0] || 'en';
+  const aboutCopy = profile.about[language] || profile.about.en;
 
   return (
     <>
-    <Helmet>
-  <title>About Me | Mavlonbek Sultanbekov</title>
-  <meta
-    name="description"
-    content="Learn more about Mavlonbek Sultanbekov – a passionate data analytics based in London, UK, building modern and user-friendly digital experiences."
+      <Seo {...pageSeo.home} />
 
-  />
-  <meta
-    name="keywords"
-    content="Mavlonbek Sultanbekov, About Mavlonbek, Data Analytics, BI developer, London, Portfolio"
-  />
-  <meta name="author" content="Mavlonbek Sultanbekov" />
-  <link rel="canonical" href="https://www.mavlonbek.com/about" />
-   </Helmet>
+      <article className="page-card about-page">
+        <header className="about-hero">
+          <p className="eyebrow">{profile.heroEyebrow}</p>
+          <h1 data-page-heading tabIndex={-1}>
+            {profile.professionalTitle}
+          </h1>
+          <p className="hero-statement">{profile.shortTagline}</p>
+          <div className="hero-actions">
+            <Link className="button button-primary" to="/projects">
+              {t('view-data-projects')}
+              <ArrowRight aria-hidden="true" size={18} />
+            </Link>
+            <Link className="button button-secondary" to="/contact">
+              <Mail aria-hidden="true" size={18} />
+              {t('contact-me')}
+            </Link>
+          </div>
+        </header>
 
-    <motion.div
-      variants={pageVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      className={`${isDark ? 'bg-[#1f1f1f]' : 'bg-[#EEEEEE]'} p-3 lg:p-8 rounded-[32px] shadow-soft ring-1 ring-white/10`}
-
-    >
-      {/* About Me Section */}
-      <motion.section variants={staggerContainer}>
-
-        <motion.h2 variants={fadeInUp} className={`text-2xl lg:text-3xl font-bold ${isDark ? 'text-white' : 'text-black'} mb-4 flex items-center`}>
-          {t("about_me")}
-          <motion.span
-            initial={{ width: 0 }}
-            animate={{ width: "2rem" }}
-            transition={{ duration: 0.3, delay: 0.3 }}
-            className={`block mt-1.5 h-1 bg-accent ml-4`}
-          ></motion.span>
-        </motion.h2>
-        <motion.div variants={staggerContainer} className={`${isDark ? 'text-gray-400' : 'text-gray-600'}  space-y-4`}>
-          <motion.p variants={fadeInUp} className="text-base lg:text-lg  leading-relaxed">
-            {t("about-me-p1")}
-
-
-
-
-          </motion.p>
-          <motion.p variants={fadeInUp} className="text-base lg:text-lg leading-relaxed"> <Trans i18nKey="about-me-p2">
-    In addition to coding, I'm interested in marketing, entrepreneurship, and building tools that make life easier.
-    My mission is simple: <span className='text-accent font-medium'>turn creative ideas into impactful digital products.</span>
-  </Trans>
-          </motion.p>
-        </motion.div>
-      </motion.section>
-
-      {/* What I'm Doing Section */}
-      <motion.section variants={staggerContainer}>
-        <motion.h2 variants={fadeInUp} className={`text-2xl lg:text-3xl font-bold ${isDark ? 'text-white' : 'text-black'} mb-4 flex items-center lg:mb-6 mt-6`}>
-          {t("what-i-do")}
-          <motion.span
-            initial={{ width: 0 }}
-            animate={{ width: "2rem" }}
-            transition={{ duration: 0.3, delay: 0.3 }}
-            className={`block h-1 bg-accent ml-4`}
-          ></motion.span>
-        </motion.h2>
-        <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-          {/* Web Development Card */}
-          <motion.div
-            variants={scaleIn}
-            whileHover={{ scale: 1.02 }}
-            className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-200'} p-4 lg:p-6 rounded-2xl shadow-[0_12px_30px_-16px_rgba(0,0,0,0.65)] ring-1 ring-white/5 hover:ring-accent/30`}
-          >
-            <div className="flex items-start gap-4">
-              <div className={`text-${isDark ? 'white' : 'gray-800'} text-xl lg:text-2xl`}>
-                <CgInsights />
-              </div>
-              <div>
-                <h3 className={`text-lg lg:text-xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>{t("web-development")}</h3>
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-base lg:text-lg leading-relaxed`}>
-                 {t("web-dev-p")}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Web Development Card */}
-          <motion.div
-            variants={scaleIn}
-            whileHover={{ scale: 1.02 }}
-            className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-200'} p-4 lg:p-6 rounded-2xl shadow-[0_12px_30px_-16px_rgba(0,0,0,0.65)] ring-1 ring-white/5 hover:ring-accent/30`}
-          >
-            <div className="flex items-start gap-4">
-              <div className={`text-${isDark ? 'white' : 'gray-800'} text-xl lg:text-2xl`}>
-                <MdBusinessCenter />
-              </div>
-              <div>
-                <h3 className={`text-lg lg:text-xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>{t("seo-opt")}</h3>
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-base lg:text-lg leading-relaxed`}>
-                {t("seo-description")}
-
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Blog Management Card */}
-          <motion.div
-            variants={scaleIn}
-            whileHover={{ scale: 1.02 }}
-            className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-200'} p-4 lg:p-6 rounded-2xl shadow-[0_12px_30px_-16px_rgba(0,0,0,0.65)] ring-1 ring-white/5 hover:ring-accent/30`}
-          >
-            <div className="flex items-start gap-4">
-              <div className={`text-${isDark ? 'white' : 'gray-800'} text-xl lg:text-2xl`}>
-                <BsClipboard2Data />
-              </div>
-              <div>
-                <h3 className={`text-lg lg:text-xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>{t("blog-title")}</h3>
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-base lg:text-lg leading-relaxed`}>
-                {t("blog-description")}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-          <motion.div
-            variants={scaleIn}
-            whileHover={{ scale: 1.02 }}
-            className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-200'} p-4 lg:p-6 rounded-2xl shadow-[0_12px_30px_-16px_rgba(0,0,0,0.65)] ring-1 ring-white/5 hover:ring-accent/30`}
-          >
-            <div className="flex items-start gap-4">
-              <div className={`text-${isDark ? 'white' : 'gray-800'} text-xl lg:text-2xl`}>
-                <BsDatabase />
-              </div>
-              <div>
-                <h3 className={`text-lg lg:text-xl font-semibold ${isDark ? 'text-white' : 'text-black'} mb-2`}>{t("data-modeling-title")}</h3>
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-base lg:text-lg leading-relaxed`}>
-                {t("data-modeling")}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      </motion.section>
-    </motion.div>
+        <section className="about-story" aria-labelledby="about-story-title">
+          <p className="eyebrow">{t('about')}</p>
+          <h2 id="about-story-title">{t('about-story-title')}</h2>
+          <div className="about-introduction">
+            {aboutCopy.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+      </article>
     </>
   );
 };

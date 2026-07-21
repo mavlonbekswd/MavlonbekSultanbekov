@@ -1,0 +1,17 @@
+{
+  "name": "Mavlonbek Sultonbekov | Data Analyst",
+  "short_name": "Mavlonbek",
+  "description": "Data Analyst portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07090c",
+  "theme_color": "#07090c",
+  "icons": [
+    {
+      "src": "/imgForSeo.png",
+      "sizes": "500x500",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
