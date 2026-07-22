@@ -18,7 +18,7 @@ export const experience = Object.freeze([
     organisationKey: 'speedfix-title',
     dateKey: 'speedfix-date',
     contextKey: 'speedfix-duration',
-    organisationUrl: 'https://urgentplumbing.uk',
+    organisationUrl: 'https://www.speedyplumbingdrain.co.uk/',
     bulletKeys: ['speedfix-description1', 'speedfix-description2'],
     group: 'software',
   },
